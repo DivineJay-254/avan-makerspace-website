@@ -16,33 +16,34 @@ export default function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Logo Section - Left */}
-          <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-            <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden bg-gradient-to-br from-secondary/10 to-accent/10 shadow-lg">
+          <div className="flex justify-center lg:justify-start order-2 lg:order-1 animate-slide-in-left">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden bg-gradient-to-br from-secondary/10 to-accent/10 shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
               <Image
                 src="/avan-logo.png"
                 alt="Avan Makerspace"
                 width={300}
                 height={300}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 priority
               />
+              <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           </div>
 
           {/* Text Section - Right */}
-          <div className="flex flex-col justify-center order-1 lg:order-2">
+          <div className="flex flex-col justify-center order-1 lg:order-2 animate-slide-in-right">
             {/* Tagline */}
-            <p className="text-secondary text-xs sm:text-sm font-bold uppercase tracking-widest mb-4">
+            <p className="text-secondary text-xs sm:text-sm font-bold uppercase tracking-widest mb-4 animate-fade-in">
               Kakuma Refugee Camp, Kenya
             </p>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight animate-fade-in">
               Transform Through <span className="text-secondary">Creativity</span>
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-foreground/75 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-foreground/75 mb-8 leading-relaxed animate-fade-in">
               Avan Makerspace empowers youth through creative expression, practical skills, and community building. We turn talent into opportunity and sustainable livelihoods.
             </p>
 
@@ -63,17 +64,17 @@ export default function Hero() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 animate-fade-in">
               <Button
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-white font-semibold text-base rounded-lg"
+                className="bg-accent hover:bg-accent/90 text-white font-semibold text-base rounded-lg transform hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
               >
                 Explore Programs
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary/5 font-semibold text-base rounded-lg"
+                className="border-2 border-primary text-primary hover:bg-primary/5 font-semibold text-base rounded-lg transform hover:scale-105 transition-transform duration-300"
               >
                 Our Impact
               </Button>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 const partnerships = [
@@ -43,16 +44,18 @@ const partnerships = [
 ];
 
 export default function Membership() {
+  const [hoveredPartnership, setHoveredPartnership] = useState<number | null>(null);
+
   return (
-    <section id="support" className="py-16 sm:py-24 bg-muted/30">
+    <section id="support" className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <p className="text-accent uppercase text-sm font-semibold tracking-wide mb-2">How You Can Help</p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+        <div className="text-center mb-16 animate-fade-in">
+          <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-3">How You Can Help</p>
+          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
             Partnership Opportunities
           </h2>
-          <p className="text-muted text-lg max-w-2xl mx-auto">
+          <p className="text-foreground/80 text-lg max-w-3xl mx-auto leading-relaxed">
             Join us in scaling Avan Makerspace. We&apos;re seeking financial support, infrastructure, partnerships, and mentorship to unlock youth potential in Kakuma.
           </p>
         </div>
@@ -62,11 +65,13 @@ export default function Membership() {
           {partnerships.map((partnership) => (
             <div
               key={partnership.id}
-              className={`relative rounded-lg overflow-hidden transition-all duration-300 ${
+              onMouseEnter={() => setHoveredPartnership(partnership.id)}
+              onMouseLeave={() => setHoveredPartnership(null)}
+              className={`relative rounded-xl overflow-hidden transition-all duration-300 transform ${
                 partnership.highlighted
-                  ? 'md:scale-105 bg-primary text-primary-foreground shadow-2xl'
-                  : 'bg-background border border-border hover:shadow-lg'
-              }`}
+                  ? 'md:scale-105 bg-primary text-primary-foreground shadow-2xl hover:shadow-3xl'
+                  : 'bg-background border-2 border-border hover:border-secondary hover:shadow-xl'
+              } ${hoveredPartnership === partnership.id && !partnership.highlighted ? '-translate-y-2' : ''}`}
             >
               {/* Highlight Badge */}
               {partnership.highlighted && (
@@ -76,14 +81,16 @@ export default function Membership() {
               )}
 
               <div className="p-8">
-                {/* Icon */}
-                <div className="text-5xl mb-4">{partnership.icon}</div>
+                {/* Icon with animation */}
+                <div className={`text-5xl mb-4 transition-transform duration-300 ${hoveredPartnership === partnership.id ? 'scale-110' : 'scale-100'}`}>
+                  {partnership.icon}
+                </div>
 
                 {/* Name */}
-                <h3 className={`text-2xl font-bold mb-2 ${!partnership.highlighted && 'text-foreground'}`}>
+                <h3 className={`text-2xl font-bold mb-3 ${!partnership.highlighted && 'text-foreground'}`}>
                   {partnership.name}
                 </h3>
-                <p className={`text-sm mb-6 ${partnership.highlighted ? 'text-primary-foreground/80' : 'text-muted'}`}>
+                <p className={`text-sm mb-6 leading-relaxed ${partnership.highlighted ? 'text-primary-foreground/90' : 'text-foreground/75'}`}>
                   {partnership.description}
                 </p>
 
@@ -123,16 +130,16 @@ export default function Membership() {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-primary text-primary-foreground rounded-lg p-12 text-center mb-16">
-          <h3 className="text-3xl font-bold mb-4">Ready to Transform Lives?</h3>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
+        <div className="bg-gradient-to-r from-primary to-primary/90 text-primary-foreground rounded-xl p-12 sm:p-16 text-center mb-16 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+          <h3 className="text-3xl sm:text-4xl font-bold mb-4">Ready to Transform Lives?</h3>
+          <p className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed">
             Avan Makerspace has proven success with youth in Kakuma. Together, we can scale this initiative and unlock potential for hundreds more young people.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-3 rounded-lg transform hover:scale-105 transition-transform">
               Get in Touch
             </Button>
-            <Button variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10">
+            <Button variant="outline" className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/20 font-semibold px-8 py-3 rounded-lg transform hover:scale-105 transition-transform">
               Download Proposal
             </Button>
           </div>

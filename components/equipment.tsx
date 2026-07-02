@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 
 const programsList = [
@@ -42,11 +43,13 @@ const programsList = [
 ];
 
 export default function Equipment() {
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+
   return (
-    <section id="programs" className="py-16 sm:py-24 bg-muted/20">
+    <section id="programs" className="py-16 sm:py-24 bg-gradient-to-b from-background to-muted/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-3">What We Offer</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
             Our Programs
@@ -61,7 +64,11 @@ export default function Equipment() {
           {programsList.map((item, index) => (
             <div
               key={item.id}
-              className="group rounded-xl overflow-hidden bg-background shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50"
+              onMouseEnter={() => setHoveredId(item.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              className={`group rounded-xl overflow-hidden bg-background shadow-sm hover:shadow-2xl hover:border-secondary transition-all duration-300 border border-border/50 transform ${
+                hoveredId === item.id ? 'scale-105 -translate-y-2' : ''
+              }`}
             >
               {/* Image Container */}
               <div className="relative h-56 overflow-hidden bg-primary/10">
@@ -80,25 +87,33 @@ export default function Equipment() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-3">
+                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-secondary transition-colors duration-300">
                   {item.name}
                 </h3>
-                <p className="text-foreground/70 leading-relaxed">
+                <p className="text-foreground/70 leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
                   {item.description}
                 </p>
+                <div className="mt-4 flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <span className="text-secondary font-semibold text-sm flex items-center">
+                    Learn more
+                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 text-center">
+        <div className="mt-16 text-center animate-fade-in">
           <p className="text-lg text-foreground/70 mb-6">
             Ready to support youth transformation? Join us in scaling Avan Makerspace.
           </p>
-          <button className="inline-flex items-center px-8 py-3 rounded-lg bg-accent hover:bg-accent/90 text-white font-semibold transition-colors duration-200">
+          <button className="inline-flex items-center px-8 py-3 rounded-lg bg-accent hover:bg-accent/90 text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             Get Involved
-            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
