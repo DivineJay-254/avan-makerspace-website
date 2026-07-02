@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export default function Header() {
@@ -12,11 +13,14 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">A</span>
-            </div>
-            <span className="hidden sm:inline font-bold text-lg">Avan Makerspace</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/avan-logo.png"
+              alt="Avan Makerspace"
+              width={70}
+              height={70}
+              className="h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
