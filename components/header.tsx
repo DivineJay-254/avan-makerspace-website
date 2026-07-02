@@ -24,20 +24,20 @@ export default function Header() {
             <Link href="#about" className="text-foreground hover:text-primary transition">
               About
             </Link>
-            <Link href="#equipment" className="text-foreground hover:text-primary transition">
-              Equipment
+            <Link href="#programs" className="text-foreground hover:text-primary transition">
+              Programs
             </Link>
-            <Link href="#membership" className="text-foreground hover:text-primary transition">
-              Membership
+            <Link href="#impact" className="text-foreground hover:text-primary transition">
+              Impact
             </Link>
-            <Link href="#contact" className="text-foreground hover:text-primary transition">
-              Contact
+            <Link href="#support" className="text-foreground hover:text-primary transition">
+              Support Us
             </Link>
           </div>
 
           {/* CTA Button */}
           <Button className="hidden sm:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground">
-            Join Now
+            Partner With Us
           </Button>
 
           {/* Mobile Menu Button */}
@@ -73,28 +73,28 @@ export default function Header() {
               About
             </Link>
             <Link
-              href="#equipment"
+              href="#programs"
               className="block px-3 py-2 rounded-lg hover:bg-muted transition"
               onClick={() => setIsOpen(false)}
             >
-              Equipment
+              Programs
             </Link>
             <Link
-              href="#membership"
+              href="#impact"
               className="block px-3 py-2 rounded-lg hover:bg-muted transition"
               onClick={() => setIsOpen(false)}
             >
-              Membership
+              Impact
             </Link>
             <Link
-              href="#contact"
+              href="#support"
               className="block px-3 py-2 rounded-lg hover:bg-muted transition"
               onClick={() => setIsOpen(false)}
             >
-              Contact
+              Support Us
             </Link>
             <Button className="w-full mt-2 bg-accent hover:bg-accent/90 text-accent-foreground">
-              Join Now
+              Partner With Us
             </Button>
           </div>
         )}

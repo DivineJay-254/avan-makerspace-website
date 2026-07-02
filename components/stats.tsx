@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-function AnimatedStat({ end, label }: { end: number; label: string }) {
+function AnimatedStat({ end, label, suffix = '+' }: { end: number; label: string; suffix?: string }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function AnimatedStat({ end, label }: { end: number; label: string }) {
 
   return (
     <div className="text-center">
-      <div className="text-5xl sm:text-6xl font-bold text-primary mb-3">{count}+</div>
+      <div className="text-5xl sm:text-6xl font-bold text-primary mb-3">{count}{suffix}</div>
       <p className="text-foreground text-lg">{label}</p>
     </div>
   );
@@ -38,39 +38,39 @@ export default function Stats() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-accent uppercase text-sm font-semibold tracking-wide mb-2">Our Community</p>
+          <p className="text-accent uppercase text-sm font-semibold tracking-wide mb-2">MVP Results</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Growing Together
+            Real Impact in Kakuma
           </h2>
           <p className="text-muted text-lg max-w-2xl mx-auto">
-            Avan Makerspace is a thriving community dedicated to creativity, innovation, and collaboration.
+            Through our pilot programs, we&apos;ve already transformed the lives of over 115 young people.
           </p>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8">
-          <AnimatedStat end={500} label="Active Members" />
-          <AnimatedStat end={50} label="Tools & Equipment" />
-          <AnimatedStat end={1200} label="Projects Completed" />
+          <AnimatedStat end={30} label="Fashion & Modeling Trained" suffix="" />
+          <AnimatedStat end={45} label="Robotics Bootcamp Participants" suffix="" />
+          <AnimatedStat end={40} label="Visual Arts Trainees (I Am Art)" suffix="" />
         </div>
 
         {/* Additional Info */}
         <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-border pt-12">
           <div>
-            <p className="text-3xl font-bold text-primary mb-2">8k</p>
-            <p className="text-muted">Sq. Feet Space</p>
+            <p className="text-3xl font-bold text-primary mb-2">115</p>
+            <p className="text-muted">Total Youth Empowered</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primary mb-2">24/7</p>
-            <p className="text-muted">Member Access</p>
+            <p className="text-3xl font-bold text-primary mb-2">6</p>
+            <p className="text-muted">Core Programs</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primary mb-2">15+</p>
-            <p className="text-muted">Workshops/Month</p>
+            <p className="text-3xl font-bold text-primary mb-2">Proven</p>
+            <p className="text-muted">Impact & Feasibility</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primary mb-2">100%</p>
-            <p className="text-muted">Community Driven</p>
+            <p className="text-3xl font-bold text-primary mb-2">Ready</p>
+            <p className="text-muted">To Scale</p>
           </div>
         </div>
       </div>

@@ -19,13 +19,13 @@ export default function About() {
 
           {/* Content */}
           <div>
-            <p className="text-accent uppercase text-sm font-semibold tracking-wide mb-3">About Us</p>
+            <p className="text-accent uppercase text-sm font-semibold tracking-wide mb-3">Our Mission</p>
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Empowering Makers & Creators
+              Unlocking Youth Potential
             </h2>
 
             <p className="text-lg text-muted mb-6 leading-relaxed">
-              Avan Makerspace was founded on the belief that everyone should have access to creative tools and a supportive community. We provide a welcoming environment for makers of all skill levels to learn, build, and innovate.
+              In Kakuma Refugee Camp, thousands of young people have untapped talent and creativity—but lack safe spaces and opportunities to develop them. Avan Makerspace transforms creativity into a pathway for healing, expression, confidence, and economic opportunity.
             </p>
 
             <div className="space-y-4 mb-8">
@@ -38,8 +38,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-semibold text-foreground">Professional Equipment</h3>
-                  <p className="text-muted mt-1">Access to industry-grade tools and machinery</p>
+                  <h3 className="font-semibold text-foreground">Safe Creative Space</h3>
+                  <p className="text-muted mt-1">A welcoming environment where youth feel seen, heard, and valued</p>
                 </div>
               </div>
 
@@ -52,8 +52,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-semibold text-foreground">Expert Community</h3>
-                  <p className="text-muted mt-1">Learn from experienced makers and mentors</p>
+                  <h3 className="font-semibold text-foreground">Skills & Mentorship</h3>
+                  <p className="text-muted mt-1">Structured training leading to income-generating opportunities</p>
                 </div>
               </div>
 
@@ -66,8 +66,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-semibold text-foreground">Collaborative Space</h3>
-                  <p className="text-muted mt-1">Connect with like-minded creators and innovators</p>
+                  <h3 className="font-semibold text-foreground">Community & Belonging</h3>
+                  <p className="text-muted mt-1">Strengthen social cohesion and reduce vulnerability to risk</p>
                 </div>
               </div>
             </div>

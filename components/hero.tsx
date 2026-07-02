@@ -31,17 +31,17 @@ export default function Hero() {
 
         {/* Tagline */}
         <p className="text-accent text-sm font-semibold uppercase tracking-wide mb-4">
-          Creative Community Space
+          Kakuma Refugee Camp
         </p>
 
         {/* Main Heading */}
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-          Build, Create & Innovate
+          Create. Express. Belong.
         </h1>
 
         {/* Description */}
         <p className="text-lg sm:text-xl text-gray-100 mb-8 max-w-2xl mx-auto">
-          Join a thriving community of makers, artists, and innovators. Access state-of-the-art equipment and collaborate with like-minded creators.
+          Empowering youth through creativity, expression, and community. Transform talent into opportunity, purpose, and sustainable livelihoods.
         </p>
 
         {/* CTA Buttons */}
@@ -50,30 +50,30 @@ export default function Hero() {
             size="lg"
             className="bg-accent hover:bg-accent/90 text-accent-foreground text-base"
           >
-            Explore Membership
+            Explore Programs
           </Button>
           <Button
             size="lg"
             variant="outline"
             className="bg-white/10 hover:bg-white/20 text-white border-white"
           >
-            Tour the Space
+            Learn Our Story
           </Button>
         </div>
 
         {/* Stats Preview */}
         <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto">
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold text-accent mb-2">500+</div>
-            <p className="text-sm text-gray-200">Active Members</p>
+            <div className="text-3xl sm:text-4xl font-bold text-accent mb-2">115+</div>
+            <p className="text-sm text-gray-200">Youth Trained</p>
           </div>
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold text-accent mb-2">50+</div>
-            <p className="text-sm text-gray-200">Tools & Equipment</p>
+            <div className="text-3xl sm:text-4xl font-bold text-accent mb-2">6</div>
+            <p className="text-sm text-gray-200">Programs</p>
           </div>
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold text-accent mb-2">24/7</div>
-            <p className="text-sm text-gray-200">Access Available</p>
+            <div className="text-3xl sm:text-4xl font-bold text-accent mb-2">Proven</div>
+            <p className="text-sm text-gray-200">MVP Impact</p>
           </div>
         </div>
       </div>

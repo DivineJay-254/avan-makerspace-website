@@ -10,8 +10,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Avan Makerspace | Create. Express. Belong.',
+  description: 'Empowering youth through creativity in Kakuma Refugee Camp. Fashion, art, writing, music, robotics, and digital skills.',
   generator: 'v0.app',
   icons: {
     icon: [

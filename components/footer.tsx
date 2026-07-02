@@ -11,9 +11,9 @@ export default function Footer() {
         {/* Newsletter Section */}
         <div className="mb-16 pb-16 border-b border-background/20">
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-3xl font-bold mb-4">Stay Connected</h3>
+            <h3 className="text-3xl font-bold mb-4">Join the Movement</h3>
             <p className="text-background/80 mb-6">
-              Join our newsletter to get updates on new equipment, workshops, and community events.
+              Subscribe for monthly impact reports, program updates, and partnership opportunities in Kakuma.
             </p>
             <form className="flex flex-col sm:flex-row gap-3">
               <input
@@ -43,24 +43,21 @@ export default function Footer() {
               <span className="font-bold text-lg">Avan</span>
             </div>
             <p className="text-background/70 text-sm mb-6">
-              Empowering makers, artists, and innovators through access to tools, community, and collaboration.
+              Empowering youth through creativity, expression, and belonging in Kakuma Refugee Camp. Transform talent into opportunity.
             </p>
             {/* Social Links */}
             <div className="flex space-x-4">
-              <a href="#" className="text-background/70 hover:text-background transition">
-                <span className="sr-only">Facebook</span>
+              <a href="#" className="text-background/70 hover:text-background transition" aria-label="Facebook">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </a>
-              <a href="#" className="text-background/70 hover:text-background transition">
-                <span className="sr-only">Twitter</span>
+              <a href="#" className="text-background/70 hover:text-background transition" aria-label="Twitter">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8.29 20c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-7.041 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
               </a>
-              <a href="#" className="text-background/70 hover:text-background transition">
-                <span className="sr-only">Instagram</span>
+              <a href="#" className="text-background/70 hover:text-background transition" aria-label="Instagram">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" />
                 </svg>
@@ -68,55 +65,55 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Programs */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Quick Links</h4>
+            <h4 className="font-semibold text-background mb-4">Programs</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="#about" className="text-background/70 hover:text-background transition">
-                  About Us
+                <Link href="#programs" className="text-background/70 hover:text-background transition">
+                  Fashion & Modeling
                 </Link>
               </li>
               <li>
-                <Link href="#equipment" className="text-background/70 hover:text-background transition">
-                  Equipment
+                <Link href="#programs" className="text-background/70 hover:text-background transition">
+                  Visual Arts
                 </Link>
               </li>
               <li>
-                <Link href="#membership" className="text-background/70 hover:text-background transition">
-                  Membership
+                <Link href="#programs" className="text-background/70 hover:text-background transition">
+                  AvanTech Robotics
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition">
-                  Events
+                <Link href="#programs" className="text-background/70 hover:text-background transition">
+                  Digital Skills
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Resources */}
+          {/* Get Involved */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Resources</h4>
+            <h4 className="font-semibold text-background mb-4">Get Involved</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition">
-                  Documentation
+                <Link href="#support" className="text-background/70 hover:text-background transition">
+                  Partner With Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition">
-                  Tutorials
+                <Link href="#support" className="text-background/70 hover:text-background transition">
+                  Financial Support
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition">
-                  Blog
+                <Link href="#support" className="text-background/70 hover:text-background transition">
+                  Mentorship
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition">
-                  Gallery
+                <Link href="#about" className="text-background/70 hover:text-background transition">
+                  Our Story
                 </Link>
               </li>
             </ul>
@@ -125,28 +122,20 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h4 className="font-semibold text-background mb-4">Contact</h4>
-            <ul className="space-y-3 text-background/70">
+            <ul className="space-y-4 text-background/70 text-sm">
               <li className="flex items-start">
                 <svg className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-                <span>123 Creative Lane, Tech City, TC 12345</span>
+                <span>Kakuma Refugee Camp, Kenya</span>
               </li>
               <li className="flex items-center">
                 <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <a href="mailto:hello@avan.local" className="hover:text-background transition">
-                  hello@avan.local
-                </a>
-              </li>
-              <li className="flex items-center">
-                <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <a href="tel:+1234567890" className="hover:text-background transition">
-                  +1 (234) 567-890
+                <a href="mailto:info@avanmakerspace.org" className="hover:text-background transition">
+                  info@avanmakerspace.org
                 </a>
               </li>
             </ul>
@@ -156,16 +145,13 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center text-background/70 text-sm">
-            <p>&copy; {currentYear} Avan Makerspace. All rights reserved.</p>
+            <p>&copy; {currentYear} Avan Makerspace. Empowering youth through creativity.</p>
             <div className="flex space-x-6 mt-4 sm:mt-0">
               <Link href="#" className="hover:text-background transition">
                 Privacy Policy
               </Link>
               <Link href="#" className="hover:text-background transition">
                 Terms of Service
-              </Link>
-              <Link href="#" className="hover:text-background transition">
-                Code of Conduct
               </Link>
             </div>
           </div>
