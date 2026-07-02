@@ -25,16 +25,16 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#about" className="text-foreground hover:text-primary transition">
+            <Link href="#about" className="text-foreground hover:text-secondary transition font-medium">
               About
             </Link>
-            <Link href="#programs" className="text-foreground hover:text-primary transition">
+            <Link href="/programs" className="text-foreground hover:text-secondary transition font-medium">
               Programs
             </Link>
-            <Link href="#impact" className="text-foreground hover:text-primary transition">
+            <Link href="#impact" className="text-foreground hover:text-secondary transition font-medium">
               Impact
             </Link>
-            <Link href="#support" className="text-foreground hover:text-primary transition">
+            <Link href="#support" className="text-foreground hover:text-secondary transition font-medium">
               Support Us
             </Link>
           </div>
@@ -71,28 +71,28 @@ export default function Header() {
           <div className="md:hidden mt-4 space-y-2 pb-4">
             <Link
               href="#about"
-              className="block px-3 py-2 rounded-lg hover:bg-muted transition"
+              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
-              href="#programs"
-              className="block px-3 py-2 rounded-lg hover:bg-muted transition"
+              href="/programs"
+              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
               Programs
             </Link>
             <Link
               href="#impact"
-              className="block px-3 py-2 rounded-lg hover:bg-muted transition"
+              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
               Impact
             </Link>
             <Link
               href="#support"
-              className="block px-3 py-2 rounded-lg hover:bg-muted transition"
+              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
               Support Us

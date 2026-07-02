@@ -38,11 +38,11 @@ export default function Stats() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-accent uppercase text-sm font-semibold tracking-wide mb-2">MVP Results</p>
+          <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-3">MVP Results</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
             Real Impact in Kakuma
           </h2>
-          <p className="text-muted text-lg max-w-2xl mx-auto">
+          <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
             Through our pilot programs, we&apos;ve already transformed the lives of over 115 young people.
           </p>
         </div>
@@ -57,20 +57,20 @@ export default function Stats() {
         {/* Additional Info */}
         <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-border pt-12">
           <div>
-            <p className="text-3xl font-bold text-primary mb-2">115</p>
-            <p className="text-muted">Total Youth Empowered</p>
+            <p className="text-3xl font-bold text-secondary mb-2">115</p>
+            <p className="text-foreground/70 font-medium">Total Youth Empowered</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primary mb-2">6</p>
-            <p className="text-muted">Core Programs</p>
+            <p className="text-3xl font-bold text-accent mb-2">6</p>
+            <p className="text-foreground/70 font-medium">Core Programs</p>
           </div>
           <div>
             <p className="text-3xl font-bold text-primary mb-2">Proven</p>
-            <p className="text-muted">Impact & Feasibility</p>
+            <p className="text-foreground/70 font-medium">Impact & Feasibility</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primary mb-2">Ready</p>
-            <p className="text-muted">To Scale</p>
+            <p className="text-3xl font-bold text-secondary mb-2">Ready</p>
+            <p className="text-foreground/70 font-medium">To Scale</p>
           </div>
         </div>
       </div>

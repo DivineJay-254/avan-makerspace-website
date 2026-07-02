@@ -17,13 +17,13 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Logo Section - Left */}
           <div className="flex justify-center lg:justify-start order-2 lg:order-1">
-            <div className="relative w-full max-w-sm lg:max-w-md">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden bg-gradient-to-br from-secondary/10 to-accent/10 shadow-lg">
               <Image
                 src="/avan-logo.png"
                 alt="Avan Makerspace"
-                width={450}
-                height={450}
-                className="w-full h-auto drop-shadow-lg"
+                width={300}
+                height={300}
+                className="w-full h-full object-cover"
                 priority
               />
             </div>

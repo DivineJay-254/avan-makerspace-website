@@ -144,50 +144,50 @@ export default function Membership() {
             Frequently Asked Questions
           </h3>
           <div className="space-y-6">
-            <details className="group rounded-lg border border-border p-6 hover:bg-muted/50 transition-colors cursor-pointer">
+            <details className="group rounded-lg border border-border p-6 hover:bg-muted/30 transition-colors cursor-pointer bg-background">
               <summary className="flex items-center justify-between font-semibold text-foreground">
                 <span>How is Avan Makerspace currently operating?</span>
                 <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </summary>
-              <p className="text-muted mt-4">
+              <p className="text-foreground/75 mt-4 leading-relaxed">
                 We have successfully piloted multiple programs (Fashion, Visual Arts, AvanTech Robotics) with over 115 youth trained. We&apos;re now seeking support to establish a permanent, fully operational creative hub.
               </p>
             </details>
 
-            <details className="group rounded-lg border border-border p-6 hover:bg-muted/50 transition-colors cursor-pointer">
+            <details className="group rounded-lg border border-border p-6 hover:bg-muted/30 transition-colors cursor-pointer bg-background">
               <summary className="flex items-center justify-between font-semibold text-foreground">
                 <span>Who benefits from Avan Makerspace?</span>
                 <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </summary>
-              <p className="text-muted mt-4">
+              <p className="text-foreground/75 mt-4 leading-relaxed">
                 Primarily youth aged 12-25 in Kakuma Refugee Camp who lack access to creative opportunities. The programs focus on those facing vulnerability, isolation, and limited pathways to self-reliance and income generation.
               </p>
             </details>
 
-            <details className="group rounded-lg border border-border p-6 hover:bg-muted/50 transition-colors cursor-pointer">
+            <details className="group rounded-lg border border-border p-6 hover:bg-muted/30 transition-colors cursor-pointer bg-background">
               <summary className="flex items-center justify-between font-semibold text-foreground">
                 <span>What is your sustainability plan?</span>
                 <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </summary>
-              <p className="text-muted mt-4">
+              <p className="text-foreground/75 mt-4 leading-relaxed">
                 Partnerships, creative services, biannual showcase events, and building a strong network of creatives. We&apos;re also developing pathways for youth to generate income through freelancing and creative services.
               </p>
             </details>
 
-            <details className="group rounded-lg border border-border p-6 hover:bg-muted/50 transition-colors cursor-pointer">
+            <details className="group rounded-lg border border-border p-6 hover:bg-muted/30 transition-colors cursor-pointer bg-background">
               <summary className="flex items-center justify-between font-semibold text-foreground">
                 <span>How can I stay updated on Avan&apos;s progress?</span>
                 <svg className="w-5 h-5 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </summary>
-              <p className="text-muted mt-4">
+              <p className="text-foreground/75 mt-4 leading-relaxed">
                 Sign up for our newsletter to receive monthly impact reports, program updates, and partnership opportunities. We provide transparent documentation of our progress and youth outcomes.
               </p>
             </details>
