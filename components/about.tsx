@@ -25,8 +25,8 @@ export default function About() {
               Unlocking Youth <span className="text-secondary">Potential</span>
             </h2>
 
-            <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-              In Kakuma Refugee Camp, thousands of young people have untapped talent and creativity—but lack safe spaces and opportunities to develop them. Avan Makerspace transforms creativity into a pathway for healing, expression, confidence, and economic opportunity.
+            <p className="text-lg text-foreground/85 font-medium mb-8 leading-relaxed">
+              In Kakuma Refugee Camp, thousands of young people have untapped talent and creativity—but lack safe spaces and opportunities to develop them. Avan Makerspace is an LGBTQ+-affirming and gender-inclusive space where all youth—including queer and LGBTQ+ individuals—feel safe, celebrated, and empowered. We transform creativity into a pathway for healing, authentic expression, confidence, and economic opportunity for everyone.
             </p>
 
             <div className="space-y-4 mb-8">
@@ -39,8 +39,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-semibold text-foreground">Safe Creative Space</h3>
-                  <p className="text-foreground/70 mt-1">A welcoming environment where youth feel seen, heard, and valued</p>
+                  <h3 className="font-semibold text-foreground">Safe & Inclusive Space</h3>
+                  <p className="text-foreground/85 font-medium mt-1">A welcoming environment where all youth—especially LGBTQ+ individuals—feel safe, seen, heard, and valued</p>
                 </div>
               </div>
 
@@ -54,7 +54,7 @@ export default function About() {
                 </div>
                 <div className="ml-4">
                   <h3 className="font-semibold text-foreground">Skills & Mentorship</h3>
-                  <p className="text-foreground/70 mt-1">Structured training leading to income-generating opportunities</p>
+                  <p className="text-foreground/85 font-medium mt-1">Professional training and mentorship leading to real income-generating opportunities</p>
                 </div>
               </div>
 
@@ -67,8 +67,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-semibold text-foreground">Community & Belonging</h3>
-                  <p className="text-foreground/70 mt-1">Strengthen social cohesion and reduce vulnerability to risk</p>
+                  <h3 className="font-semibold text-foreground">Diverse Community & Belonging</h3>
+                  <p className="text-foreground/85 font-medium mt-1">Build social connections, celebrate authenticity, and create lasting solidarity across communities</p>
                 </div>
               </div>
             </div>

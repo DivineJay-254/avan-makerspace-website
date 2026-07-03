@@ -43,8 +43,8 @@ export default function Hero() {
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-foreground/75 mb-8 leading-relaxed animate-fade-in">
-              Avan Makerspace empowers youth through creative expression, practical skills, and community building. We turn talent into opportunity and sustainable livelihoods.
+            <p className="text-base sm:text-lg text-foreground/85 font-medium mb-8 leading-relaxed animate-fade-in">
+              Avan Makerspace empowers all youth through creative expression, practical skills, and community building. We are an LGBTQ+-affirming organization that celebrates diversity across all our programs and departments. We turn talent into opportunity and sustainable livelihoods.
             </p>
 
             {/* Stats */}
