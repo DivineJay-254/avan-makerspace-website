@@ -11,10 +11,10 @@ export default function Header() {
   const [isPartnershipModalOpen, setIsPartnershipModalOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
+    <header className="sticky top-0 z-50 w-full bg-transparent border-b-0">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Left */}
           <Link href="/" className="flex items-center">
             <Image
               src="/avan-logo.png"
@@ -25,29 +25,31 @@ export default function Header() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Spacer */}
+          <div className="flex-1" />
+
+          {/* Desktop Navigation - Right */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#about" className="text-foreground hover:text-secondary transition font-medium">
+            <Link href="/about" className="text-foreground hover:text-secondary transition font-medium">
               About
             </Link>
             <Link href="/programs" className="text-foreground hover:text-secondary transition font-medium">
               Programs
             </Link>
-            <Link href="#impact" className="text-foreground hover:text-secondary transition font-medium">
+            <Link href="/impact" className="text-foreground hover:text-secondary transition font-medium">
               Impact
             </Link>
-            <Link href="#support" className="text-foreground hover:text-secondary transition font-medium">
+            <Link href="/support" className="text-foreground hover:text-secondary transition font-medium">
               Support Us
             </Link>
+            {/* CTA Button */}
+            <Button 
+              onClick={() => setIsPartnershipModalOpen(true)}
+              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
+              Partner With Us
+            </Button>
           </div>
-
-          {/* CTA Button */}
-          <Button 
-            onClick={() => setIsPartnershipModalOpen(true)}
-            className="hidden sm:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground"
-          >
-            Partner With Us
-          </Button>
 
           {/* Mobile Menu Button */}
           <button
@@ -75,7 +77,7 @@ export default function Header() {
         {isOpen && (
           <div className="md:hidden mt-4 space-y-2 pb-4">
             <Link
-              href="#about"
+              href="/about"
               className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
@@ -89,14 +91,14 @@ export default function Header() {
               Programs
             </Link>
             <Link
-              href="#impact"
+              href="/impact"
               className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
               Impact
             </Link>
             <Link
-              href="#support"
+              href="/support"
               className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >

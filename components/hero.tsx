@@ -38,8 +38,8 @@ export default function Hero() {
             </p>
 
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight animate-fade-in">
-              Empowering Youth Through <span className="text-secondary">Innovation, Creativity & Belonging</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight animate-fade-in">
+              Empowering Youth Through <span className="text-secondary">Innovation & Creativity</span>
             </h1>
 
             {/* Description */}
