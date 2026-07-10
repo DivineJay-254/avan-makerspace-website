@@ -11,14 +11,14 @@ export default function Footer() {
         {/* Newsletter Section */}
         <div className="mb-16 pb-16 border-b border-background/20">
           <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-3xl font-bold mb-4">Join the Movement</h3>
+            <h3 className="text-3xl font-bold mb-4">Stay Connected to Our Impact</h3>
             <p className="text-background/80 mb-6">
-              Subscribe for monthly impact reports, program updates, and partnership opportunities in Kakuma.
+              Subscribe to receive monthly impact updates, program innovations, partnership opportunities, and stories of transformation from Kakuma youth.
             </p>
             <form className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="Your email address"
                 className="flex-1 px-4 py-3 rounded-lg bg-background text-foreground placeholder-muted focus:outline-none focus:ring-2 focus:ring-primary"
                 required
               />
@@ -40,10 +40,10 @@ export default function Footer() {
               <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
                 <span className="text-primary-foreground font-bold">A</span>
               </div>
-              <span className="font-bold text-lg">Avan</span>
+              <span className="font-bold text-lg">Avan Makerspace</span>
             </div>
             <p className="text-background/70 text-sm mb-6">
-              Empowering youth through creativity, expression, and belonging in Kakuma Refugee Camp. Transform talent into opportunity.
+              Refugee-led, queer-led innovation hub empowering displaced youth through creativity, technology, entrepreneurship, and inclusive leadership. Kakuma Refugee Camp, Kenya.
             </p>
             {/* Social Links */}
             <div className="flex space-x-4">
@@ -67,26 +67,26 @@ export default function Footer() {
 
           {/* Programs */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Programs</h4>
+            <h4 className="font-semibold text-background mb-4">Our Programs</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="#programs" className="text-background/70 hover:text-background transition">
-                  Fashion & Modeling
+                <Link href="/programs" className="text-background/70 hover:text-background transition">
+                  AvanTech: Digital Innovation
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="text-background/70 hover:text-background transition">
-                  Visual Arts
+                <Link href="/programs" className="text-background/70 hover:text-background transition">
+                  Miradede: Fashion & Design
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="text-background/70 hover:text-background transition">
-                  AvanTech Robotics
+                <Link href="/programs" className="text-background/70 hover:text-background transition">
+                  I Am Art: Visual Arts
                 </Link>
               </li>
               <li>
-                <Link href="#programs" className="text-background/70 hover:text-background transition">
-                  Digital Skills
+                <Link href="/programs" className="text-background/70 hover:text-background transition">
+                  Entrepreneurship & Livelihoods
                 </Link>
               </li>
             </ul>
@@ -94,8 +94,18 @@ export default function Footer() {
 
           {/* Get Involved */}
           <div>
-            <h4 className="font-semibold text-background mb-4">Get Involved</h4>
+            <h4 className="font-semibold text-background mb-4">Ways to Help</h4>
             <ul className="space-y-3">
+              <li>
+                <Link href="#support" className="text-background/70 hover:text-background transition">
+                  Donate
+                </Link>
+              </li>
+              <li>
+                <Link href="#support" className="text-background/70 hover:text-background transition">
+                  Become a Mentor
+                </Link>
+              </li>
               <li>
                 <Link href="#support" className="text-background/70 hover:text-background transition">
                   Partner With Us
@@ -103,17 +113,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#support" className="text-background/70 hover:text-background transition">
-                  Financial Support
-                </Link>
-              </li>
-              <li>
-                <Link href="#support" className="text-background/70 hover:text-background transition">
-                  Mentorship
-                </Link>
-              </li>
-              <li>
-                <Link href="#about" className="text-background/70 hover:text-background transition">
-                  Our Story
+                  Volunteer
                 </Link>
               </li>
             </ul>
@@ -145,13 +145,16 @@ export default function Footer() {
         {/* Divider */}
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center text-background/70 text-sm">
-            <p>&copy; {currentYear} Avan Makerspace. Empowering youth through creativity.</p>
+            <p>&copy; {currentYear} Avan Makerspace. A refugee-led, queer-led nonprofit. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 sm:mt-0">
               <Link href="#" className="hover:text-background transition">
                 Privacy Policy
               </Link>
               <Link href="#" className="hover:text-background transition">
                 Terms of Service
+              </Link>
+              <Link href="#" className="hover:text-background transition">
+                Impact Report
               </Link>
             </div>
           </div>

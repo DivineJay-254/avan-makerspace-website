@@ -5,102 +5,120 @@ import Image from 'next/image';
 const programs = [
   {
     id: 1,
-    name: 'Fashion & Modeling',
-    tagline: 'Building Confidence Through Style',
-    description: 'Our fashion program teaches runway training, styling techniques, and personal branding to help youth develop confidence and presentation skills.',
+    name: 'AvanTech: Digital Innovation',
+    tagline: 'Technology, AI, Robotics & Coding',
+    description: 'Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.',
     details: [
-      'Professional catwalk and posture training',
-      '30 youth successfully trained',
-      'Showcase events and portfolio building',
-      'Connection to local fashion industry',
-      'Income-generating opportunities',
+      'Robotics & mechanical engineering (LEGO, Arduino)',
+      'Web and mobile app development',
+      'AI fundamentals and machine learning basics',
+      'Cybersecurity and digital safety',
+      'Freelancing platforms and digital entrepreneurship',
+      'Hackathons and innovation competitions',
     ],
-    impact: 'Participants report increased confidence, improved self-image, and opportunities for income through modeling and styling services.',
-    image: '/programs-fashion.png',
-    color: 'text-secondary',
-  },
-  {
-    id: 2,
-    name: 'Visual Arts (I Am Art)',
-    tagline: 'Expressing Through Creativity',
-    description: 'A comprehensive visual arts program focusing on drawing, painting, digital design, and artistic expression to develop technical skills and emotional resilience.',
-    details: [
-      'Drawing and painting fundamentals',
-      '40 young artists trained',
-      'Digital design introduction',
-      'Portfolio development',
-      'Exhibition and showcase opportunities',
-      'Art-based mental health and healing',
-    ],
-    impact: 'Youth develop technical artistic skills while processing emotions and trauma through creative expression, building self-worth and community recognition.',
-    image: '/programs-arts.png',
-    color: 'text-accent',
-  },
-  {
-    id: 3,
-    name: 'AvanTech - Robotics & Digital',
-    tagline: 'Innovation for Tomorrow',
-    description: 'Hands-on STEM education introducing youth to robotics, coding, and digital innovation through LEGO and Arduino-based projects.',
-    details: [
-      'LEGO robotics and engineering',
-      '45 children trained in foundational tech',
-      'Arduino programming basics',
-      'Problem-solving and critical thinking',
-      'Pathway to digital career opportunities',
-      'Youth tech mentorship network',
-    ],
-    impact: 'Young people gain foundational tech skills, improved analytical thinking, and access to digital economy opportunities in an increasingly tech-driven world.',
+    impact: 'Participants gain access to in-demand digital economy skills, create income opportunities through freelancing, and position themselves as innovators solving community problems.',
     image: '/programs-robotics.png',
     color: 'text-primary',
   },
   {
-    id: 4,
-    name: 'Writing & Spoken Word',
-    tagline: 'Finding Your Voice',
-    description: 'Programs in poetry, storytelling, and spoken word performance that help youth articulate their experiences and build communication skills.',
+    id: 2,
+    name: 'Pekee Models: Professional Performance',
+    tagline: 'Runway Training & Talent Development',
+    description: 'Professional modeling and performance program focused on runway training, confidence building, personal branding, and talent development. Exclusively dedicated to modeling and performance—not fashion design.',
     details: [
-      'Poetry and creative writing workshops',
-      'Storytelling and narrative development',
-      'Spoken word performance training',
-      'Public speaking confidence building',
-      'Publishing and sharing platforms',
-      'Connection to youth activism',
+      'Professional runway technique and posture',
+      'Portfolio development and photography',
+      'Personal branding and public speaking',
+      'Confidence building and stage presence',
+      'Industry networking and connections',
+      'Fashion show and event opportunities',
     ],
-    impact: 'Youth discover their voice, process personal narratives, build communication confidence, and connect with audiences through powerful storytelling.',
-    image: '/avan-community.png',
+    impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
+    image: '/programs-fashion.png',
     color: 'text-secondary',
   },
   {
-    id: 5,
-    name: 'Music & Performance',
-    tagline: 'Rhythm and Expression',
-    description: 'Music training including instrumental instruction, vocal performance, music production basics, and stage presence development for aspiring young musicians.',
+    id: 3,
+    name: 'Miradede: Fashion & Design',
+    tagline: 'Garment Making & Sustainable Fashion',
+    description: 'Creative program focused on fashion design, garment production, tailoring, and sustainable fashion innovation. From design to production, youth learn end-to-end fashion entrepreneurship.',
     details: [
-      'Basic instrumental training',
-      'Vocal performance coaching',
-      'Music production fundamentals',
-      'Stage presence and performance skills',
-      'Live showcase opportunities',
-      'Community and cultural performances',
+      'Fashion design and sketching fundamentals',
+      'Garment construction and tailoring',
+      'Sustainable and eco-friendly design',
+      'Upcycling and textile innovation',
+      'Fashion business and entrepreneurship',
+      'Collection development and showcases',
     ],
-    impact: 'Music becomes a healing tool and income source, allowing youth to process emotions, build community, and develop viable creative careers.',
+    impact: 'Participants develop marketable fashion skills, create income through tailoring and design services, and launch sustainable fashion businesses.',
+    image: '/programs-fashion.png',
+    color: 'text-secondary',
+  },
+  {
+    id: 4,
+    name: 'I Am Art: Visual & Creative Expression',
+    tagline: 'Painting, Sculpture, Digital Art & More',
+    description: 'Dedicated visual arts program exploring drawing, painting, sculpture, photography, digital art, murals, and community art projects. A space for emotional expression, healing, and creative development.',
+    details: [
+      'Drawing, painting, and sculpture techniques',
+      'Photography and digital art',
+      'Mural and community public art',
+      'Art exhibitions and showcases',
+      'Art-based therapy and healing',
+      'Gallery representation and artist development',
+    ],
+    impact: 'Youth process trauma through creative expression, build confidence and self-worth, develop professional art practices, and contribute to community cultural vibrancy.',
+    image: '/programs-arts.png',
+    color: 'text-accent',
+  },
+  {
+    id: 5,
+    name: 'Music & Performing Arts',
+    tagline: 'Production, Performance & Storytelling',
+    description: 'Comprehensive program in music production, vocal performance, instrumental training, dance, acting, and spoken word. A platform for youth to discover their artistic voice and build performance careers.',
+    details: [
+      'Music production and beat-making',
+      'Vocal performance and training',
+      'Instrumental instruction (various instruments)',
+      'Dance, choreography, and movement',
+      'Acting and theatrical performance',
+      'Spoken word, rap, and songwriting',
+    ],
+    impact: 'Participants develop professional performance skills, create music for healing and income, build live performance opportunities, and express their cultural identity.',
     image: '/programs-music.png',
     color: 'text-accent',
   },
   {
     id: 6,
-    name: 'Digital Skills & Freelancing',
-    tagline: 'Economic Opportunity',
-    description: 'Remote work and digital literacy training preparing youth for freelance opportunities, online income generation, and digital entrepreneurship.',
+    name: 'Media & Digital Storytelling',
+    tagline: 'Video, Photography, Content & Branding',
+    description: 'Program focused on photography, videography, documentary production, content creation, graphic design, and digital marketing. Youth become storytellers and digital communicators.',
     details: [
-      'Digital literacy and online safety',
-      'Remote freelancing platforms training',
-      'Content creation and social media',
-      'E-commerce and online business basics',
-      'Graphic design fundamentals',
-      'Virtual assistance and administrative skills',
+      'Photography and photojournalism',
+      'Videography and documentary production',
+      'Content creation and social media strategy',
+      'Graphic design and visual branding',
+      'Digital marketing and social campaigns',
+      'Podcast production and audio storytelling',
     ],
-    impact: 'Youth gain access to global digital economy opportunities, creating sustainable income streams and economic independence from home.',
+    impact: 'Youth master digital communication tools, build portfolios as content creators, create income through freelance media work, and amplify community stories.',
+    image: '/programs-digital.png',
+    color: 'text-primary',
+  },
+  {
+    id: 7,
+    name: 'Entrepreneurship & Livelihoods',
+    tagline: 'Startup Support & Economic Empowerment',
+    description: 'Business incubation and livelihood program equipping youth with financial literacy, business planning, career readiness, and mentorship. Building sustainable income pathways and economic independence.',
+    details: [
+      'Business plan development and incubation',
+      'Financial literacy and accounting basics',
+      'Freelancing and remote work skills',
+      'Job placement and career readiness',
+      'Mentorship from successful entrepreneurs',
+      'Startup funding and resource access',
+    ],
+    impact: 'Participants create sustainable income streams, launch viable businesses, access formal or remote employment, and become financially independent.',
     image: '/programs-digital.png',
     color: 'text-primary',
   },
@@ -115,12 +133,12 @@ export default function ProgramsPage() {
         <section className="relative bg-gradient-to-br from-background to-muted/30 py-16 sm:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-4">Our Programs</p>
+              <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-4">Seven Signature Programs</p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
-                Six Pathways to <span className="text-secondary">Opportunity</span>
+                Pathways to <span className="text-secondary">Innovation & Opportunity</span>
               </h1>
               <p className="text-lg text-foreground/70 max-w-3xl mx-auto">
-                Each program is carefully designed to develop specific skills while building confidence, community, and pathways to sustainable livelihoods.
+                Every program is rooted in youth voice, community need, and proven impact. We combine creativity, technology, and entrepreneurship to build dignified futures for displaced and underserved youth in Kakuma.
               </p>
             </div>
           </div>
@@ -198,35 +216,35 @@ export default function ProgramsPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-                Why Our Programs Work
+                Our Approach to Change
               </h2>
               <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-                Every program is built on research, community input, and proven methodologies for youth empowerment in refugee settings.
+                Every program embodies refugee-led, equitable, and outcome-focused principles designed for lasting impact.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-background rounded-lg p-8 border border-border">
-                <div className="text-4xl text-secondary mb-4">🎯</div>
-                <h3 className="text-xl font-bold text-foreground mb-3">Youth-Centered Design</h3>
+                <div className="text-4xl text-secondary mb-4">👥</div>
+                <h3 className="text-xl font-bold text-foreground mb-3">Refugee-Led Leadership</h3>
                 <p className="text-foreground/70">
-                  Programs are developed with direct input from young people in Kakuma about what they need and aspire to.
+                  Programs are designed by and for refugee and host community youth. We center lived experience and community voice in all decisions.
                 </p>
               </div>
 
               <div className="bg-background rounded-lg p-8 border border-border">
-                <div className="text-4xl text-accent mb-4">🤝</div>
-                <h3 className="text-xl font-bold text-foreground mb-3">Community Integration</h3>
+                <div className="text-4xl text-accent mb-4">🌈</div>
+                <h3 className="text-xl font-bold text-foreground mb-3">Radical Inclusion</h3>
                 <p className="text-foreground/70">
-                  All programs foster belonging, social cohesion, and break down isolation within the refugee community.
+                  Everyone is welcome. We actively create safe, affirming spaces for refugee and host-community youth regardless of identity or background.
                 </p>
               </div>
 
               <div className="bg-background rounded-lg p-8 border border-border">
-                <div className="text-4xl text-primary mb-4">💼</div>
-                <h3 className="text-xl font-bold text-foreground mb-3">Livelihoods Focus</h3>
+                <div className="text-4xl text-primary mb-4">💪</div>
+                <h3 className="text-xl font-bold text-foreground mb-3">Livelihoods & Dignity</h3>
                 <p className="text-foreground/70">
-                  Every program builds toward income generation and sustainable economic opportunity for participants.
+                  Every program builds toward income generation, economic independence, and the opportunity to build dignified, sustainable futures.
                 </p>
               </div>
             </div>
@@ -237,17 +255,17 @@ export default function ProgramsPage() {
         <section className="py-16 sm:py-24 bg-primary text-primary-foreground">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              Ready to Support Youth Transformation?
+              Help Us Scale Youth Empowerment
             </h2>
             <p className="text-lg text-primary-foreground/90 mb-8">
-              Your partnership, mentorship, or financial support can help us scale these programs and reach hundreds more young people in Kakuma.
+              Your partnership, mentorship, or investment in refugee-led innovation helps us reach more young people and transform the future of Kakuma and the broader region.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 py-3 rounded-lg bg-accent hover:bg-accent/90 text-white font-semibold transition">
-                Partner With Us
+                Support Our Mission
               </button>
               <button className="px-8 py-3 rounded-lg bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground font-semibold border border-primary-foreground/30 transition">
-                Learn More
+                Get Involved
               </button>
             </div>
           </div>
