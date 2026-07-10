@@ -1,5 +1,9 @@
+'use client';
+
+import { useState } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import PartnershipModal from '@/components/partnership-modal';
 import Image from 'next/image';
 
 const programs = [
@@ -125,6 +129,8 @@ const programs = [
 ];
 
 export default function ProgramsPage() {
+  const [isPartnershipModalOpen, setIsPartnershipModalOpen] = useState(false);
+
   return (
     <div className="w-full">
       <Header />
@@ -261,10 +267,16 @@ export default function ProgramsPage() {
               Your partnership, mentorship, or investment in refugee-led innovation helps us reach more young people and transform the future of Kakuma and the broader region.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-3 rounded-lg bg-accent hover:bg-accent/90 text-white font-semibold transition">
+              <button 
+                onClick={() => setIsPartnershipModalOpen(true)}
+                className="px-8 py-3 rounded-lg bg-accent hover:bg-accent/90 text-white font-semibold transition"
+              >
                 Support Our Mission
               </button>
-              <button className="px-8 py-3 rounded-lg bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground font-semibold border border-primary-foreground/30 transition">
+              <button 
+                onClick={() => setIsPartnershipModalOpen(true)}
+                className="px-8 py-3 rounded-lg bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground font-semibold border border-primary-foreground/30 transition"
+              >
                 Get Involved
               </button>
             </div>
@@ -272,6 +284,10 @@ export default function ProgramsPage() {
         </section>
       </main>
       <Footer />
+      <PartnershipModal 
+        isOpen={isPartnershipModalOpen} 
+        onClose={() => setIsPartnershipModalOpen(false)} 
+      />
     </div>
   );
 }

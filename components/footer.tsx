@@ -1,9 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
+import PartnershipModal from '@/components/partnership-modal';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const [isPartnershipModalOpen, setIsPartnershipModalOpen] = useState(false);
 
   return (
     <footer className="bg-foreground text-background" id="contact">
@@ -107,9 +110,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#support" className="text-background/70 hover:text-background transition">
+                <button 
+                  onClick={() => setIsPartnershipModalOpen(true)}
+                  className="text-background/70 hover:text-background transition text-left"
+                >
                   Partner With Us
-                </Link>
+                </button>
               </li>
               <li>
                 <Link href="#support" className="text-background/70 hover:text-background transition">
@@ -160,6 +166,10 @@ export default function Footer() {
           </div>
         </div>
       </div>
+      <PartnershipModal 
+        isOpen={isPartnershipModalOpen} 
+        onClose={() => setIsPartnershipModalOpen(false)} 
+      />
     </footer>
   );
 }

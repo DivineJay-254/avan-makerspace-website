@@ -4,9 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import PartnershipModal from '@/components/partnership-modal';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPartnershipModalOpen, setIsPartnershipModalOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background border-b border-border">
@@ -40,7 +42,10 @@ export default function Header() {
           </div>
 
           {/* CTA Button */}
-          <Button className="hidden sm:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground">
+          <Button 
+            onClick={() => setIsPartnershipModalOpen(true)}
+            className="hidden sm:inline-flex bg-accent hover:bg-accent/90 text-accent-foreground"
+          >
             Partner With Us
           </Button>
 
@@ -97,12 +102,22 @@ export default function Header() {
             >
               Support Us
             </Link>
-            <Button className="w-full mt-2 bg-accent hover:bg-accent/90 text-accent-foreground">
+            <Button 
+              onClick={() => {
+                setIsPartnershipModalOpen(true);
+                setIsOpen(false);
+              }}
+              className="w-full mt-2 bg-accent hover:bg-accent/90 text-accent-foreground"
+            >
               Partner With Us
             </Button>
           </div>
         )}
       </nav>
+      <PartnershipModal 
+        isOpen={isPartnershipModalOpen} 
+        onClose={() => setIsPartnershipModalOpen(false)} 
+      />
     </header>
   );
 }
