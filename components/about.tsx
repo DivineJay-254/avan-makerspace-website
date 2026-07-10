@@ -20,13 +20,13 @@ export default function About() {
 
           {/* Content */}
           <div className="order-1 lg:order-2">
-            <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-3">Our Mission</p>
+            <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-3">About Us</p>
             <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
-              Unlocking Youth <span className="text-secondary">Potential</span>
+              Bridging Talent & <span className="text-secondary">Opportunity</span>
             </h2>
 
             <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-              In Kakuma Refugee Camp, thousands of young people have untapped talent and creativity—but lack safe spaces and opportunities to develop them. Avan Makerspace transforms creativity into a pathway for healing, expression, confidence, and economic opportunity.
+              Founded in 2024 in Kakuma Refugee Camp, Avan Makerspace is a refugee-led and queer-led nonprofit innovation hub dedicated to empowering displaced youth. We believe talent exists everywhere—but opportunities do not. We create safe, inclusive, and accessible spaces where young people can learn, create, innovate, and build sustainable futures through creativity, technology, entrepreneurship, and community.
             </p>
 
             <div className="space-y-4 mb-8">
@@ -39,8 +39,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-semibold text-foreground">Safe Creative Space</h3>
-                  <p className="text-foreground/70 mt-1">A welcoming environment where youth feel seen, heard, and valued</p>
+                  <h3 className="font-semibold text-foreground">Inclusive & Equitable</h3>
+                  <p className="text-foreground/70 mt-1">Safe spaces welcoming everyone regardless of identity, background, or circumstance</p>
                 </div>
               </div>
 
@@ -53,8 +53,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-semibold text-foreground">Skills & Mentorship</h3>
-                  <p className="text-foreground/70 mt-1">Structured training leading to income-generating opportunities</p>
+                  <h3 className="font-semibold text-foreground">Skills for Futures</h3>
+                  <p className="text-foreground/70 mt-1">Hands-on training in creativity, technology, and entrepreneurship with mentorship pathways</p>
                 </div>
               </div>
 
@@ -67,8 +67,8 @@ export default function About() {
                   </div>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-semibold text-foreground">Community & Belonging</h3>
-                  <p className="text-foreground/70 mt-1">Strengthen social cohesion and reduce vulnerability to risk</p>
+                  <h3 className="font-semibold text-foreground">Refugee-Led Leadership</h3>
+                  <p className="text-foreground/70 mt-1">Community ownership and voice shape our programs and decisions</p>
                 </div>
               </div>
             </div>

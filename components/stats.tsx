@@ -38,39 +38,39 @@ export default function Stats() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-3">MVP Results</p>
+          <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-3">Our Impact</p>
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
-            Real Impact in Kakuma
+            Transforming Lives in Kakuma
           </h2>
           <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
-            Through our pilot programs, we&apos;ve already transformed the lives of over 115 young people.
+            Since 2024, we&apos;ve empowered 120+ young people through innovation, creativity, and inclusive leadership, building pathways to dignified futures.
           </p>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8">
-          <AnimatedStat end={30} label="Fashion & Modeling Trained" suffix="" />
-          <AnimatedStat end={45} label="Robotics Bootcamp Participants" suffix="" />
-          <AnimatedStat end={40} label="Visual Arts Trainees (I Am Art)" suffix="" />
+          <AnimatedStat end={120} label="Youth Trained" suffix="+" />
+          <AnimatedStat end={7} label="Signature Programs" suffix="" />
+          <AnimatedStat end={100} label="% Belong to Refugee or Host Community" suffix="%" />
         </div>
 
         {/* Additional Info */}
         <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-border pt-12">
           <div>
-            <p className="text-3xl font-bold text-secondary mb-2">115</p>
-            <p className="text-foreground/70 font-medium">Total Youth Empowered</p>
+            <p className="text-3xl font-bold text-secondary mb-2">45%</p>
+            <p className="text-foreground/70 font-medium">Women & Girls</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-accent mb-2">6</p>
-            <p className="text-foreground/70 font-medium">Core Programs</p>
+            <p className="text-3xl font-bold text-accent mb-2">12+</p>
+            <p className="text-foreground/70 font-medium">Nationalities Served</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-primary mb-2">Proven</p>
-            <p className="text-foreground/70 font-medium">Impact & Feasibility</p>
+            <p className="text-3xl font-bold text-primary mb-2">15+</p>
+            <p className="text-foreground/70 font-medium">Partner Organizations</p>
           </div>
           <div>
-            <p className="text-3xl font-bold text-secondary mb-2">Ready</p>
-            <p className="text-foreground/70 font-medium">To Scale</p>
+            <p className="text-3xl font-bold text-secondary mb-2">∞</p>
+            <p className="text-foreground/70 font-medium">Possibilities Ahead</p>
           </div>
         </div>
       </div>

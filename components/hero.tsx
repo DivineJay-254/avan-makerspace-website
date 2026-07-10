@@ -34,32 +34,32 @@ export default function Hero() {
           <div className="flex flex-col justify-center order-1 lg:order-2 animate-slide-in-right">
             {/* Tagline */}
             <p className="text-secondary text-xs sm:text-sm font-bold uppercase tracking-widest mb-4 animate-fade-in">
-              Kakuma Refugee Camp, Kenya
+              Refugee-Led Innovation Hub
             </p>
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight animate-fade-in">
-              Transform Through <span className="text-secondary">Creativity</span>
+              Empowering Youth Through <span className="text-secondary">Innovation, Creativity & Belonging</span>
             </h1>
 
             {/* Description */}
             <p className="text-base sm:text-lg text-foreground/75 mb-8 leading-relaxed animate-fade-in">
-              Avan Makerspace empowers youth through creative expression, practical skills, and community building. We turn talent into opportunity and sustainable livelihoods.
+              Avan Makerspace is a queer-led, refugee-led nonprofit transforming lives in Kakuma Refugee Camp. We create safe, inclusive spaces where displaced youth discover their talents, develop digital and creative skills, and build sustainable futures through innovation, entrepreneurship, and community.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4 mb-10 py-8 border-y border-border/50">
               <div>
-                <p className="text-3xl sm:text-4xl font-bold text-accent mb-1">115+</p>
+                <p className="text-3xl sm:text-4xl font-bold text-accent mb-1">120+</p>
                 <p className="text-xs sm:text-sm font-medium text-foreground/60">Youth Trained</p>
               </div>
               <div>
-                <p className="text-3xl sm:text-4xl font-bold text-secondary mb-1">6</p>
-                <p className="text-xs sm:text-sm font-medium text-foreground/60">Programs</p>
+                <p className="text-3xl sm:text-4xl font-bold text-secondary mb-1">7</p>
+                <p className="text-xs sm:text-sm font-medium text-foreground/60">Signature Programs</p>
               </div>
               <div>
-                <p className="text-3xl sm:text-4xl font-bold text-primary mb-1">✓</p>
-                <p className="text-xs sm:text-sm font-medium text-foreground/60">Proven MVP</p>
+                <p className="text-3xl sm:text-4xl font-bold text-primary mb-1">∞</p>
+                <p className="text-xs sm:text-sm font-medium text-foreground/60">Unlimited Potential</p>
               </div>
             </div>
 
@@ -69,14 +69,14 @@ export default function Hero() {
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-white font-semibold text-base rounded-lg transform hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
               >
-                Explore Programs
+                Support Our Mission
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-2 border-primary text-primary hover:bg-primary/5 font-semibold text-base rounded-lg transform hover:scale-105 transition-transform duration-300"
               >
-                Our Impact
+                Discover Our Work
               </Button>
             </div>
           </div>
