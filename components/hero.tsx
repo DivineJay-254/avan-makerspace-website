@@ -2,10 +2,50 @@
 
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
+
+const sectorImages = [
+  '/real-robotics.jpg',
+  '/real-robotics1.jpg',
+  '/real-robotics2.jpg',
+  '/real-art.jpg',
+  '/real-art1.jpg',
+  '/real-art3.jpg',
+];
 
 export default function Hero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % sectorImages.length);
+    }, 4000); // Change image every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-background flex items-center justify-center overflow-hidden py-12 sm:py-20 lg:py-0">
+      {/* Rotating Background Images */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {sectorImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-15' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={image}
+              alt="Sector"
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+          </div>
+        ))}
+      </div>
+
       {/* Background accent elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
