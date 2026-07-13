@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import PartnershipModal from '@/components/partnership-modal';
@@ -21,7 +21,7 @@ const programs = [
       'Hackathons and innovation competitions',
     ],
     impact: 'Participants gain access to in-demand digital economy skills, create income opportunities through freelancing, and position themselves as innovators solving community problems.',
-    image: '/programs-robotics.png',
+    images: ['/sector-tech.png', '/sector-media.png'],
     color: 'text-primary',
   },
   {
@@ -38,7 +38,7 @@ const programs = [
       'Fashion show and event opportunities',
     ],
     impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
-    image: '/programs-fashion.png',
+    images: ['/sector-models.png', '/sector-fashion.png'],
     color: 'text-secondary',
   },
   {
@@ -55,7 +55,7 @@ const programs = [
       'Collection development and showcases',
     ],
     impact: 'Participants develop marketable fashion skills, create income through tailoring and design services, and launch sustainable fashion businesses.',
-    image: '/programs-fashion.png',
+    images: ['/sector-fashion.png', '/sector-models.png'],
     color: 'text-secondary',
   },
   {
@@ -72,7 +72,7 @@ const programs = [
       'Gallery representation and artist development',
     ],
     impact: 'Youth process trauma through creative expression, build confidence and self-worth, develop professional art practices, and contribute to community cultural vibrancy.',
-    image: '/programs-arts.png',
+    images: ['/sector-arts.png', '/sector-media.png'],
     color: 'text-accent',
   },
   {
@@ -89,7 +89,7 @@ const programs = [
       'Spoken word, rap, and songwriting',
     ],
     impact: 'Participants develop professional performance skills, create music for healing and income, build live performance opportunities, and express their cultural identity.',
-    image: '/programs-music.png',
+    images: ['/sector-music.png', '/sector-arts.png'],
     color: 'text-accent',
   },
   {
@@ -106,7 +106,7 @@ const programs = [
       'Podcast production and audio storytelling',
     ],
     impact: 'Youth master digital communication tools, build portfolios as content creators, create income through freelance media work, and amplify community stories.',
-    image: '/programs-digital.png',
+    images: ['/sector-media.png', '/sector-tech.png'],
     color: 'text-primary',
   },
   {
@@ -123,13 +123,30 @@ const programs = [
       'Startup funding and resource access',
     ],
     impact: 'Participants create sustainable income streams, launch viable businesses, access formal or remote employment, and become financially independent.',
-    image: '/programs-digital.png',
+    images: ['/sector-business.png', '/sector-tech.png'],
     color: 'text-primary',
   },
 ];
 
 export default function ProgramsPage() {
   const [isPartnershipModalOpen, setIsPartnershipModalOpen] = useState(false);
+  const [imageIndices, setImageIndices] = useState(programs.map(() => 0));
+
+  useEffect(() => {
+    const intervals = programs.map((program, idx) => {
+      return setInterval(() => {
+        setImageIndices((prev) => {
+          const newIndices = [...prev];
+          newIndices[idx] = (newIndices[idx] + 1) % program.images.length;
+          return newIndices;
+        });
+      }, 3000); // Change image every 3 seconds
+    });
+
+    return () => {
+      intervals.forEach((interval) => clearInterval(interval));
+    };
+  }, []);
 
   return (
     <div className="w-full">
@@ -164,12 +181,22 @@ export default function ProgramsPage() {
                   {/* Image - alternating sides */}
                   <div className={index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}>
                     <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
-                      <Image
-                        src={program.image}
-                        alt={program.name}
-                        fill
-                        className="object-cover"
-                      />
+                      {program.images.map((img, imgIdx) => (
+                        <div
+                          key={imgIdx}
+                          className={`absolute inset-0 transition-opacity duration-700 ${
+                            imgIdx === imageIndices[index - 1] ? 'opacity-100' : 'opacity-0'
+                          }`}
+                        >
+                          <Image
+                            src={img}
+                            alt={program.name}
+                            fill
+                            className="object-cover"
+                            priority={imgIdx === 0}
+                          />
+                        </div>
+                      ))}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                     </div>
                   </div>
