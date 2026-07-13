@@ -41,7 +41,7 @@ ${formData.message}
       `.trim();
 
       // Open default email client
-      window.location.href = `mailto:info@avanmakerspace.org?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = `mailto:avanmakeraspace@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
       setSubmitStatus('success');
       setTimeout(() => {

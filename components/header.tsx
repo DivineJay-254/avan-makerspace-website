@@ -8,6 +8,7 @@ import PartnershipModal from '@/components/partnership-modal';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMoreOpen, setIsMoreOpen] = useState(false);
   const [isPartnershipModalOpen, setIsPartnershipModalOpen] = useState(false);
 
   return (
@@ -33,14 +34,8 @@ export default function Header() {
             <Link href="/about" className="text-foreground hover:text-secondary transition font-medium">
               About
             </Link>
-            <Link href="/context" className="text-foreground hover:text-secondary transition font-medium">
-              Context
-            </Link>
             <Link href="/programs" className="text-foreground hover:text-secondary transition font-medium">
               Programs
-            </Link>
-            <Link href="/approach" className="text-foreground hover:text-secondary transition font-medium">
-              Approach
             </Link>
             <Link href="/impact" className="text-foreground hover:text-secondary transition font-medium">
               Impact
@@ -51,6 +46,38 @@ export default function Header() {
             <Link href="/get-involved" className="text-foreground hover:text-secondary transition font-medium">
               Get Involved
             </Link>
+            
+            {/* More Dropdown */}
+            <div className="relative">
+              <button 
+                onClick={() => setIsMoreOpen(!isMoreOpen)}
+                className="text-foreground hover:text-secondary transition font-medium flex items-center gap-1"
+              >
+                More
+                <svg className={`w-4 h-4 transition ${isMoreOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </button>
+              {isMoreOpen && (
+                <div className="absolute top-full right-0 mt-2 w-48 bg-background border border-border rounded-lg shadow-lg z-50">
+                  <Link
+                    href="/context"
+                    className="block px-4 py-2 text-foreground hover:bg-muted rounded-t-lg transition"
+                    onClick={() => setIsMoreOpen(false)}
+                  >
+                    Context
+                  </Link>
+                  <Link
+                    href="/approach"
+                    className="block px-4 py-2 text-foreground hover:bg-muted rounded-b-lg transition border-t border-border"
+                    onClick={() => setIsMoreOpen(false)}
+                  >
+                    Our Approach
+                  </Link>
+                </div>
+              )}
+            </div>
+            
             {/* CTA Button */}
             <Button 
               onClick={() => setIsPartnershipModalOpen(true)}
@@ -93,25 +120,11 @@ export default function Header() {
               About
             </Link>
             <Link
-              href="/context"
-              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              Context
-            </Link>
-            <Link
               href="/programs"
               className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
               Programs
-            </Link>
-            <Link
-              href="/approach"
-              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
-              onClick={() => setIsOpen(false)}
-            >
-              Approach
             </Link>
             <Link
               href="/impact"
@@ -134,6 +147,42 @@ export default function Header() {
             >
               Get Involved
             </Link>
+            
+            {/* Mobile More Dropdown */}
+            <button 
+              onClick={() => setIsMoreOpen(!isMoreOpen)}
+              className="w-full text-left px-3 py-2 rounded-lg hover:bg-muted transition font-medium flex items-center justify-between"
+            >
+              More
+              <svg className={`w-4 h-4 transition ${isMoreOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </button>
+            {isMoreOpen && (
+              <div className="pl-3 space-y-2">
+                <Link
+                  href="/context"
+                  className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium text-sm"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsMoreOpen(false);
+                  }}
+                >
+                  Context
+                </Link>
+                <Link
+                  href="/approach"
+                  className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium text-sm"
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsMoreOpen(false);
+                  }}
+                >
+                  Our Approach
+                </Link>
+              </div>
+            )}
+            
             <Button 
               onClick={() => {
                 setIsPartnershipModalOpen(true);
