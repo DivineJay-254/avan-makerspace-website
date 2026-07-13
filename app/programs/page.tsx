@@ -77,54 +77,57 @@ const programs = [
   },
   {
     id: 5,
-    name: 'Music & Performing Arts',
-    tagline: 'Production, Performance & Storytelling',
-    description: 'Comprehensive program in music production, vocal performance, instrumental training, dance, acting, and spoken word. A platform for youth to discover their artistic voice and build performance careers.',
+    name: 'Dance',
+    tagline: 'Training, Choreography & Performance',
+    description: 'After our performers stole the show at our June Pride event, we&apos;re formalizing Dance as its own program pillar. Our dancers deserve dedicated training time, choreography development, and a consistent performance platform at showcases and community events.',
     details: [
-      'Music production and beat-making',
-      'Vocal performance and training',
-      'Instrumental instruction (various instruments)',
-      'Dance, choreography, and movement',
-      'Acting and theatrical performance',
-      'Spoken word, rap, and songwriting',
+      'Dance training across styles from the community',
+      'Choreography development for showcases',
+      'Rehearsal space and structured practice time',
+      'Performance opportunities at Avan events',
+      'Cross-collaboration with Music Studio',
+      'Confidence and creative expression through movement',
     ],
-    impact: 'Participants develop professional performance skills, create music for healing and income, build live performance opportunities, and express their cultural identity.',
+    impact: 'Dancers develop professional performance skills, gain platforms for cultural expression, build community connections through shared movement, and explore dance as a livelihood path.',
     images: ['/sector-music.png', '/sector-music.png'],
     color: 'text-accent',
+    isEmerging: true,
   },
   {
     id: 6,
-    name: 'Media & Digital Storytelling',
-    tagline: 'Video, Photography, Content & Branding',
-    description: 'Program focused on photography, videography, documentary production, content creation, graphic design, and digital marketing. Youth become storytellers and digital communicators.',
+    name: 'Music Studio',
+    tagline: 'Production, Songwriting & Recording',
+    description: 'Our musicians performed at Pride, but had nowhere to record their work. We&apos;re building a fully equipped music studio so our musicians can turn live performance into lasting recorded material and, eventually, a source of income.',
     details: [
-      'Photography and photojournalism',
-      'Videography and documentary production',
-      'Content creation and social media strategy',
-      'Graphic design and visual branding',
-      'Digital marketing and social campaigns',
-      'Podcast production and audio storytelling',
+      'Songwriting and composition training',
+      'Recording, mixing, and music production',
+      'Instrumental instruction across genres',
+      'Collaboration with dancers and visual artists',
+      'Portfolio development for income opportunities',
+      'Studio equipment access and technical training',
     ],
-    impact: 'Youth master digital communication tools, build portfolios as content creators, create income through freelance media work, and amplify community stories.',
-    images: ['/sector-media.png', '/sector-media.png'],
-    color: 'text-primary',
+    impact: 'Musicians create professional recordings, develop music production skills, build portfolios for income, and establish themselves as recording artists within and beyond Kakuma.',
+    images: ['/sector-music.png', '/sector-music.png'],
+    color: 'text-accent',
+    isEmerging: true,
   },
   {
     id: 7,
-    name: 'Entrepreneurship & Livelihoods',
-    tagline: 'Startup Support & Economic Empowerment',
-    description: 'Business incubation and livelihood program equipping youth with financial literacy, business planning, career readiness, and mentorship. Building sustainable income pathways and economic independence.',
+    name: 'Storytelling & Podcast',
+    tagline: 'Narrative, Audio, & Oral History',
+    description: 'Building on the storytelling work in I Am Art, we&apos;re creating a dedicated podcast room where writers, storytellers, and podcasters can record and share their stories in audio form—extending participant voices to audiences beyond Kakuma.',
     details: [
-      'Business plan development and incubation',
-      'Financial literacy and accounting basics',
-      'Freelancing and remote work skills',
-      'Job placement and career readiness',
-      'Mentorship from successful entrepreneurs',
-      'Startup funding and resource access',
+      'Podcast recording and production',
+      'Oral storytelling and narrative writing',
+      'Story development and curation',
+      'Audio equipment and technical training',
+      'Distribution and audience building',
+      'Collaboration with I Am Art writers',
     ],
-    impact: 'Participants create sustainable income streams, launch viable businesses, access formal or remote employment, and become financially independent.',
-    images: ['/sector-business.png', '/sector-business.png'],
-    color: 'text-primary',
+    impact: 'Writers and podcasters share their stories with wider audiences, develop audio production skills, build platforms for refugee and host-community voices, and create income opportunities through content.',
+    images: ['/real-art1.jpg', '/real-art3.jpg'],
+    color: 'text-accent',
+    isEmerging: true,
   },
 ];
 
@@ -203,9 +206,16 @@ export default function ProgramsPage() {
 
                   {/* Content */}
                   <div className={index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}>
-                    <p className={`${program.color} uppercase text-sm font-bold tracking-widest mb-3`}>
-                      Program {program.id}
-                    </p>
+                    <div className="flex items-center gap-3 mb-3">
+                      <p className={`${program.color} uppercase text-sm font-bold tracking-widest`}>
+                        Program {program.id}
+                      </p>
+                      {program.isEmerging && (
+                        <span className="inline-block bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-semibold">
+                          Emerging Initiative
+                        </span>
+                      )}
+                    </div>
                     <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-2">
                       {program.name}
                     </h2>

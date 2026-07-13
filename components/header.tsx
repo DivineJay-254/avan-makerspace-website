@@ -33,21 +33,30 @@ export default function Header() {
             <Link href="/about" className="text-foreground hover:text-secondary transition font-medium">
               About
             </Link>
+            <Link href="/context" className="text-foreground hover:text-secondary transition font-medium">
+              Context
+            </Link>
             <Link href="/programs" className="text-foreground hover:text-secondary transition font-medium">
               Programs
+            </Link>
+            <Link href="/approach" className="text-foreground hover:text-secondary transition font-medium">
+              Approach
             </Link>
             <Link href="/impact" className="text-foreground hover:text-secondary transition font-medium">
               Impact
             </Link>
             <Link href="/support" className="text-foreground hover:text-secondary transition font-medium">
-              Support Us
+              Support
+            </Link>
+            <Link href="/get-involved" className="text-foreground hover:text-secondary transition font-medium">
+              Get Involved
             </Link>
             {/* CTA Button */}
             <Button 
               onClick={() => setIsPartnershipModalOpen(true)}
               className="bg-accent hover:bg-accent/90 text-accent-foreground"
             >
-              Partner With Us
+              Partner
             </Button>
           </div>
 
@@ -84,11 +93,25 @@ export default function Header() {
               About
             </Link>
             <Link
+              href="/context"
+              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Context
+            </Link>
+            <Link
               href="/programs"
               className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
               Programs
+            </Link>
+            <Link
+              href="/approach"
+              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Approach
             </Link>
             <Link
               href="/impact"
@@ -102,7 +125,14 @@ export default function Header() {
               className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
               onClick={() => setIsOpen(false)}
             >
-              Support Us
+              Support
+            </Link>
+            <Link
+              href="/get-involved"
+              className="block px-3 py-2 rounded-lg hover:bg-muted transition font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Get Involved
             </Link>
             <Button 
               onClick={() => {

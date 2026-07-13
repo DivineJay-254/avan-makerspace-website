@@ -6,39 +6,75 @@ import { Button } from '@/components/ui/button';
 const partnerships = [
   {
     id: 1,
-    name: 'Financial Support',
+    name: 'Program Funding',
     icon: '💰',
-    description: 'Fund program expansion, events, and material acquisition',
+    description: 'Support workshops, boot camps, community events, and long-term educational programs',
     benefits: [
-      'Tax-deductible contributions',
-      'Impact reporting',
-      'Recognition on website',
-      'Annual donor recognition event',
+      'Fund program design & delivery',
+      'Support community events',
+      'Enable youth scholarships',
+      'Impact transparency & reporting',
     ],
   },
   {
     id: 2,
-    name: 'Space & Infrastructure',
-    icon: '🏢',
-    description: 'Provide safe, consistent locations for activities',
+    name: 'Equipment & Infrastructure',
+    icon: '💻',
+    description: 'Contribute laptops, robotics kits, sewing machines, art materials, music studio equipment, and more',
     benefits: [
-      'Secure dedicated space',
-      'Regular program access',
-      'Youth-centered facilities',
-      'Community hub impact',
+      'Direct impact on program quality',
+      'Tax-deductible donations',
+      'Donor recognition',
+      'Tangible results you can see',
     ],
     highlighted: true,
   },
   {
     id: 3,
-    name: 'Mentorship & Skills',
+    name: 'Technical Support & Mentorship',
     icon: '👥',
-    description: 'Share expertise and guide youth development',
+    description: 'Provide expertise through guest lectures, professional coaching, curriculum development, and business support',
     benefits: [
       'Industry mentorship',
       'Skill training delivery',
       'Career guidance',
       'Professional networking',
+    ],
+  },
+  {
+    id: 4,
+    name: 'Volunteer Engagement',
+    icon: '🤝',
+    description: 'Contribute skills in training delivery, communications, graphic design, fundraising, event management, and creative arts',
+    benefits: [
+      'Direct volunteer opportunities',
+      'Skills-based giving',
+      'Community impact',
+      'Flexible time commitments',
+    ],
+  },
+  {
+    id: 5,
+    name: 'Research & Innovation',
+    icon: '🔬',
+    description: 'Collaborate with universities and research institutions to study and strengthen our refugee-led model',
+    benefits: [
+      'Co-authored publications',
+      'Field research opportunities',
+      'Evidence-building partnership',
+      'Institutional support',
+    ],
+  },
+  {
+    id: 6,
+    name: 'Sponsorships',
+    icon: '🎯',
+    description: 'Sponsor specific programs, events, or initiatives—from robotics bootcamps to fashion showcases to music studio development',
+    benefits: [
+      'Named sponsorship recognition',
+      'Event visibility',
+      'Brand alignment with youth impact',
+      'Multi-year partnership options',
     ],
   },
 ];
@@ -142,6 +178,71 @@ export default function Membership() {
             <Button variant="outline" className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground/20 font-semibold px-8 py-3 rounded-lg transform hover:scale-105 transition-transform">
               Download Proposal
             </Button>
+          </div>
+        </div>
+
+        {/* Facility & Equipment Requirements */}
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-foreground mb-8 text-center">Facility & Equipment Needs by Program</h3>
+          <p className="text-center text-foreground/70 mb-12 max-w-2xl mx-auto">
+            Here&apos;s what each program pillar needs to thrive. Some programs share space efficiently to maximize our physical footprint.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* AvanTech */}
+            <div className="bg-background rounded-xl p-6 border border-border hover:border-primary/50 transition">
+              <h4 className="font-bold text-foreground mb-3 text-lg">AvanTech: Tech Lab</h4>
+              <div className="space-y-2 text-foreground/75 text-sm">
+                <p><span className="font-semibold">Space:</span> Computer room (20x15 ft min)</p>
+                <p><span className="font-semibold">Equipment:</span> Laptops, desktops, robotics kits, internet connectivity</p>
+              </div>
+            </div>
+
+            {/* Miradede */}
+            <div className="bg-background rounded-xl p-6 border border-border hover:border-secondary/50 transition">
+              <h4 className="font-bold text-foreground mb-3 text-lg">Miradede: Design & Tailoring</h4>
+              <div className="space-y-2 text-foreground/75 text-sm">
+                <p><span className="font-semibold">Space:</span> Workshop (25x20 ft min)</p>
+                <p><span className="font-semibold">Equipment:</span> Sewing machines, cutting tables, fabric storage, mirrors</p>
+              </div>
+            </div>
+
+            {/* Pekee Models & Dance */}
+            <div className="bg-background rounded-xl p-6 border-2 border-accent/50 rounded-lg shadow-md">
+              <h4 className="font-bold text-foreground mb-3 text-lg">Pekee Models & Dance: Shared Studio</h4>
+              <div className="space-y-2 text-foreground/75 text-sm">
+                <p><span className="font-semibold">Space:</span> Runway & rehearsal studio (30x25 ft min)</p>
+                <p><span className="font-semibold">Equipment:</span> Open floor, mirrors, sound system, stage lighting</p>
+                <p className="text-accent font-semibold mt-2">Note: These programs share space efficiently</p>
+              </div>
+            </div>
+
+            {/* I Am Art */}
+            <div className="bg-background rounded-xl p-6 border border-border hover:border-accent/50 transition">
+              <h4 className="font-bold text-foreground mb-3 text-lg">I Am Art: Studio</h4>
+              <div className="space-y-2 text-foreground/75 text-sm">
+                <p><span className="font-semibold">Space:</span> Art & writing studio (20x15 ft min)</p>
+                <p><span className="font-semibold">Equipment:</span> Easels, art materials, display wall, gallery space</p>
+              </div>
+            </div>
+
+            {/* Music Studio */}
+            <div className="bg-background rounded-xl p-6 border border-border hover:border-secondary/50 transition">
+              <h4 className="font-bold text-foreground mb-3 text-lg">Music Studio: Recording Studio</h4>
+              <div className="space-y-2 text-foreground/75 text-sm">
+                <p><span className="font-semibold">Space:</span> Soundproof studio (15x12 ft min)</p>
+                <p><span className="font-semibold">Equipment:</span> Audio interface, monitors, mics, soundproofing, software</p>
+              </div>
+            </div>
+
+            {/* Storytelling & Podcast */}
+            <div className="bg-background rounded-xl p-6 border-2 border-accent/50 shadow-md">
+              <h4 className="font-bold text-foreground mb-3 text-lg">Storytelling & Podcast: Podcast Room</h4>
+              <div className="space-y-2 text-foreground/75 text-sm">
+                <p><span className="font-semibold">Space:</span> Soundproof booth (12x10 ft min)</p>
+                <p><span className="font-semibold">Equipment:</span> Mics, mixer, recording software, soundproofing</p>
+                <p className="text-accent font-semibold mt-2">Note: Can share soundproof suite with Music Studio</p>
+              </div>
+            </div>
           </div>
         </div>
 
