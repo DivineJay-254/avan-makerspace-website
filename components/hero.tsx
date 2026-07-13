@@ -5,13 +5,12 @@ import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 
 const sectorImages = [
-  '/sector-tech.png',
-  '/sector-models.png',
-  '/sector-fashion.png',
-  '/sector-arts.png',
-  '/sector-music.png',
-  '/sector-media.png',
-  '/sector-business.png',
+  '/real-robotics.jpg',
+  '/real-robotics1.jpg',
+  '/real-robotics2.jpg',
+  '/real-art.jpg',
+  '/real-art1.jpg',
+  '/real-art3.jpg',
 ];
 
 export default function Hero() {

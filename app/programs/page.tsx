@@ -21,7 +21,7 @@ const programs = [
       'Hackathons and innovation competitions',
     ],
     impact: 'Participants gain access to in-demand digital economy skills, create income opportunities through freelancing, and position themselves as innovators solving community problems.',
-    images: ['/sector-tech.png', '/sector-media.png'],
+    images: ['/real-robotics.jpg', '/real-robotics1.jpg', '/real-robotics2.jpg'],
     color: 'text-primary',
   },
   {
@@ -38,7 +38,7 @@ const programs = [
       'Fashion show and event opportunities',
     ],
     impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
-    images: ['/sector-models.png', '/sector-fashion.png'],
+    images: ['/sector-models.png', '/sector-models.png'],
     color: 'text-secondary',
   },
   {
@@ -55,7 +55,7 @@ const programs = [
       'Collection development and showcases',
     ],
     impact: 'Participants develop marketable fashion skills, create income through tailoring and design services, and launch sustainable fashion businesses.',
-    images: ['/sector-fashion.png', '/sector-models.png'],
+    images: ['/sector-fashion.png', '/sector-fashion.png'],
     color: 'text-secondary',
   },
   {
@@ -72,7 +72,7 @@ const programs = [
       'Gallery representation and artist development',
     ],
     impact: 'Youth process trauma through creative expression, build confidence and self-worth, develop professional art practices, and contribute to community cultural vibrancy.',
-    images: ['/sector-arts.png', '/sector-media.png'],
+    images: ['/real-art.jpg', '/real-art1.jpg', '/real-art3.jpg'],
     color: 'text-accent',
   },
   {
@@ -89,7 +89,7 @@ const programs = [
       'Spoken word, rap, and songwriting',
     ],
     impact: 'Participants develop professional performance skills, create music for healing and income, build live performance opportunities, and express their cultural identity.',
-    images: ['/sector-music.png', '/sector-arts.png'],
+    images: ['/sector-music.png', '/sector-music.png'],
     color: 'text-accent',
   },
   {
@@ -106,7 +106,7 @@ const programs = [
       'Podcast production and audio storytelling',
     ],
     impact: 'Youth master digital communication tools, build portfolios as content creators, create income through freelance media work, and amplify community stories.',
-    images: ['/sector-media.png', '/sector-tech.png'],
+    images: ['/sector-media.png', '/sector-media.png'],
     color: 'text-primary',
   },
   {
@@ -123,7 +123,7 @@ const programs = [
       'Startup funding and resource access',
     ],
     impact: 'Participants create sustainable income streams, launch viable businesses, access formal or remote employment, and become financially independent.',
-    images: ['/sector-business.png', '/sector-tech.png'],
+    images: ['/sector-business.png', '/sector-business.png'],
     color: 'text-primary',
   },
 ];
