@@ -38,7 +38,7 @@ const programs = [
       'Fashion show and event opportunities',
     ],
     impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
-    images: ['/sector-models.png', '/sector-models.png'],
+    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-group.jpg'],
     color: 'text-secondary',
   },
   {
@@ -55,7 +55,7 @@ const programs = [
       'Collection development and showcases',
     ],
     impact: 'Participants develop marketable fashion skills, create income through tailoring and design services, and launch sustainable fashion businesses.',
-    images: ['/sector-fashion.png', '/sector-fashion.png'],
+    images: ['/miradede-model1.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg'],
     color: 'text-secondary',
   },
   {
