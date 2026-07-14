@@ -55,7 +55,7 @@ const programs = [
       'Collection development and showcases',
     ],
     impact: 'Participants develop marketable fashion skills, create income through tailoring and design services, and launch sustainable fashion businesses.',
-    images: ['/miradede-model1.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg'],
+    images: ['/miradede-product-1.jpg', '/miradede-product-2.jpg', '/miradede-product-3.jpg'],
     color: 'text-secondary',
   },
   {
