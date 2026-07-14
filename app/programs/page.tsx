@@ -38,7 +38,7 @@ const programs = [
       'Fashion show and event opportunities',
     ],
     impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
-    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-showcase.jpg'],
+    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-showcase.jpg', '/pride-gala-modeling.jpg'],
     color: 'text-secondary',
   },
   {
@@ -107,7 +107,7 @@ const programs = [
       'Studio equipment access and technical training',
     ],
     impact: 'Musicians create professional recordings, develop music production skills, build portfolios for income, and establish themselves as recording artists within and beyond Kakuma.',
-    images: ['/sector-music.png', '/sector-music.png'],
+    images: ['/pride-gala-music-1.jpg', '/pride-gala-music-2.jpg', '/sector-music.png'],
     color: 'text-accent',
     isEmerging: true,
   },
