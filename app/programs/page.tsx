@@ -28,7 +28,7 @@ const programs = [
     id: 2,
     name: 'Pekee Models: Professional Performance',
     tagline: 'Runway Training & Talent Development',
-    description: 'Professional modeling and performance program focused on runway training, confidence building, personal branding, and talent development. Exclusively dedicated to modeling and performance—not fashion design.',
+    description: 'Professional modeling and performance program focused on runway training, confidence building, personal branding, and talent development. Exclusively dedicated to modeling and performance—not fashion design. Our cohort is 60% women and girls, creating affirming spaces for underrepresented voices on the runway.',
     details: [
       'Professional runway technique and posture',
       'Portfolio development and photography',
@@ -38,7 +38,7 @@ const programs = [
       'Fashion show and event opportunities',
     ],
     impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
-    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-group.jpg'],
+    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-showcase.jpg'],
     color: 'text-secondary',
   },
   {
