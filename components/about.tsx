@@ -10,7 +10,7 @@ export default function About() {
           {/* Image */}
           <div className="relative h-96 sm:h-full min-h-96 order-2 lg:order-1">
             <Image
-              src="/avan-community.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7866.PNG-uQEorFqABs68fn1FVSU1WViUepW5aX.jpeg"
               alt="Avan Makerspace community"
               fill
               className="object-cover rounded-xl shadow-lg"

@@ -21,7 +21,7 @@ const programs = [
       'Hackathons and innovation competitions',
     ],
     impact: 'Participants gain access to in-demand digital economy skills, create income opportunities through freelancing, and position themselves as innovators solving community problems.',
-    image: '/programs-robotics.png',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7866.PNG-uQEorFqABs68fn1FVSU1WViUepW5aX.jpeg',
     color: 'text-primary',
   },
   {
@@ -38,7 +38,7 @@ const programs = [
       'Fashion show and event opportunities',
     ],
     impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
-    image: '/programs-fashion.png',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7866.PNG-uQEorFqABs68fn1FVSU1WViUepW5aX.jpeg',
     color: 'text-secondary',
   },
   {
@@ -55,7 +55,12 @@ const programs = [
       'Collection development and showcases',
     ],
     impact: 'Participants develop marketable fashion skills, create income through tailoring and design services, and launch sustainable fashion businesses.',
-    image: '/programs-fashion.png',
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7867.PNG-nVdnbRHzQc9Yff1zbt96ZEnHtkOuqG.jpeg',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7866.PNG-uQEorFqABs68fn1FVSU1WViUepW5aX.jpeg',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7864.PNG-2dXBfhnCjs5LZkgo7oaFJTkJakoCty.jpeg',
+    ],
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7866.PNG-uQEorFqABs68fn1FVSU1WViUepW5aX.jpeg',
     color: 'text-secondary',
   },
   {
@@ -72,7 +77,7 @@ const programs = [
       'Gallery representation and artist development',
     ],
     impact: 'Youth process trauma through creative expression, build confidence and self-worth, develop professional art practices, and contribute to community cultural vibrancy.',
-    image: '/programs-arts.png',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7864.PNG-2dXBfhnCjs5LZkgo7oaFJTkJakoCty.jpeg',
     color: 'text-accent',
   },
   {
@@ -89,7 +94,7 @@ const programs = [
       'Spoken word, rap, and songwriting',
     ],
     impact: 'Participants develop professional performance skills, create music for healing and income, build live performance opportunities, and express their cultural identity.',
-    image: '/programs-music.png',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7867.PNG-nVdnbRHzQc9Yff1zbt96ZEnHtkOuqG.jpeg',
     color: 'text-accent',
   },
   {
@@ -106,7 +111,7 @@ const programs = [
       'Podcast production and audio storytelling',
     ],
     impact: 'Youth master digital communication tools, build portfolios as content creators, create income through freelance media work, and amplify community stories.',
-    image: '/programs-digital.png',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7864.PNG-2dXBfhnCjs5LZkgo7oaFJTkJakoCty.jpeg',
     color: 'text-primary',
   },
   {
@@ -123,7 +128,7 @@ const programs = [
       'Startup funding and resource access',
     ],
     impact: 'Participants create sustainable income streams, launch viable businesses, access formal or remote employment, and become financially independent.',
-    image: '/programs-digital.png',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_7867.PNG-nVdnbRHzQc9Yff1zbt96ZEnHtkOuqG.jpeg',
     color: 'text-primary',
   },
 ];
@@ -163,15 +168,31 @@ export default function ProgramsPage() {
                 >
                   {/* Image - alternating sides */}
                   <div className={index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}>
-                    <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
-                      <Image
-                        src={program.image}
-                        alt={program.name}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                    </div>
+                    {program.images ? (
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {program.images.map((img, imgIdx) => (
+                          <div key={imgIdx} className="relative h-80 rounded-xl overflow-hidden shadow-lg">
+                            <Image
+                              src={img}
+                              alt={`${program.name} - Image ${imgIdx + 1}`}
+                              fill
+                              className="object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
+                        <Image
+                          src={program.image}
+                          alt={program.name}
+                          fill
+                          className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                      </div>
+                    )}
                   </div>
 
                   {/* Content */}
