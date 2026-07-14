@@ -193,7 +193,7 @@ export default function About() {
             <div className="text-center">
               <div className="relative h-64 mb-6 rounded-xl overflow-hidden bg-muted">
                 <Image
-                  src="/real-robotics1.jpg"
+                  src="/fardose-daud.jpg"
                   alt="Fardose Daud"
                   fill
                   className="object-cover"
@@ -210,7 +210,7 @@ export default function About() {
             <div className="text-center">
               <div className="relative h-64 mb-6 rounded-xl overflow-hidden bg-muted">
                 <Image
-                  src="/real-art.jpg"
+                  src="/jonathan-divine.jpg"
                   alt="Jonathan Divine"
                   fill
                   className="object-cover"
@@ -223,17 +223,17 @@ export default function About() {
               </p>
             </div>
 
-            {/* Peter Kelvis */}
+            {/* Peter Kelvins */}
             <div className="text-center">
               <div className="relative h-64 mb-6 rounded-xl overflow-hidden bg-muted">
                 <Image
-                  src="/real-robotics.jpg"
-                  alt="Peter Kelvis"
+                  src="/peter-kelvins.jpg"
+                  alt="Peter Kelvins"
                   fill
                   className="object-cover"
                 />
               </div>
-              <h4 className="text-2xl font-bold text-foreground mb-2">Peter Kelvis</h4>
+              <h4 className="text-2xl font-bold text-foreground mb-2">Peter Kelvins</h4>
               <p className="text-secondary font-semibold mb-3">Co-founder</p>
               <p className="text-foreground/70">
                 Building operational foundations and partnerships that enable Avan to deliver quality programming at scale while maintaining community values.
