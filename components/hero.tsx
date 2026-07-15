@@ -45,6 +45,8 @@ export default function Hero() {
     '/real-art1.jpg',
     '/real-art3.jpg',
     '/programs-arts.png',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-BnkIqzZU0kGuTfshpF8DnJsb2gmTt8.jpg',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art1-tdQ1nQ4crK09v1WZLEK3IXB38HJNau.jpg',
   ];
 
   const avanTechImages = [
