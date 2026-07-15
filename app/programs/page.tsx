@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import PartnershipModal from '@/components/partnership-modal';
@@ -21,8 +22,9 @@ const programs = [
       'Hackathons and innovation competitions',
     ],
     impact: 'Participants gain access to in-demand digital economy skills, create income opportunities through freelancing, and position themselves as innovators solving community problems.',
-    images: ['/real-robotics.jpg', '/real-robotics1.jpg', '/real-robotics2.jpg'],
+    images: ['/robotics-bootcamp-1.jpg', '/robotics-bootcamp-2.jpg', '/robotics-bootcamp-3.jpg'],
     color: 'text-primary',
+    slug: 'avantech',
   },
   {
     id: 2,
@@ -38,8 +40,9 @@ const programs = [
       'Fashion show and event opportunities',
     ],
     impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
-    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-showcase.jpg', '/pride-gala-modeling.jpg'],
+    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-showcase.jpg', '/models-gala-additional.jpg'],
     color: 'text-secondary',
+    slug: 'pekee',
   },
   {
     id: 3,
@@ -57,6 +60,7 @@ const programs = [
     impact: 'Participants develop marketable fashion skills, create income through tailoring and design services, and launch sustainable fashion businesses.',
     images: ['/miradede-product-1.jpg', '/miradede-product-2.jpg', '/miradede-product-3.jpg'],
     color: 'text-secondary',
+    slug: 'miradede',
   },
   {
     id: 4,
@@ -74,6 +78,7 @@ const programs = [
     impact: 'Youth process trauma through creative expression, build confidence and self-worth, develop professional art practices, and contribute to community cultural vibrancy.',
     images: ['/real-art.jpg', '/real-art1.jpg', '/real-art3.jpg'],
     color: 'text-accent',
+    slug: 'i-am-art',
   },
   {
     id: 5,
@@ -92,6 +97,7 @@ const programs = [
     images: ['/sector-music.png', '/sector-music.png'],
     color: 'text-accent',
     isEmerging: true,
+    slug: 'dance',
   },
   {
     id: 6,
@@ -107,9 +113,10 @@ const programs = [
       'Studio equipment access and technical training',
     ],
     impact: 'Musicians create professional recordings, develop music production skills, build portfolios for income, and establish themselves as recording artists within and beyond Kakuma.',
-    images: ['/pride-gala-music-1.jpg', '/pride-gala-music-2.jpg', '/sector-music.png'],
+    images: ['/music-gala-1.jpg', '/music-gala-2.jpg'],
     color: 'text-accent',
     isEmerging: true,
+    slug: 'music-studio',
   },
   {
     id: 7,
@@ -128,6 +135,7 @@ const programs = [
     images: ['/real-art1.jpg', '/real-art3.jpg'],
     color: 'text-accent',
     isEmerging: true,
+    slug: 'storytelling-podcast',
   },
 ];
 
@@ -156,9 +164,9 @@ export default function ProgramsPage() {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-background to-muted/30 py-16 sm:py-24">
+        <section className="relative bg-gradient-to-br from-background to-muted/30 py-12 sm:py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-4">Seven Signature Programs</p>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                 Pathways to <span className="text-secondary">Innovation & Opportunity</span>
@@ -171,13 +179,13 @@ export default function ProgramsPage() {
         </section>
 
         {/* Programs Grid */}
-        <section className="py-16 sm:py-24 bg-background">
+        <section className="py-12 sm:py-16 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="space-y-20">
+            <div className="space-y-12">
               {programs.map((program, index) => (
                 <div
                   key={program.id}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${
                     index % 2 === 1 ? 'lg:grid-cols-2' : ''
                   }`}
                 >
@@ -241,12 +249,19 @@ export default function ProgramsPage() {
                     </div>
 
                     {/* Impact */}
-                    <div className="bg-muted/50 rounded-lg p-6 border border-border">
+                    <div className="bg-muted/50 rounded-lg p-6 border border-border mb-6">
                       <h3 className="font-semibold text-foreground mb-2">Impact</h3>
                       <p className="text-foreground/75 leading-relaxed">
                         {program.impact}
                       </p>
                     </div>
+
+                    {/* Learn More Button */}
+                    <Link href={`/programs/${program.slug}`}>
+                      <button className={`${program.color} font-semibold px-6 py-3 rounded-lg border-2 border-current hover:bg-muted/30 transition`}>
+                        Learn More →
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -255,7 +270,7 @@ export default function ProgramsPage() {
         </section>
 
         {/* Why Our Programs Work */}
-        <section className="py-16 sm:py-24 bg-muted/20">
+        <section className="py-12 sm:py-16 bg-muted/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
@@ -295,7 +310,7 @@ export default function ProgramsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 sm:py-24 bg-primary text-primary-foreground">
+        <section className="py-12 sm:py-16 bg-primary text-primary-foreground">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Help Us Scale Youth Empowerment

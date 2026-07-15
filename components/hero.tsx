@@ -1,133 +1,237 @@
 'use client';
 
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-const sectorImages = [
-  '/real-robotics.jpg',
-  '/real-robotics1.jpg',
-  '/real-robotics2.jpg',
-  '/real-art.jpg',
-  '/real-art1.jpg',
-  '/real-art3.jpg',
-];
-
 export default function Hero() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const heroImages = [
+    '/pekee-showcase.jpg',
+    '/miradede-product-1.jpg',
+    '/robotics-bootcamp-1.jpg',
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % sectorImages.length);
-    }, 4000); // Change image every 4 seconds
-
+      setImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-background flex items-center justify-center overflow-hidden py-12 sm:py-20 lg:py-0">
-      {/* Rotating Background Images */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {sectorImages.map((image, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-15' : 'opacity-0'
-            }`}
-          >
-            <Image
-              src={image}
-              alt="Sector"
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* Background accent elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section className="w-full bg-white">
+      {/* Hero Section - 50/50 Split */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Logo Section - Left */}
-          <div className="flex justify-center lg:justify-start order-2 lg:order-1 animate-slide-in-left">
-            <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden bg-gradient-to-br from-secondary/10 to-accent/10 shadow-lg hover:shadow-2xl transition-shadow duration-300 group">
-              <Image
-                src="/avan-logo.png"
-                alt="Avan Makerspace"
-                width={300}
-                height={300}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          </div>
-
-          {/* Text Section - Right */}
-          <div className="flex flex-col justify-center order-1 lg:order-2 animate-slide-in-right">
+          
+          {/* Left: Content */}
+          <div className="order-2 lg:order-1">
             {/* Tagline */}
-            <p className="text-secondary text-xs sm:text-sm font-bold uppercase tracking-widest mb-4 animate-fade-in">
-              Refugee-Led Innovation Hub
+            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+              Avan Makerspace
             </p>
 
             {/* Main Heading */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight animate-fade-in">
-              Empowering Youth Through <span className="text-secondary">Innovation & Creativity</span>
+            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+              Empowering Youth Through Innovation & Creativity
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-foreground/75 mb-8 leading-relaxed animate-fade-in">
-              Avan Makerspace is a queer-led, refugee-led nonprofit transforming lives in Kakuma Refugee Camp. We create safe, inclusive spaces where displaced youth discover their talents, develop digital and creative skills, and build sustainable futures through innovation, entrepreneurship, and community.
+            <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
+              Avan is a queer-led, refugee-led nonprofit in Kakuma Refugee Camp that creates safe, inclusive spaces where displaced youth discover talents, develop digital and creative skills, and build sustainable futures through innovation, entrepreneurship, and community.
             </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 mb-10 py-8 border-y border-border/50">
-              <div>
-                <p className="text-3xl sm:text-4xl font-bold text-accent mb-1">120+</p>
-                <p className="text-xs sm:text-sm font-medium text-foreground/60">Youth Trained</p>
-              </div>
-              <div>
-                <p className="text-3xl sm:text-4xl font-bold text-secondary mb-1">7</p>
-                <p className="text-xs sm:text-sm font-medium text-foreground/60">Signature Programs</p>
-              </div>
-              <div>
-                <p className="text-3xl sm:text-4xl font-bold text-primary mb-1">∞</p>
-                <p className="text-xs sm:text-sm font-medium text-foreground/60">Unlimited Potential</p>
-              </div>
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <Link
+                href="/programs"
+                className="inline-flex items-center justify-center px-8 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition"
+              >
+                Explore Programs
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center px-8 py-3 border-2 border-secondary text-secondary font-semibold rounded-full hover:bg-secondary/5 transition"
+              >
+                Learn More
+              </Link>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 animate-fade-in">
-              <Button
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-white font-semibold text-base rounded-lg transform hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
-              >
-                Support Our Mission
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary/5 font-semibold text-base rounded-lg transform hover:scale-105 transition-transform duration-300"
-              >
-                Discover Our Work
-              </Button>
+            {/* Impact Stats */}
+            <div className="grid grid-cols-3 gap-6">
+              <div>
+                <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">120+</p>
+                <p className="text-sm text-foreground/60">Youth Trained</p>
+              </div>
+              <div>
+                <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">7</p>
+                <p className="text-sm text-foreground/60">Programs</p>
+              </div>
+              <div>
+                <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">60%</p>
+                <p className="text-sm text-foreground/60">Women & Girls</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Image */}
+          <div className="order-1 lg:order-2">
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg">
+              {heroImages.map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt="Avan community"
+                  fill
+                  className={`object-cover transition-opacity duration-1000 ${
+                    idx === imageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  priority={idx === 0}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
-        <svg className="w-6 h-6 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
+      {/* Explore Section */}
+      <div className="bg-gray-50 py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-12">
+            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+              Explore Avan
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+              Deepen your understanding of our work
+            </h2>
+            <p className="text-lg text-foreground/70">
+              Each page shares the details—mission, programs, impact, values, and ways to connect. Explore our work to continue your journey.
+            </p>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* About Card */}
+            <Link href="/about" className="group">
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+                <h3 className="text-xl font-bold text-secondary mb-3">About Us</h3>
+                <p className="text-foreground/70 mb-6">Meet the Avan team and vision rooted in Kakuma.</p>
+                <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
+                  Read our story
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+
+            {/* Programs Card */}
+            <Link href="/programs" className="group">
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+                <h3 className="text-xl font-bold text-secondary mb-3">Programs</h3>
+                <p className="text-foreground/70 mb-6">Explore AvanTech, Pekee, Miradede, and more creative initiatives.</p>
+                <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
+                  See programs
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+
+            {/* Impact Card */}
+            <Link href="/impact" className="group">
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+                <h3 className="text-xl font-bold text-secondary mb-3">Impact</h3>
+                <p className="text-foreground/70 mb-6">Review our achievements and community-led milestones.</p>
+                <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
+                  View impact
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+
+            {/* Approach Card */}
+            <Link href="/approach" className="group">
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+                <h3 className="text-xl font-bold text-secondary mb-3">Our Approach</h3>
+                <p className="text-foreground/70 mb-6">Learn the principles guiding our work in the community.</p>
+                <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
+                  Explore approach
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+
+            {/* Context Card */}
+            <Link href="/context" className="group">
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+                <h3 className="text-xl font-bold text-secondary mb-3">Context</h3>
+                <p className="text-foreground/70 mb-6">Understand the broader context of Kakuma and our communities.</p>
+                <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
+                  Learn more
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+
+            {/* Support Card */}
+            <Link href="/get-involved" className="group">
+              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+                <h3 className="text-xl font-bold text-secondary mb-3">Get Involved</h3>
+                <p className="text-foreground/70 mb-6">Discover ways to support, partner, or volunteer with Avan.</p>
+                <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
+                  Join us
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* At A Glance Section */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
+        <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+          At A Glance
+        </p>
+        <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+          Youth leading innovation in Kakuma
+        </h2>
+        <p className="text-lg text-foreground/70 mb-12">
+          Avan equips young people with creative, digital, and entrepreneurial skills across our seven signature programs.
+        </p>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="bg-gray-50 rounded-xl p-6">
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">120+</p>
+            <p className="text-sm text-foreground/60">Youth trained across programs</p>
+          </div>
+          <div className="bg-gray-50 rounded-xl p-6">
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">7</p>
+            <p className="text-sm text-foreground/60">Signature programs</p>
+          </div>
+          <div className="bg-gray-50 rounded-xl p-6">
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">60%</p>
+            <p className="text-sm text-foreground/60">Women and girls</p>
+          </div>
+          <div className="bg-gray-50 rounded-xl p-6">
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">100%</p>
+            <p className="text-sm text-foreground/60">Community-led</p>
+          </div>
+        </div>
       </div>
     </section>
   );

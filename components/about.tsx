@@ -210,7 +210,7 @@ export default function About() {
             <div className="text-center">
               <div className="relative h-64 mb-6 rounded-xl overflow-hidden bg-muted">
                 <Image
-                  src="/jonathan-divine.jpg"
+                  src="/jonathan-divine-bw.jpg"
                   alt="Jonathan Divine"
                   fill
                   className="object-cover"
