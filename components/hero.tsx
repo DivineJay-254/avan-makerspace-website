@@ -8,9 +8,9 @@ export default function Hero() {
   const [imageIndex, setImageIndex] = useState(0);
 
   const heroImages = [
-    '/pekee-showcase.jpg',
-    '/miradede-product-1.jpg',
-    '/robotics-bootcamp-1.jpg',
+    '/pekee-team-showcase.jpg',
+    '/pekee-runway-training.jpg',
+    '/pride-gala-runway.png',
   ];
 
   useEffect(() => {
@@ -91,6 +91,58 @@ export default function Hero() {
                   priority={idx === 0}
                 />
               ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Featured Programs Section - Robotics/AvanTech */}
+      <div className="bg-white py-16 lg:py-24 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-12">
+            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+              Our Programs
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+              AvanTech: Digital Innovation & Robotics
+            </h2>
+            <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
+              Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.
+            </p>
+            <Link href="/programs/avantech" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
+              Explore AvanTech
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+
+          {/* Robotics Image Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/robotics-bootcamp-1.jpg"
+                alt="Robotics bootcamp - hands-on learning"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/robotics-bootcamp-2.jpg"
+                alt="AvanTech youth coding session"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/robotics-bootcamp-3.jpg"
+                alt="Innovation and robotics training"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
         </div>
