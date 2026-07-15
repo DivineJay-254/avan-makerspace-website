@@ -5,12 +5,49 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { getRandomizedHeroImages, type HeroImage } from '@/lib/heroImageConfig';
 
+// Animated counter component for stats
+function AnimatedCounter({ end, suffix = '' }: { end: number; suffix?: string }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const duration = 2000;
+    const steps = 60;
+    const stepValue = end / steps;
+    let current = 0;
+
+    const interval = setInterval(() => {
+      current += stepValue;
+      if (current >= end) {
+        setCount(end);
+        clearInterval(interval);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+
+    return () => clearInterval(interval);
+  }, [end]);
+
+  return <span>{count}{suffix}</span>;
+}
+
 export default function Hero() {
   const [imageIndex, setImageIndex] = useState(0);
   const [avanTechImageIndex, setAvanTechImageIndex] = useState(0);
   const [prideGalaImageIndex, setPrideGalaImageIndex] = useState(0);
+  const [artImageIndex, setArtImageIndex] = useState(0);
   const [heroImages, setHeroImages] = useState<HeroImage[]>([]);
   const [isClient, setIsClient] = useState(false);
+
+  // Art images for the hero section background
+  const artImages = [
+    '/real-art.jpg',
+    '/real-art1.jpg',
+    '/real-art3.jpg',
+    '/programs-arts.png',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-BnkIqzZU0kGuTfshpF8DnJsb2gmTt8.jpg',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art1-tdQ1nQ4crK09v1WZLEK3IXB38HJNau.jpg',
+  ];
 
   const avanTechImages = [
     '/robotics-bootcamp-1.jpg',
@@ -53,11 +90,18 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setArtImageIndex((prev) => (prev + 1) % artImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="w-full">
       {/* Hero Section - Full Width Background with Content Overlay */}
       <div className="relative w-full min-h-screen lg:min-h-[600px] flex items-center overflow-hidden">
-        {/* Background Images - Rotating with Randomization */}
+        {/* Background Images - Rotating with Randomization and Art */}
         <div className="absolute inset-0 z-0">
           {isClient && heroImages.length > 0 && heroImages.map((img, idx) => (
             <Image
@@ -72,6 +116,21 @@ export default function Hero() {
               loading={idx === 0 ? 'eager' : 'lazy'}
             />
           ))}
+          
+          {/* Art Images Layer - Rotating behind the main images */}
+          {artImages.map((img, idx) => (
+            <Image
+              key={`art-${img}-${idx}`}
+              src={img}
+              alt="Avan community art and creative expression"
+              fill
+              className={`object-cover transition-opacity duration-1000 ${
+                idx === artImageIndex ? 'opacity-20' : 'opacity-0'
+              }`}
+              loading="lazy"
+            />
+          ))}
+          
           {/* Overlay for text readability */}
           <div className="absolute inset-0 bg-black/40" />
         </div>
@@ -317,19 +376,27 @@ export default function Hero() {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="bg-gray-50 rounded-xl p-6">
-            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">200+</p>
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">
+              <AnimatedCounter end={200} suffix="+" />
+            </p>
             <p className="text-sm text-foreground/60">Youth trained across programs</p>
           </div>
           <div className="bg-gray-50 rounded-xl p-6">
-            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">7</p>
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">
+              <AnimatedCounter end={7} suffix="" />
+            </p>
             <p className="text-sm text-foreground/60">Signature programs</p>
           </div>
           <div className="bg-gray-50 rounded-xl p-6">
-            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">60%</p>
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">
+              <AnimatedCounter end={60} suffix="%" />
+            </p>
             <p className="text-sm text-foreground/60">Women and girls</p>
           </div>
           <div className="bg-gray-50 rounded-xl p-6">
-            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">100%</p>
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">
+              <AnimatedCounter end={100} suffix="%" />
+            </p>
             <p className="text-sm text-foreground/60">Community-led</p>
           </div>
         </div>
