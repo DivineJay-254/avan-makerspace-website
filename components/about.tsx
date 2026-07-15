@@ -1,77 +1,105 @@
 'use client';
 
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export default function About() {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const aboutImages = [
+    '/pekee-team-showcase.jpg',
+    '/pekee-runway-training.jpg',
+    '/pride-gala-runway.png',
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImageIndex((prev) => (prev + 1) % aboutImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <>
-      {/* Main About Section */}
-      <section id="about" className="py-16 sm:py-24 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center lg:order-2">
-            {/* Image */}
-            <div className="relative h-96 sm:h-full min-h-96 order-2 lg:order-1">
-              <Image
-                src="/avan-community.png"
-                alt="Avan Makerspace community"
-                fill
-                className="object-cover rounded-xl shadow-lg"
-              />
-              <div className="absolute inset-0 rounded-xl border-2 border-secondary/20" />
-            </div>
+      {/* Main About Section - Full Width Background with Content Overlay */}
+      <section id="about" className="relative w-full min-h-screen lg:min-h-[600px] flex items-center overflow-hidden">
+        {/* Background Images - Rotating */}
+        <div className="absolute inset-0 z-0">
+          {aboutImages.map((img, idx) => (
+            <Image
+              key={idx}
+              src={img}
+              alt="Avan community"
+              fill
+              className={`object-cover transition-opacity duration-1000 ${
+                idx === imageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              priority={idx === 0}
+            />
+          ))}
+          {/* Overlay for text readability */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
 
-            {/* Content */}
-            <div className="order-1 lg:order-2">
-              <p className="text-secondary uppercase text-sm font-bold tracking-widest mb-3">About Us</p>
-              <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight">
-                Bridging Talent & <span className="text-secondary">Opportunity</span>
-              </h2>
+        {/* Content - Positioned Absolutely */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-16 lg:py-24">
+          <div className="max-w-2xl">
+            {/* Tagline */}
+            <p className="text-white/90 uppercase tracking-wider font-bold text-xs mb-4">
+              About Us
+            </p>
 
-              <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-                Founded in Kakuma Refugee Camp, Avan Makerspace is a refugee-led and queer-led nonprofit innovation hub dedicated to empowering displaced youth. We believe talent exists everywhere—but opportunities do not. We create safe, inclusive, and accessible spaces where young people can learn, create, innovate, and build sustainable futures through creativity, technology, entrepreneurship, and community.
-              </p>
+            {/* Main Heading */}
+            <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Bridging Talent & <span className="text-secondary">Opportunity</span>
+            </h2>
 
-              <div className="space-y-4 mb-8">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-6 w-6 rounded-full bg-secondary text-white flex-shrink-0">
-                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-foreground">Inclusive & Equitable</h3>
-                    <p className="text-foreground/70 mt-1">Safe spaces welcoming everyone regardless of identity, background, or circumstance</p>
+            {/* Description */}
+            <p className="text-lg text-white/85 mb-8 leading-relaxed">
+              Founded in Kakuma Refugee Camp, Avan Makerspace is a refugee-led and queer-led nonprofit innovation hub dedicated to empowering displaced youth. We believe talent exists everywhere—but opportunities do not. We create safe, inclusive, and accessible spaces where young people can learn, create, innovate, and build sustainable futures through creativity, technology, entrepreneurship, and community.
+            </p>
+
+            {/* Values Section */}
+            <div className="space-y-4">
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-6 w-6 rounded-full bg-secondary text-white flex-shrink-0">
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
                   </div>
                 </div>
+                <div className="ml-4">
+                  <h3 className="font-semibold text-white">Inclusive & Equitable</h3>
+                  <p className="text-white/70 mt-1">Safe spaces welcoming everyone regardless of identity, background, or circumstance</p>
+                </div>
+              </div>
 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-6 w-6 rounded-full bg-accent text-white flex-shrink-0">
-                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-foreground">Skills for Futures</h3>
-                    <p className="text-foreground/70 mt-1">Hands-on training in creativity, technology, and entrepreneurship with mentorship pathways</p>
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-6 w-6 rounded-full bg-accent text-white flex-shrink-0">
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
                   </div>
                 </div>
+                <div className="ml-4">
+                  <h3 className="font-semibold text-white">Skills for Futures</h3>
+                  <p className="text-white/70 mt-1">Hands-on training in creativity, technology, and entrepreneurship with mentorship pathways</p>
+                </div>
+              </div>
 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-white flex-shrink-0">
-                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-6 w-6 rounded-full bg-primary text-white flex-shrink-0">
+                    <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="font-semibold text-foreground">Refugee-Led Leadership</h3>
-                    <p className="text-foreground/70 mt-1">Community ownership and voice shape our programs and decisions</p>
-                  </div>
+                </div>
+                <div className="ml-4">
+                  <h3 className="font-semibold text-white">Refugee-Led Leadership</h3>
+                  <p className="text-white/70 mt-1">Community ownership and voice shape our programs and decisions</p>
                 </div>
               </div>
             </div>
