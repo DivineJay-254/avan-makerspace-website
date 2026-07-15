@@ -3,20 +3,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { getRandomizedHeroImages, type HeroImage } from '@/lib/heroImageConfig';
 
 export default function Hero() {
   const [imageIndex, setImageIndex] = useState(0);
   const [avanTechImageIndex, setAvanTechImageIndex] = useState(0);
   const [prideGalaImageIndex, setPrideGalaImageIndex] = useState(0);
-
-  const heroImages = [
-    '/pekee-team-showcase.jpg',
-    '/pekee-runway-training.jpg',
-    '/pride-gala-runway.png',
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan3-Jwap2S2QBj8r6eDH8X0wnSc1APVE8y.png',
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan8-4eVFgwBHUNnX3ZlghjMtRK4E2GTEK7.png',
-    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan2-CYqp8YlkxLFQwk3V3ZREkKqLiW19CX.png',
-  ];
+  const [heroImages, setHeroImages] = useState<HeroImage[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   const avanTechImages = [
     '/robotics-bootcamp-1.jpg',
@@ -31,12 +25,19 @@ export default function Hero() {
     '/pride-gala-moment.jpg',
   ];
 
+  // Initialize randomized hero images on client side only
   useEffect(() => {
+    setIsClient(true);
+    setHeroImages(getRandomizedHeroImages());
+  }, []);
+
+  useEffect(() => {
+    if (heroImages.length === 0) return;
     const interval = setInterval(() => {
       setImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [heroImages.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -56,18 +57,19 @@ export default function Hero() {
     <section className="w-full">
       {/* Hero Section - Full Width Background with Content Overlay */}
       <div className="relative w-full min-h-screen lg:min-h-[600px] flex items-center overflow-hidden">
-        {/* Background Images - Rotating */}
+        {/* Background Images - Rotating with Randomization */}
         <div className="absolute inset-0 z-0">
-          {heroImages.map((img, idx) => (
+          {isClient && heroImages.length > 0 && heroImages.map((img, idx) => (
             <Image
-              key={idx}
-              src={img}
-              alt="Avan community"
+              key={`${img.src}-${idx}`}
+              src={img.src}
+              alt={img.alt}
               fill
               className={`object-cover transition-opacity duration-1000 ${
                 idx === imageIndex ? 'opacity-100' : 'opacity-0'
               }`}
               priority={idx === 0}
+              loading={idx === 0 ? 'eager' : 'lazy'}
             />
           ))}
           {/* Overlay for text readability */}
