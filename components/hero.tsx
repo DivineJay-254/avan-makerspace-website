@@ -116,39 +116,41 @@ export default function Hero() {
       {/* Featured Programs Section - Robotics/AvanTech */}
       <div className="bg-white py-16 lg:py-24 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="mb-12">
-            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
-              Our Programs
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              AvanTech: Digital Innovation & Robotics
-            </h2>
-            <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-              Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.
-            </p>
-            <Link href="/programs/avantech" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
-              Explore AvanTech
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div>
+              <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+                Our Programs
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+                AvanTech: Digital Innovation & Robotics
+              </h2>
+              <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
+                Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.
+              </p>
+              <Link href="/programs/avantech" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
+                Explore AvanTech
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
 
-          {/* Robotics Image - Rotating */}
-          <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-lg">
-            {avanTechImages.map((img, idx) => (
-              <Image
-                key={idx}
-                src={img}
-                alt="AvanTech innovation and robotics training"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  idx === avanTechImageIndex ? 'opacity-100' : 'opacity-0'
-                }`}
-                priority={idx === 0}
-              />
-            ))}
+            {/* Robotics Image - Rotating */}
+            <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-lg">
+              {avanTechImages.map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt="AvanTech innovation and robotics training"
+                  fill
+                  className={`object-cover transition-opacity duration-700 ${
+                    idx === avanTechImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  priority={idx === 0}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -156,46 +158,41 @@ export default function Hero() {
       {/* Pride Gala Event Showcase */}
       <div className="bg-gradient-to-br from-primary/5 to-secondary/5 py-16 lg:py-24 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="mb-12">
-            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
-              Celebration & Community
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              Pride Gala Dinner Recap
-            </h2>
-            <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-              A celebration of LGBTQ+ youth leadership, cultural pride, and community belonging. Our June 29, 2026 event showcased runway performances, cultural expression, and the vibrant spirit of Kakuma&apos;s queer community.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div>
+              <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+                Celebration & Community
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+                Pride Gala Dinner Recap
+              </h2>
+              <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
+                A celebration of LGBTQ+ youth leadership, cultural pride, and community belonging. Our June 29, 2026 event showcased runway performances, cultural expression, and the vibrant spirit of Kakuma&apos;s queer community.
+              </p>
+              <Link href="/impact" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
+                Learn About Our Impact
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
 
-          {/* Image Gallery - Rotating Single Image */}
-          <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-xl">
-            {prideGalaImages.map((img, idx) => (
-              <Image
-                key={idx}
-                src={img}
-                alt="Pride Gala celebration and runway moments"
-                fill
-                className={`object-cover transition-opacity duration-700 ${
-                  idx === prideGalaImageIndex ? 'opacity-100' : 'opacity-0'
-                }`}
-                priority={idx === 0}
-              />
-            ))}
-          </div>
-
-          {/* CTA */}
-          <div className="mt-12 text-center">
-            <p className="text-foreground/70 mb-6">
-              Celebrating LGBTQ+ youth leadership, cultural pride, and community belonging in Kakuma.
-            </p>
-            <Link href="/impact" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
-              Learn About Our Impact
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+            {/* Image Gallery - Rotating Single Image */}
+            <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-xl">
+              {prideGalaImages.map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt="Pride Gala celebration and runway moments"
+                  fill
+                  className={`object-cover transition-opacity duration-700 ${
+                    idx === prideGalaImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  priority={idx === 0}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
