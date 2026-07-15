@@ -148,6 +148,82 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Pride Gala Event Showcase */}
+      <div className="bg-gradient-to-br from-primary/5 to-secondary/5 py-16 lg:py-24 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="mb-12">
+            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+              Celebration & Community
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+              Pride Gala Dinner
+            </h2>
+            <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
+              Celebrating LGBTQ+ youth on June 29, 2026. A night of runway performances, cultural expression, and community pride in Kakuma.
+            </p>
+          </div>
+
+          {/* Image Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+            {/* Large Featured Image */}
+            <div className="relative h-80 md:h-96 lg:row-span-2 rounded-xl overflow-hidden shadow-xl">
+              <Image
+                src="/pride-gala-group.jpg"
+                alt="Pride Gala youth celebration with golden masks"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+
+            {/* Top Right Image */}
+            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/pride-gala-celebration.jpg"
+                alt="Pride Gala community gathering and mingling"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+
+            {/* Bottom Right Top */}
+            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/pride-gala-speaker.jpg"
+                alt="Youth speaker at Pride Gala with geometric patterns"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          {/* Bottom Gallery Row */}
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-1 gap-6">
+            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
+              <Image
+                src="/pride-gala-moment.jpg"
+                alt="Intimate moment at Pride Gala dinner"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="mt-12 text-center">
+            <p className="text-foreground/70 mb-6">
+              Celebrating LGBTQ+ youth leadership, cultural pride, and community belonging in Kakuma.
+            </p>
+            <Link href="/impact" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
+              Learn About Our Impact
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Explore Section */}
       <div className="bg-gray-50 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

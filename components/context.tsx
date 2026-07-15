@@ -51,7 +51,7 @@ export default function Context() {
             {/* Image */}
             <div className="relative h-96 sm:h-full min-h-96 order-2 lg:order-1">
               <Image
-                src="/real-robotics2.jpg"
+                src="/robotics-bootcamp-2.jpg"
                 alt="Kakuma youth learning"
                 fill
                 className="object-cover rounded-xl shadow-lg"

@@ -52,7 +52,7 @@ export default function Approach() {
             {/* Image */}
             <div className="relative h-96 sm:h-full min-h-96">
               <Image
-                src="/real-robotics1.jpg"
+                src="/pekee-mentorship.jpg"
                 alt="Mentor-led training"
                 fill
                 className="object-cover rounded-xl shadow-lg"
@@ -70,7 +70,7 @@ export default function Approach() {
             {/* Image */}
             <div className="relative h-96 sm:h-full min-h-96 order-2 lg:order-1">
               <Image
-                src="/real-art3.jpg"
+                src="/pride-gala-runway.png"
                 alt="Youth showcase"
                 fill
                 className="object-cover rounded-xl shadow-lg"
@@ -136,7 +136,7 @@ export default function Approach() {
             {/* Image */}
             <div className="relative h-96 sm:h-full min-h-96">
               <Image
-                src="/real-robotics2.jpg"
+                src="/pekee-team-showcase.jpg"
                 alt="Cross-pillar collaboration"
                 fill
                 className="object-cover rounded-xl shadow-lg"
@@ -154,7 +154,7 @@ export default function Approach() {
             {/* Image */}
             <div className="relative h-96 sm:h-full min-h-96 order-2 lg:order-1">
               <Image
-                src="/real-art1.jpg"
+                src="/pekee-runway-training.jpg"
                 alt="Community building"
                 fill
                 className="object-cover rounded-xl shadow-lg"
@@ -241,7 +241,7 @@ export default function Approach() {
             {/* Image */}
             <div className="relative h-96 sm:h-full min-h-96">
               <Image
-                src="/real-art.jpg"
+                src="/robotics-bootcamp-1.jpg"
                 alt="Resource-conscious design"
                 fill
                 className="object-cover rounded-xl shadow-lg"
