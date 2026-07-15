@@ -8,37 +8,37 @@ const programsList = [
     id: 1,
     name: 'Fashion & Modeling',
     description: 'Catwalk training, styling, and confidence building. 30 youth trained with showcase opportunities.',
-    image: '/programs-fashion.png',
+    image: '/pekee-team-showcase.jpg',
   },
   {
     id: 2,
     name: 'Visual Arts',
     description: 'Drawing, creative design, and artistic expression. 40 young artists trained through I Am Art.',
-    image: '/programs-arts.png',
+    image: '/pekee-runway-training.jpg',
   },
   {
     id: 3,
     name: 'AvanTech - Robotics & Digital',
     description: 'LEGO robotics, Arduino programming. 45 children trained in foundational tech innovation.',
-    image: '/programs-robotics.png',
+    image: '/robotics-bootcamp-1.jpg',
   },
   {
     id: 4,
     name: 'Writing & Spoken Word',
     description: 'Poetry, storytelling, and creative expression through the written and spoken word.',
-    image: '/avan-community.png',
+    image: '/pekee-mentorship.jpg',
   },
   {
     id: 5,
     name: 'Music & Performance',
     description: 'Training in music production, performance skills, and stage presence.',
-    image: '/programs-music.png',
+    image: '/pride-gala-runway.png',
   },
   {
     id: 6,
     name: 'Digital Skills & Freelancing',
     description: 'Remote work training, digital literacy, and income-generation opportunities.',
-    image: '/programs-digital.png',
+    image: '/robotics-bootcamp-2.jpg',
   },
 ];
 
