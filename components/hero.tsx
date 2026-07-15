@@ -3,20 +3,53 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { getRandomizedHeroImages, type HeroImage } from '@/lib/heroImageConfig';
 
 export default function Hero() {
   const [imageIndex, setImageIndex] = useState(0);
+  const [avanTechImageIndex, setAvanTechImageIndex] = useState(0);
+  const [prideGalaImageIndex, setPrideGalaImageIndex] = useState(0);
+  const [heroImages, setHeroImages] = useState<HeroImage[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
-  const heroImages = [
-    '/pekee-team-showcase.jpg',
-    '/pekee-runway-training.jpg',
-    '/pride-gala-runway.png',
+  const avanTechImages = [
+    '/robotics-bootcamp-1.jpg',
+    '/robotics-bootcamp-2.jpg',
+    '/robotics-bootcamp-3.jpg',
   ];
 
+  const prideGalaImages = [
+    '/pride-gala-group.jpg',
+    '/pride-gala-celebration.jpg',
+    '/pride-gala-speaker.jpg',
+    '/pride-gala-moment.jpg',
+  ];
+
+  // Initialize randomized hero images on client side only
   useEffect(() => {
+    setIsClient(true);
+    setHeroImages(getRandomizedHeroImages());
+  }, []);
+
+  useEffect(() => {
+    if (heroImages.length === 0) return;
     const interval = setInterval(() => {
       setImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 5000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAvanTechImageIndex((prev) => (prev + 1) % avanTechImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPrideGalaImageIndex((prev) => (prev + 1) % prideGalaImages.length);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -24,18 +57,19 @@ export default function Hero() {
     <section className="w-full">
       {/* Hero Section - Full Width Background with Content Overlay */}
       <div className="relative w-full min-h-screen lg:min-h-[600px] flex items-center overflow-hidden">
-        {/* Background Images - Rotating */}
+        {/* Background Images - Rotating with Randomization */}
         <div className="absolute inset-0 z-0">
-          {heroImages.map((img, idx) => (
+          {isClient && heroImages.length > 0 && heroImages.map((img, idx) => (
             <Image
-              key={idx}
-              src={img}
-              alt="Avan community"
+              key={`${img.src}-${idx}`}
+              src={img.src}
+              alt={img.alt}
               fill
               className={`object-cover transition-opacity duration-1000 ${
                 idx === imageIndex ? 'opacity-100' : 'opacity-0'
               }`}
               priority={idx === 0}
+              loading={idx === 0 ? 'eager' : 'lazy'}
             />
           ))}
           {/* Overlay for text readability */}
@@ -75,22 +109,6 @@ export default function Hero() {
                 Learn More
               </Link>
             </div>
-
-            {/* Impact Stats */}
-            <div className="grid grid-cols-3 gap-6">
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">120+</p>
-                <p className="text-sm text-white/70">Youth Trained</p>
-              </div>
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">7</p>
-                <p className="text-sm text-white/70">Programs</p>
-              </div>
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">60%</p>
-                <p className="text-sm text-white/70">Women & Girls</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -98,50 +116,40 @@ export default function Hero() {
       {/* Featured Programs Section - Robotics/AvanTech */}
       <div className="bg-white py-16 lg:py-24 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="mb-12">
-            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
-              Our Programs
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              AvanTech: Digital Innovation & Robotics
-            </h2>
-            <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-              Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.
-            </p>
-            <Link href="/programs/avantech" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
-              Explore AvanTech
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div>
+              <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+                Our Programs
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+                AvanTech: Digital Innovation & Robotics
+              </h2>
+              <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
+                Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.
+              </p>
+              <Link href="/programs/avantech" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
+                Explore AvanTech
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
 
-          {/* Robotics Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/robotics-bootcamp-1.jpg"
-                alt="Robotics bootcamp - hands-on learning"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/robotics-bootcamp-2.jpg"
-                alt="AvanTech youth coding session"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/robotics-bootcamp-3.jpg"
-                alt="Innovation and robotics training"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
+            {/* Robotics Image - Rotating */}
+            <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-lg">
+              {avanTechImages.map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt="AvanTech innovation and robotics training"
+                  fill
+                  className={`object-cover transition-opacity duration-700 ${
+                    idx === avanTechImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  priority={idx === 0}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -150,75 +158,41 @@ export default function Hero() {
       {/* Pride Gala Event Showcase */}
       <div className="bg-gradient-to-br from-primary/5 to-secondary/5 py-16 lg:py-24 border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="mb-12">
-            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
-              Celebration & Community
-            </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              Pride Gala Dinner
-            </h2>
-            <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-              Celebrating LGBTQ+ youth on June 29, 2026. A night of runway performances, cultural expression, and community pride in Kakuma.
-            </p>
-          </div>
-
-          {/* Image Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {/* Large Featured Image */}
-            <div className="relative h-80 md:h-96 lg:row-span-2 rounded-xl overflow-hidden shadow-xl">
-              <Image
-                src="/pride-gala-group.jpg"
-                alt="Pride Gala youth celebration with golden masks"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
+            <div>
+              <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+                Celebration & Community
+              </p>
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
+                Pride Gala Dinner Recap
+              </h2>
+              <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
+                A celebration of LGBTQ+ youth leadership, cultural pride, and community belonging. Our June 29, 2026 event showcased runway performances, cultural expression, and the vibrant spirit of Kakuma&apos;s queer community.
+              </p>
+              <Link href="/impact" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
+                Learn About Our Impact
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
             </div>
 
-            {/* Top Right Image */}
-            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/pride-gala-celebration.jpg"
-                alt="Pride Gala community gathering and mingling"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
+            {/* Image Gallery - Rotating Single Image */}
+            <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-xl">
+              {prideGalaImages.map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt="Pride Gala celebration and runway moments"
+                  fill
+                  className={`object-cover transition-opacity duration-700 ${
+                    idx === prideGalaImageIndex ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  priority={idx === 0}
+                />
+              ))}
             </div>
-
-            {/* Bottom Right Top */}
-            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/pride-gala-speaker.jpg"
-                alt="Youth speaker at Pride Gala with geometric patterns"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
-
-          {/* Bottom Gallery Row */}
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-1 gap-6">
-            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/pride-gala-moment.jpg"
-                alt="Intimate moment at Pride Gala dinner"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="mt-12 text-center">
-            <p className="text-foreground/70 mb-6">
-              Celebrating LGBTQ+ youth leadership, cultural pride, and community belonging in Kakuma.
-            </p>
-            <Link href="/impact" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
-              Learn About Our Impact
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
           </div>
         </div>
       </div>
@@ -343,7 +317,7 @@ export default function Hero() {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="bg-gray-50 rounded-xl p-6">
-            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">120+</p>
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">200+</p>
             <p className="text-sm text-foreground/60">Youth trained across programs</p>
           </div>
           <div className="bg-gray-50 rounded-xl p-6">

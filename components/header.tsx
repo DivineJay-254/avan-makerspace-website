@@ -43,6 +43,9 @@ export default function Header() {
             <Link href="/approach" className="text-foreground hover:text-secondary font-medium text-sm">
               Approach
             </Link>
+            <Link href="/context" className="text-foreground hover:text-secondary font-medium text-sm">
+              Context
+            </Link>
             <Link href="/get-involved" className="text-foreground hover:text-secondary font-medium text-sm">
               Get Involved
             </Link>
@@ -107,6 +110,13 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
             >
               Approach
+            </Link>
+            <Link
+              href="/context"
+              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              onClick={() => setIsOpen(false)}
+            >
+              Context
             </Link>
             <Link
               href="/get-involved"
