@@ -8,9 +8,9 @@ export default function Hero() {
   const [imageIndex, setImageIndex] = useState(0);
 
   const heroImages = [
-    '/pekee-showcase.jpg',
-    '/miradede-product-1.jpg',
-    '/robotics-bootcamp-1.jpg',
+    '/pekee-team-showcase.jpg',
+    '/pekee-runway-training.jpg',
+    '/pride-gala-runway.png',
   ];
 
   useEffect(() => {
