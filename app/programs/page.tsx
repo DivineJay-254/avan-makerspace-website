@@ -40,7 +40,7 @@ const programs = [
       'Fashion show and event opportunities',
     ],
     impact: 'Youth develop professional presentation skills, build income through modeling opportunities, and gain confidence in their ability to present themselves globally.',
-    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-showcase.jpg', '/models-gala-additional.jpg'],
+    images: ['/pekee-model1.jpg', '/pekee-model2.jpg', '/pekee-model3.jpg', '/pekee-model4.jpg', '/pekee-showcase.jpg', '/models-gala-additional.jpg', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan3-Jwap2S2QBj8r6eDH8X0wnSc1APVE8y.png', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan8-4eVFgwBHUNnX3ZlghjMtRK4E2GTEK7.png', 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan2-CYqp8YlkxLFQwk3V3ZREkKqLiW19CX.png'],
     color: 'text-secondary',
     slug: 'pekee',
   },

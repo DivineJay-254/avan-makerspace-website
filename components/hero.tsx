@@ -6,17 +6,49 @@ import { useState, useEffect } from 'react';
 
 export default function Hero() {
   const [imageIndex, setImageIndex] = useState(0);
+  const [avanTechImageIndex, setAvanTechImageIndex] = useState(0);
+  const [prideGalaImageIndex, setPrideGalaImageIndex] = useState(0);
 
   const heroImages = [
     '/pekee-team-showcase.jpg',
     '/pekee-runway-training.jpg',
     '/pride-gala-runway.png',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan3-Jwap2S2QBj8r6eDH8X0wnSc1APVE8y.png',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan8-4eVFgwBHUNnX3ZlghjMtRK4E2GTEK7.png',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/avan2-CYqp8YlkxLFQwk3V3ZREkKqLiW19CX.png',
+  ];
+
+  const avanTechImages = [
+    '/robotics-bootcamp-1.jpg',
+    '/robotics-bootcamp-2.jpg',
+    '/robotics-bootcamp-3.jpg',
+  ];
+
+  const prideGalaImages = [
+    '/pride-gala-group.jpg',
+    '/pride-gala-celebration.jpg',
+    '/pride-gala-speaker.jpg',
+    '/pride-gala-moment.jpg',
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setImageIndex((prev) => (prev + 1) % heroImages.length);
     }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAvanTechImageIndex((prev) => (prev + 1) % avanTechImages.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPrideGalaImageIndex((prev) => (prev + 1) % prideGalaImages.length);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -117,32 +149,20 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* Robotics Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
+          {/* Robotics Image - Rotating */}
+          <div className="relative h-80 md:h-96 rounded-xl overflow-hidden shadow-lg">
+            {avanTechImages.map((img, idx) => (
               <Image
-                src="/robotics-bootcamp-1.jpg"
-                alt="Robotics bootcamp - hands-on learning"
+                key={idx}
+                src={img}
+                alt="AvanTech innovation and robotics training"
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
+                className={`object-cover transition-opacity duration-700 ${
+                  idx === avanTechImageIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+                priority={idx === 0}
               />
-            </div>
-            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/robotics-bootcamp-2.jpg"
-                alt="AvanTech youth coding session"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative h-64 md:h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/robotics-bootcamp-3.jpg"
-                alt="Innovation and robotics training"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+            ))}
           </div>
         </div>
       </div>
@@ -163,49 +183,20 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Image Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-            {/* Large Featured Image */}
-            <div className="relative h-80 md:h-96 lg:row-span-2 rounded-xl overflow-hidden shadow-xl">
+          {/* Image Gallery - Rotating Single Image */}
+          <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-xl">
+            {prideGalaImages.map((img, idx) => (
               <Image
-                src="/pride-gala-group.jpg"
-                alt="Pride Gala youth celebration with golden masks"
+                key={idx}
+                src={img}
+                alt="Pride Gala celebration and runway moments"
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
+                className={`object-cover transition-opacity duration-700 ${
+                  idx === prideGalaImageIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+                priority={idx === 0}
               />
-            </div>
-
-            {/* Top Right Image */}
-            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/pride-gala-celebration.jpg"
-                alt="Pride Gala community gathering and mingling"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            {/* Bottom Right Top */}
-            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/pride-gala-speaker.jpg"
-                alt="Youth speaker at Pride Gala with geometric patterns"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
-
-          {/* Bottom Gallery Row */}
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-1 gap-6">
-            <div className="relative h-80 rounded-xl overflow-hidden shadow-lg">
-              <Image
-                src="/pride-gala-moment.jpg"
-                alt="Intimate moment at Pride Gala dinner"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+            ))}
           </div>
 
           {/* CTA */}
