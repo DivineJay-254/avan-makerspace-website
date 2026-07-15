@@ -21,25 +21,42 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="w-full bg-white">
-      {/* Hero Section - 50/50 Split */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
-          {/* Left: Content */}
-          <div className="order-2 lg:order-1">
+    <section className="w-full">
+      {/* Hero Section - Full Width Background with Content Overlay */}
+      <div className="relative w-full min-h-screen lg:min-h-[600px] flex items-center overflow-hidden">
+        {/* Background Images - Rotating */}
+        <div className="absolute inset-0 z-0">
+          {heroImages.map((img, idx) => (
+            <Image
+              key={idx}
+              src={img}
+              alt="Avan community"
+              fill
+              className={`object-cover transition-opacity duration-1000 ${
+                idx === imageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              priority={idx === 0}
+            />
+          ))}
+          {/* Overlay for text readability */}
+          <div className="absolute inset-0 bg-black/40" />
+        </div>
+
+        {/* Content - Positioned Absolutely */}
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full py-16 lg:py-24">
+          <div className="max-w-2xl">
             {/* Tagline */}
-            <p className="text-secondary uppercase tracking-wider font-bold text-xs mb-4">
+            <p className="text-white/90 uppercase tracking-wider font-bold text-xs mb-4">
               Avan Makerspace
             </p>
 
             {/* Main Heading */}
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Empowering Youth Through Innovation & Creativity
             </h1>
 
             {/* Description */}
-            <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
+            <p className="text-lg text-white/85 mb-8 leading-relaxed">
               Avan is a queer-led, refugee-led nonprofit in Kakuma Refugee Camp that creates safe, inclusive spaces where displaced youth discover talents, develop digital and creative skills, and build sustainable futures through innovation, entrepreneurship, and community.
             </p>
 
@@ -53,7 +70,7 @@ export default function Hero() {
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center px-8 py-3 border-2 border-secondary text-secondary font-semibold rounded-full hover:bg-secondary/5 transition"
+                className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition"
               >
                 Learn More
               </Link>
@@ -62,35 +79,17 @@ export default function Hero() {
             {/* Impact Stats */}
             <div className="grid grid-cols-3 gap-6">
               <div>
-                <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">120+</p>
-                <p className="text-sm text-foreground/60">Youth Trained</p>
+                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">120+</p>
+                <p className="text-sm text-white/70">Youth Trained</p>
               </div>
               <div>
-                <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">7</p>
-                <p className="text-sm text-foreground/60">Programs</p>
+                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">7</p>
+                <p className="text-sm text-white/70">Programs</p>
               </div>
               <div>
-                <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">60%</p>
-                <p className="text-sm text-foreground/60">Women & Girls</p>
+                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">60%</p>
+                <p className="text-sm text-white/70">Women & Girls</p>
               </div>
-            </div>
-          </div>
-
-          {/* Right: Image */}
-          <div className="order-1 lg:order-2">
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden shadow-lg">
-              {heroImages.map((img, idx) => (
-                <Image
-                  key={idx}
-                  src={img}
-                  alt="Avan community"
-                  fill
-                  className={`object-cover transition-opacity duration-1000 ${
-                    idx === imageIndex ? 'opacity-100' : 'opacity-0'
-                  }`}
-                  priority={idx === 0}
-                />
-              ))}
             </div>
           </div>
         </div>
