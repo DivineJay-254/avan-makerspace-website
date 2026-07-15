@@ -107,22 +107,6 @@ export default function Hero() {
                 Learn More
               </Link>
             </div>
-
-            {/* Impact Stats */}
-            <div className="grid grid-cols-3 gap-6">
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">120+</p>
-                <p className="text-sm text-white/70">Youth Trained</p>
-              </div>
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">7</p>
-                <p className="text-sm text-white/70">Programs</p>
-              </div>
-              <div>
-                <p className="text-3xl lg:text-4xl font-bold text-white mb-2">60%</p>
-                <p className="text-sm text-white/70">Women & Girls</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -176,10 +160,10 @@ export default function Hero() {
               Celebration & Community
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              Pride Gala Dinner
+              Pride Gala Dinner Recap
             </h2>
             <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-              Celebrating LGBTQ+ youth on June 29, 2026. A night of runway performances, cultural expression, and community pride in Kakuma.
+              A celebration of LGBTQ+ youth leadership, cultural pride, and community belonging. Our June 29, 2026 event showcased runway performances, cultural expression, and the vibrant spirit of Kakuma&apos;s queer community.
             </p>
           </div>
 
@@ -334,7 +318,7 @@ export default function Hero() {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="bg-gray-50 rounded-xl p-6">
-            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">120+</p>
+            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">200+</p>
             <p className="text-sm text-foreground/60">Youth trained across programs</p>
           </div>
           <div className="bg-gray-50 rounded-xl p-6">
