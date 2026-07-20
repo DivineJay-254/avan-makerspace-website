@@ -80,7 +80,11 @@ const programs = [
       'Gallery representation and artist development',
     ],
     impact: 'Youth process trauma through creative expression, build confidence and self-worth, develop professional art practices, and contribute to community cultural vibrancy.',
-    images: ['/pekee-runway-training.jpg', '/pekee-mentorship.jpg', '/pekee-team-showcase.jpg'],
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art3-oPrfuMbeewCYJVzxyEFqCy43mY3ssL.jpg',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art1-19VmoiXbjhDmnIFdJvWveUx3kGLuB2.jpg',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-aXmBdlhQ5WgShwGaKibyKj0BxADw5d.jpg',
+    ],
     color: 'text-accent',
     slug: 'i-am-art',
   },
