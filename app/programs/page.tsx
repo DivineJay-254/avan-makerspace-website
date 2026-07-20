@@ -22,7 +22,11 @@ const programs = [
       'Hackathons and innovation competitions',
     ],
     impact: 'Participants gain access to in-demand digital economy skills, create income opportunities through freelancing, and position themselves as innovators solving community problems.',
-    images: ['/robotics-bootcamp-1.jpg', '/robotics-bootcamp-2.jpg', '/robotics-bootcamp-3.jpg'],
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics1-UeqF88DsHMo8rGrCgofrXwo9x8OeDo.jpg',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics-NMPVhOJjcxPlE8LPXsa8Nao6uAGkIF.jpg',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics2-bVjBkDbmNrb2yycZKdHeZGQYYBINms.jpg',
+    ],
     color: 'text-primary',
     slug: 'avantech',
   },

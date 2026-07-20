@@ -50,9 +50,9 @@ export default function Hero() {
   ];
 
   const avanTechImages = [
-    '/robotics-bootcamp-1.jpg',
-    '/robotics-bootcamp-2.jpg',
-    '/robotics-bootcamp-3.jpg',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics1-UeqF88DsHMo8rGrCgofrXwo9x8OeDo.jpg',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics-NMPVhOJjcxPlE8LPXsa8Nao6uAGkIF.jpg',
+    'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics2-bVjBkDbmNrb2yycZKdHeZGQYYBINms.jpg',
   ];
 
   const prideGalaImages = [

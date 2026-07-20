@@ -25,7 +25,11 @@ const programsData = {
     ],
     impact: 'Participants gain access to in-demand digital economy skills, create income opportunities through freelancing, and position themselves as innovators solving community problems.',
     fullImpact: 'Youth in AvanTech develop marketable skills that are in high demand globally. Many participants have already generated income through freelance web development and digital work. The program builds not just technical skills but confidence, creativity, and entrepreneurial mindset—preparing participants for success in an increasingly digital world.',
-    images: ['/robotics-bootcamp-1.jpg', '/robotics-bootcamp-2.jpg', '/robotics-bootcamp-3.jpg'],
+    images: [
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics1-UeqF88DsHMo8rGrCgofrXwo9x8OeDo.jpg',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics-NMPVhOJjcxPlE8LPXsa8Nao6uAGkIF.jpg',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/robotics2-bVjBkDbmNrb2yycZKdHeZGQYYBINms.jpg',
+    ],
     color: 'text-primary',
     slug: 'avantech',
     curriculum: [
