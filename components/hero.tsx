@@ -38,9 +38,9 @@ export default function Hero() {
               priority={idx === 0}
             />
           ))}
-          {/* Overlay keeps copy readable across light and dark image areas. */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/30" />
-          <div className="absolute inset-0 bg-black/10" />
+          {/* A deep, even veil keeps every word readable as the images rotate. */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/70 to-black/60" />
+          <div className="absolute inset-0 bg-black/15" />
         </div>
 
         {/* Content - Positioned Absolutely */}
