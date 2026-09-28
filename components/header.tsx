@@ -51,7 +51,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
+            className="lg:hidden p-2 text-gray-900 hover:bg-gray-100 rounded-lg"
             aria-label="Toggle menu"
           >
             <svg
@@ -75,42 +75,42 @@ export default function Header() {
           <div className="lg:hidden mt-4 space-y-2 pb-4 border-t border-gray-200 pt-4">
             <Link
               href="/"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
               href="/programs"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Programs
             </Link>
             <Link
               href="/impact"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Impact
             </Link>
             <Link
               href="/approach"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Approach
             </Link>
             <Link
               href="/get-involved"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg text-gray-900 hover:bg-gray-100 font-medium"
               onClick={() => setIsOpen(false)}
             >
               Get Involved
