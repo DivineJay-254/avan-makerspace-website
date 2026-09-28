@@ -21,29 +21,29 @@ export default function Header() {
               className="h-12 w-auto"
             />
             <div className="hidden sm:block">
-              <h1 className="text-lg font-bold text-foreground">AVAN</h1>
-              <p className="text-xs text-foreground/60">Refugee-Led Innovation</p>
+              <h1 className="text-lg font-bold text-gray-950">AVAN</h1>
+              <p className="text-xs text-gray-700">Refugee-Led Innovation</p>
             </div>
           </Link>
 
           {/* Desktop Navigation - Center/Right */}
           <div className="hidden lg:flex items-center gap-8">
-            <Link href="/" className="text-foreground hover:text-secondary font-medium text-sm">
+            <Link href="/" className="text-gray-900 hover:text-secondary font-medium text-sm">
               Home
             </Link>
-            <Link href="/about" className="text-foreground hover:text-secondary font-medium text-sm">
+            <Link href="/about" className="text-gray-900 hover:text-secondary font-medium text-sm">
               About
             </Link>
-            <Link href="/programs" className="text-foreground hover:text-secondary font-medium text-sm">
+            <Link href="/programs" className="text-gray-900 hover:text-secondary font-medium text-sm">
               Programs
             </Link>
-            <Link href="/impact" className="text-foreground hover:text-secondary font-medium text-sm">
+            <Link href="/impact" className="text-gray-900 hover:text-secondary font-medium text-sm">
               Impact
             </Link>
-            <Link href="/approach" className="text-foreground hover:text-secondary font-medium text-sm">
+            <Link href="/approach" className="text-gray-900 hover:text-secondary font-medium text-sm">
               Approach
             </Link>
-            <Link href="/get-involved" className="text-foreground hover:text-secondary font-medium text-sm">
+            <Link href="/get-involved" className="text-gray-900 hover:text-secondary font-medium text-sm">
               Get Involved
             </Link>
           </div>
