@@ -12,7 +12,7 @@ const programs = [
     id: 1,
     name: 'AvanTech: Digital Innovation',
     tagline: 'Technology, AI, Robotics & Coding',
-    description: 'Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.',
+    description: 'AvanTech is the technology and innovation division of Avan Makerspace, a refugee-led creative and innovation hub based in Kakuma Refugee Camp, Kenya. Through practical technology education, robotics, engineering, electronics, artificial intelligence and product development, young people learn by doing and turn ideas into prototypes.',
     details: [
       'Robotics & mechanical engineering (LEGO, Arduino)',
       'Web and mobile app development',

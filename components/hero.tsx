@@ -182,10 +182,10 @@ export default function Hero() {
                 Our Programs
               </p>
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                AvanTech: Digital Innovation & Robotics
+                Technology Is Better When We Build It.
               </h2>
               <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-                Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.
+                AvanTech is the technology and innovation division of Avan Makerspace, a refugee-led creative and innovation hub based in Kakuma Refugee Camp, Kenya. Through robotics, electronics, automation and hands-on engineering, young innovators explore technology and turn ideas into practical solutions—from smart homes and automated doors to voice-controlled vehicles and robotic rovers.
               </p>
               <Link href="/programs/avantech" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
                 Explore AvanTech

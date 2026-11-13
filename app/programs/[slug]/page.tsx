@@ -7,6 +7,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import PartnershipModal from '@/components/partnership-modal';
 import Image from 'next/image';
+import AvanTechPage from '@/components/avantech-page';
 
 const programsData = {
   avantech: {
@@ -213,6 +214,10 @@ export default function ProgramDetailPage() {
 
     return () => clearInterval(interval);
   }, [program]);
+
+  if (slug === 'avantech') {
+    return <AvanTechPage />;
+  }
 
   if (!program) {
     return (
