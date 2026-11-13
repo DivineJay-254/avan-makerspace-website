@@ -93,7 +93,7 @@ export default function Approach() {
                   <li>Miradede collection showcases at fashion shows</li>
                   <li>Pekee Models runway performances</li>
                   <li>I Am Art exhibitions and gallery events</li>
-                  <li>Pride event performances by dancers and musicians</li>
+                  <li>Community celebration performances by dancers and musicians</li>
                   <li>Tech boot camp demo days and hackathon competitions</li>
                 </ul>
               </div>

@@ -8,7 +8,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-sm border-b border-gray-200">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-sm">
       <nav className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between">
           {/* Logo & Tagline - Left */}
@@ -22,12 +22,12 @@ export default function Header() {
             />
             <div className="hidden sm:block">
               <h1 className="text-lg font-bold text-foreground">AVAN</h1>
-              <p className="text-xs text-foreground/60">Refugee-Led Innovation</p>
+              <p className="text-xs text-muted-foreground">Refugee-Led, Inclusive Innovation</p>
             </div>
           </Link>
 
           {/* Desktop Navigation - Center/Right */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-5">
             <Link href="/" className="text-foreground hover:text-secondary font-medium text-sm">
               Home
             </Link>
@@ -40,6 +40,9 @@ export default function Header() {
             <Link href="/impact" className="text-foreground hover:text-secondary font-medium text-sm">
               Impact
             </Link>
+            <Link href="/events" className="text-foreground hover:text-secondary font-medium text-sm">Events</Link>
+            <Link href="/news" className="text-foreground hover:text-secondary font-medium text-sm">News</Link>
+            <Link href="/gallery" className="text-foreground hover:text-secondary font-medium text-sm">Gallery</Link>
             <Link href="/approach" className="text-foreground hover:text-secondary font-medium text-sm">
               Approach
             </Link>
@@ -54,8 +57,10 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
+            className="xl:hidden p-2 hover:bg-muted rounded-lg"
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-navigation"
           >
             <svg
               className="w-6 h-6"
@@ -75,52 +80,55 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden mt-4 space-y-2 pb-4 border-t border-gray-200 pt-4">
+          <div id="mobile-navigation" className="xl:hidden mt-4 space-y-2 pb-4 border-t border-border pt-4">
             <Link
               href="/"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg hover:bg-muted font-medium"
               onClick={() => setIsOpen(false)}
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg hover:bg-muted font-medium"
               onClick={() => setIsOpen(false)}
             >
               About
             </Link>
             <Link
               href="/programs"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg hover:bg-muted font-medium"
               onClick={() => setIsOpen(false)}
             >
               Programs
             </Link>
             <Link
               href="/impact"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg hover:bg-muted font-medium"
               onClick={() => setIsOpen(false)}
             >
               Impact
             </Link>
+            <Link href="/events" className="block px-3 py-2 rounded-lg hover:bg-muted font-medium" onClick={() => setIsOpen(false)}>Events</Link>
+            <Link href="/news" className="block px-3 py-2 rounded-lg hover:bg-muted font-medium" onClick={() => setIsOpen(false)}>News</Link>
+            <Link href="/gallery" className="block px-3 py-2 rounded-lg hover:bg-muted font-medium" onClick={() => setIsOpen(false)}>Gallery</Link>
             <Link
               href="/approach"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg hover:bg-muted font-medium"
               onClick={() => setIsOpen(false)}
             >
               Approach
             </Link>
             <Link
               href="/context"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg hover:bg-muted font-medium"
               onClick={() => setIsOpen(false)}
             >
               Context
             </Link>
             <Link
               href="/get-involved"
-              className="block px-3 py-2 rounded-lg hover:bg-gray-100 font-medium"
+              className="block px-3 py-2 rounded-lg hover:bg-muted font-medium"
               onClick={() => setIsOpen(false)}
             >
               Get Involved

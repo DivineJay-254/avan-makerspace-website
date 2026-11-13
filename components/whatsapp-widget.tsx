@@ -20,7 +20,7 @@ export default function WhatsAppWidget() {
       {/* WhatsApp Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 p-4 group"
+        className="fixed bottom-6 right-6 z-40 bg-green-800 hover:bg-green-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 p-4 group"
         aria-label="Open WhatsApp chat"
       >
         <svg
@@ -34,8 +34,8 @@ export default function WhatsAppWidget() {
 
       {/* WhatsApp Menu */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-40 bg-white rounded-lg shadow-2xl overflow-hidden min-w-max">
-          <div className="bg-green-500 text-white px-4 py-3 font-semibold">
+        <div className="fixed bottom-24 right-6 z-40 bg-card text-foreground rounded-lg shadow-2xl overflow-hidden min-w-max">
+          <div className="bg-green-800 text-white px-4 py-3 font-semibold">
             Chat with us on WhatsApp
           </div>
           <div className="divide-y">
@@ -46,14 +46,14 @@ export default function WhatsAppWidget() {
                   handleWhatsAppClick(item.number);
                   setIsOpen(false);
                 }}
-                className="w-full text-left px-4 py-3 hover:bg-gray-50 transition-colors text-gray-800 font-medium flex items-center space-x-2"
+                className="w-full text-left px-4 py-3 hover:bg-muted transition-colors text-foreground font-medium flex items-center gap-2"
               >
                 <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M16.6915026,12.4744748 C16.6915026,13.4788342 16.4472231,14.4239482 15.9846905,15.2599618 L16.4472231,19.6563168 L11.7181339,17.1064813 C10.6337155,17.4595301 9.47205898,17.6275362 8.24844024,17.6275362 C4.15174502,17.6275362 0.8,14.0152284 0.8,9.68037427 C0.8,5.34551969 4.15174502,1.73321188 8.24844024,1.73321188 C12.3451454,1.73321188 15.6968904,5.34551969 15.6968904,9.68037427 L15.6968904,12.4744748 L16.6915026,12.4744748 Z M23.2,12.4744748 C23.2,13.4788342 22.9557205,14.4239482 22.4931879,15.2599618 L22.9557205,19.6563168 L18.2266312,17.1064813 C17.1422128,17.4595301 15.9805562,17.6275362 14.7569375,17.6275362 C10.6602319,17.6275362 7.30848688,14.0152284 7.30848688,9.68037427 C7.30848688,5.34551969 10.6602319,1.73321188 14.7569375,1.73321188 C18.8536431,1.73321188 22.2053881,5.34551969 22.2053881,9.68037427 L22.2053881,12.4744748 L23.2,12.4744748 Z" />
                 </svg>
                 <div>
                   <div className="text-sm font-semibold">{item.name}</div>
-                  <div className="text-xs text-gray-500">{item.number}</div>
+                  <div className="text-xs text-muted-foreground">{item.number}</div>
                 </div>
               </button>
             ))}

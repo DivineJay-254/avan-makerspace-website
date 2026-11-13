@@ -1,32 +1,7 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-
-function AnimatedStat({ end, label, suffix = '+' }: { end: number; label: string; suffix?: string }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const duration = 2000;
-    const steps = 60;
-    const stepValue = end / steps;
-    let current = 0;
-
-    const interval = setInterval(() => {
-      current += stepValue;
-      if (current >= end) {
-        setCount(end);
-        clearInterval(interval);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, duration / steps);
-
-    return () => clearInterval(interval);
-  }, [end]);
-
+function Stat({ value, label, suffix = '' }: { value: number; label: string; suffix?: string }) {
   return (
     <div className="text-center">
-      <div className="text-5xl sm:text-6xl font-bold text-primary mb-3">{count}{suffix}</div>
+      <div className="text-5xl sm:text-6xl font-bold text-primary mb-3">{value}{suffix}</div>
       <p className="text-foreground text-lg">{label}</p>
     </div>
   );
@@ -45,15 +20,14 @@ export default function Stats() {
               Transforming Lives in Kakuma
             </h2>
             <p className="text-foreground/70 text-lg max-w-2xl mx-auto">
-              Since our founding, and before securing any external funding, we&apos;ve reached 200+ young people through community-led initiatives. Here&apos;s what that impact represents.
+              Through community-led initiatives, Avan Makerspace has reached more than 200 young people across seven program pillars. Here&apos;s what that impact represents.
             </p>
           </div>
 
           {/* Key Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 mb-16">
-            <AnimatedStat end={200} label="Youth Reached" suffix="+" />
-            <AnimatedStat end={7} label="Program Pillars" suffix="" />
-            <AnimatedStat end={0} label="External Funding Used" suffix="$" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-8 mb-16">
+            <Stat value={200} label="Young People Reached" suffix="+" />
+            <Stat value={7} label="Program Pillars" />
           </div>
 
           {/* Program-Specific Impact */}
@@ -101,12 +75,12 @@ export default function Stats() {
           {/* Additional Impact Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 border-t border-border pt-12">
             <div>
-              <p className="text-3xl font-bold text-secondary mb-2">50%</p>
-              <p className="text-foreground/70 font-medium">Women & Girls Represented</p>
+              <p className="text-lg font-bold text-secondary mb-2">Inclusive</p>
+              <p className="text-foreground/75 font-medium">Women and girls are welcomed across our programs</p>
             </div>
             <div>
-              <p className="text-3xl font-bold text-accent mb-2">2</p>
-              <p className="text-foreground/70 font-medium">Major Public Showcases</p>
+              <p className="text-lg font-bold text-accent mb-2">Community</p>
+              <p className="text-foreground/75 font-medium">Public showcases share youth creativity</p>
             </div>
             <div>
               <p className="text-3xl font-bold text-primary mb-2">4</p>
@@ -141,7 +115,7 @@ export default function Stats() {
                     <li>Physical and social space for training, creation, and gathering</li>
                     <li>Volunteer and partner-provided mentorship, coaching, and technical expertise</li>
                     <li>Equipment and materials, from laptops to sewing machines to art supplies</li>
-                    <li>Community trust, built through refugee- and queer-led leadership</li>
+                    <li>Community trust, built through refugee- and host-community leadership</li>
                   </ul>
                 </div>
               </div>

@@ -5,11 +5,28 @@ import { ArrowLeft, ArrowRight, CheckCircle2, Circle } from 'lucide-react'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { aquaSmart, avantechProjects } from '@/lib/avantech-projects'
+import { cmsUsesFirestore, getMediaUrl, getPublishedBySlug, getPublicSettings } from '@/lib/firebase/content'
+import type { CmsRecord } from '@/lib/firebase/types'
 
 type PageProps = { params: Promise<{ slug: string; project: string }> }
 
+function CmsProjectDetail({ project }: Readonly<{ project: CmsRecord }>) {
+  const imagePath = String(project.featuredImage || '')
+  const imageUrl = imagePath ? getMediaUrl('projects', project.id, imagePath) : ''
+  const technologies = Array.isArray(project.technologies) ? project.technologies.map(String) : []
+  return (
+    <div className="w-full"><Header /><main>
+      <div className="bg-muted/30 py-4"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><Link href="/programs/avantech#projects" className="inline-flex items-center gap-2 text-secondary hover:underline"><ArrowLeft aria-hidden="true" size={17} /> Back to AvanTech projects</Link></div></div>
+      <section className="bg-primary text-primary-foreground"><div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:px-8 lg:py-20"><div><p className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-secondary">{String(project.category || 'Project')}</p><h1 className="mb-5 text-4xl font-bold leading-tight sm:text-5xl">{String(project.title || '')}</h1><p className="text-lg leading-relaxed text-primary-foreground/85">{String(project.description || '')}</p></div>{imageUrl ? <div className="relative aspect-[4/3] overflow-hidden rounded-2xl"><Image src={imageUrl} alt={String(project.imageAlt || project.title || '')} fill priority sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" unoptimized /></div> : <div className="flex aspect-[4/3] items-center justify-center rounded-2xl border border-white/20 bg-white/5 p-8 text-center text-primary-foreground/75">No project image has been published.</div>}</div></section>
+      <section className="py-16 sm:py-20"><div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8"><h2 className="text-3xl font-bold">Project overview</h2><p className="mt-5 whitespace-pre-wrap text-lg leading-relaxed text-muted-foreground">{String(project.overview || project.description || '')}</p>{typeof project.opportunity === 'string' && project.opportunity ? <section className="mt-10"><h3 className="text-xl font-bold">The opportunity</h3><p className="mt-3 whitespace-pre-wrap leading-relaxed text-muted-foreground">{String(project.opportunity)}</p></section> : null}{typeof project.build === 'string' && project.build ? <section className="mt-8"><h3 className="text-xl font-bold">What students set out to build</h3><p className="mt-3 whitespace-pre-wrap leading-relaxed text-muted-foreground">{String(project.build)}</p></section> : null}{technologies.length ? <section className="mt-10"><h3 className="text-xl font-bold">Technologies and concepts</h3><ul className="mt-4 grid gap-3 sm:grid-cols-2">{technologies.map((item) => <li key={item} className="rounded-lg bg-muted/50 p-4">{item}</li>)}</ul></section> : null}{typeof project.learning === 'string' && project.learning ? <section className="mt-10"><h3 className="text-xl font-bold">Learning outcomes</h3><p className="mt-3 whitespace-pre-wrap leading-relaxed text-muted-foreground">{String(project.learning)}</p></section> : null}{typeof project.status === 'string' && project.status ? <p className="mt-10 rounded-xl bg-muted/40 p-4 text-sm text-muted-foreground">Development status: {String(project.status)}</p> : null}</div></section>
+    </main><Footer /></div>
+  )
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { project } = await params
+  const cmsProject = await getPublishedBySlug('projects', project)
+  if (cmsProject) return { title: `${String(cmsProject.title)} | AvanTech`, description: String(cmsProject.description || '') }
   if (project === 'aquasmart') return { title: 'AquaSmart | AvanTech', description: aquaSmart.description }
   const item = avantechProjects.find((entry) => entry.slug === project)
   return item ? { title: `${item.title} | AvanTech`, description: item.description } : { title: 'Project not found | AvanTech' }
@@ -18,6 +35,9 @@ export async function generateMetadata({ params }: PageProps) {
 export default async function AvanTechProjectPage({ params }: PageProps) {
   const { slug, project: projectSlug } = await params
   if (slug !== 'avantech') notFound()
+  const [settings, cmsProject] = await Promise.all([getPublicSettings(), getPublishedBySlug('projects', projectSlug)])
+  if (cmsProject) return <CmsProjectDetail project={cmsProject} />
+  if (cmsUsesFirestore(settings)) notFound()
   const isAquaSmart = projectSlug === 'aquasmart'
   const project = avantechProjects.find((entry) => entry.slug === projectSlug)
   if (!isAquaSmart && !project) notFound()

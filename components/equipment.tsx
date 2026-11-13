@@ -111,7 +111,7 @@ export default function Equipment() {
           <p className="text-lg text-foreground/70 mb-6">
             Ready to support youth transformation? Join us in scaling Avan Makerspace.
           </p>
-          <button className="inline-flex items-center px-8 py-3 rounded-lg bg-accent hover:bg-accent/90 text-white font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          <button className="inline-flex items-center px-8 py-3 rounded-lg bg-accent hover:bg-accent/90 text-accent-foreground font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
             Get Involved
             <svg className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
