@@ -28,10 +28,11 @@ export async function POST(request: NextRequest) {
     if (!descriptor.signature(bytes)) throw new ApiError('The selected file does not match its image type.', 415, 'IMAGE_SIGNATURE_INVALID')
     const path = `content/${admin.uid}/${randomUUID()}.${descriptor.extension}`
     const { bucket } = getFirebaseAdmin()
+    if (!bucket) throw new ApiError('Image uploads require a Firebase Storage bucket. Use an existing image path from /public until Storage is enabled.', 503, 'FIREBASE_STORAGE_NOT_CONFIGURED')
     const object = bucket.file(path)
     await object.save(bytes, { resumable: false, metadata: { contentType: file.type, cacheControl: 'private, no-store' } })
     const [previewUrl] = await object.getSignedUrl({ action: 'read', expires: Date.now() + 15 * 60 * 1000 })
-    return Response.json({ path, previewUrl }, { status: 201 })
+    return Response.json({ uploads: [{ path, url: previewUrl }] }, { status: 201 })
   } catch (error) {
     return apiErrorResponse(error)
   }

@@ -20,11 +20,19 @@ export type CmsRecord = {
   [key: string]: unknown
 }
 
+export const defaultSocialLinks = {
+  socialTikTok: 'https://www.tiktok.com/@avanmakerspace',
+  socialFacebook: 'https://www.facebook.com/avanmakerspace',
+  socialInstagram: 'https://www.instagram.com/avanmakerspace',
+  socialLinkedin: 'https://www.linkedin.com/company/avanmakerspace/',
+}
+
 export type SiteSettings = {
   organizationName?: string
   contactEmail?: string
   contactPhone?: string
   location?: string
+  socialTikTok?: string
   socialFacebook?: string
   socialInstagram?: string
   socialLinkedin?: string

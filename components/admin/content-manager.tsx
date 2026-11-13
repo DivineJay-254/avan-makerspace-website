@@ -186,8 +186,14 @@ export function ContentManager({ resource, initialRecords }: ContentManagerProps
       return (
         <div key={field.name}>
           <label htmlFor={fieldId} className="block text-sm font-semibold">{field.label}{field.required ? ' *' : ''}</label>
-          <input id={fieldId} type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple={field.type === 'images'} disabled={busy} onChange={(event) => { void uploadImages(field, event.currentTarget.files); event.currentTarget.value = '' }} aria-describedby={field.help ? helpId : undefined} className={`${className} file:mr-3 file:rounded-md file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-xs file:font-semibold`} />
-          {field.help && <p id={helpId} className="mt-1 text-xs text-muted-foreground">{field.help}</p>}
+          {field.type === 'images' ? (
+            <textarea id={fieldId} rows={3} value={displayValue(value)} onChange={(event) => setField(field.name, event.target.value.split('\n').map((path) => path.trim()).filter(Boolean))} placeholder="/images/project-one.jpg" aria-describedby={helpId} className={className} />
+          ) : (
+            <input id={fieldId} type="text" required={field.required} value={displayValue(value)} onChange={(event) => setField(field.name, event.target.value)} placeholder="/images/project.jpg" aria-describedby={helpId} className={className} />
+          )}
+          <p id={helpId} className="mt-1 text-xs text-muted-foreground">{field.help ?? 'Use an existing image path under /public. Uploading new images requires a Firebase Storage bucket.'}</p>
+          <label htmlFor={`${fieldId}-upload`} className="mt-3 block text-sm font-medium">Upload {field.type === 'images' ? 'images' : 'an image'} (requires Firebase Storage)</label>
+          <input id={`${fieldId}-upload`} type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple={field.type === 'images'} disabled={busy} onChange={(event) => { void uploadImages(field, event.currentTarget.files); event.currentTarget.value = '' }} className={`${className} file:mr-3 file:rounded-md file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-xs file:font-semibold`} />
           {paths.length > 0 && <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">{paths.map((path, index) => {
             const url = previews[index] ?? imageUrl(resource, selected, path)
             return <div key={`${path}-${index}`} className="relative overflow-hidden rounded-lg border border-border bg-muted">{url ? <img src={url} alt={`${field.label} preview ${index + 1}`} className="aspect-[4/3] w-full object-cover" /> : <p className="p-3 text-xs text-muted-foreground">Image available after this record is saved.</p>}<button type="button" onClick={() => setField(field.name, field.type === 'images' ? paths.filter((_, pathIndex) => pathIndex !== index) : '')} className="absolute right-2 top-2 rounded-md bg-background/90 px-2 py-1 text-xs font-semibold text-destructive">Remove</button></div>

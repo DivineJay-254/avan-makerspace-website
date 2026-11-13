@@ -6,6 +6,15 @@ const optionalText = (maximum = 2000) => z.string().trim().max(maximum).optional
 const slugSchema = z.string().trim().min(2).max(90).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use a lowercase URL slug with hyphens.')
 const statusSchema = z.enum(['draft', 'published', 'archived'])
 const stringList = z.array(z.string().trim().min(1).max(300)).max(30).default([])
+const imageReference = z.string().trim().min(1).max(1000).refine((value) => {
+  const safePath = !value.includes('..') && !value.startsWith('//') && !/[?#%\\]/.test(value)
+  return safePath && (value.startsWith('content/') || value.startsWith('/'))
+}, 'Use an existing /public image path or a Firebase Storage content path.')
+const optionalImageReference = z.union([z.literal(''), imageReference]).default('')
+const socialUrl = z.union([
+  z.literal(''),
+  z.string().trim().url().max(500).refine((value) => value.startsWith('https://'), 'Use an HTTPS social profile URL.'),
+]).default('')
 
 const eventSchema = z.object({
   title: requiredText(140),
@@ -16,7 +25,7 @@ const eventSchema = z.object({
   endTime: optionalText(20),
   timeZone: optionalText(80),
   venue: requiredText(240),
-  featuredImage: optionalText(1000),
+  featuredImage: optionalImageReference,
   registrationEnabled: z.boolean().default(false),
   registrationDeadline: optionalText(40),
   status: statusSchema,
@@ -30,7 +39,7 @@ const programSchema = z.object({
   category: requiredText(100),
   tagline: optionalText(240),
   targetAudience: optionalText(500),
-  featuredImage: optionalText(1000),
+  featuredImage: optionalImageReference,
   details: stringList,
   impact: optionalText(1500),
   status: statusSchema,
@@ -43,8 +52,8 @@ const projectSchema = z.object({
   description: requiredText(5000),
   category: requiredText(100),
   technologies: stringList,
-  featuredImage: optionalText(1000),
-  additionalImages: z.array(z.string().trim().min(1).max(1000)).max(20).default([]),
+  featuredImage: optionalImageReference,
+  additionalImages: z.array(imageReference).max(20).default([]),
   developmentStatus: optionalText(500),
   status: statusSchema,
   featured: z.boolean().default(false),
@@ -55,7 +64,7 @@ const postSchema = z.object({
   slug: slugSchema,
   excerpt: requiredText(500),
   content: requiredText(20000),
-  featuredImage: optionalText(1000),
+  featuredImage: optionalImageReference,
   author: requiredText(120),
   category: requiredText(100),
   status: statusSchema,
@@ -65,8 +74,8 @@ const postSchema = z.object({
 
 const gallerySchema = z.object({
   title: requiredText(140),
-  imageUrl: optionalText(1000),
-  imagePath: requiredText(1000),
+  imageUrl: optionalImageReference,
+  imagePath: imageReference,
   caption: optionalText(1000),
   category: requiredText(100),
   alt: requiredText(240),
@@ -87,9 +96,10 @@ const settingsSchema = z.object({
   contactEmail: z.union([z.literal(''), z.string().trim().email().max(254)]).default(''),
   contactPhone: optionalText(40),
   location: optionalText(240),
-  socialFacebook: z.union([z.literal(''), z.string().url().max(500)]).default(''),
-  socialInstagram: z.union([z.literal(''), z.string().url().max(500)]).default(''),
-  socialLinkedin: z.union([z.literal(''), z.string().url().max(500)]).default(''),
+  socialTikTok: socialUrl,
+  socialFacebook: socialUrl,
+  socialInstagram: socialUrl,
+  socialLinkedin: socialUrl,
   whatsappNumber: optionalText(30),
   footerText: optionalText(1000),
   aboutDescription: optionalText(3000),

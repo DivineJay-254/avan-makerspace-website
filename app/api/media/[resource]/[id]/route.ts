@@ -13,6 +13,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
 
   try {
     const { db, bucket } = getFirebaseAdmin()
+    if (!bucket) return Response.json({ error: 'Image service is not available because Storage is not configured.' }, { status: 503 })
     const snapshot = await db.collection(resource).doc(id).get()
     if (!snapshot.exists) return Response.json({ error: 'Image not found.' }, { status: 404 })
     const data = snapshot.data() ?? {}

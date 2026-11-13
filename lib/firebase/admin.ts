@@ -20,15 +20,14 @@ export function isFirebaseServerConfigured() {
   return Boolean(
     process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
     && process.env.FIREBASE_CLIENT_EMAIL
-    && process.env.FIREBASE_PRIVATE_KEY
-    && process.env.FIREBASE_STORAGE_BUCKET,
+    && process.env.FIREBASE_PRIVATE_KEY,
   )
 }
 
 export function assertFirebaseServerConfigured() {
   if (!isFirebaseServerConfigured()) {
     throw new FirebaseSetupError(
-      'Add the Firebase project ID, service-account email and private key, and Storage bucket to the server environment before using CMS features.',
+      'Add the Firebase project ID, service-account email, and private key to the server environment before using CMS features.',
     )
   }
 
@@ -51,7 +50,7 @@ export function getFirebaseAdmin() {
       privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
     }),
     projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+    ...(process.env.FIREBASE_STORAGE_BUCKET ? { storageBucket: process.env.FIREBASE_STORAGE_BUCKET } : {}),
   }, 'avan-makerspace-admin')
 
   return {
@@ -59,6 +58,8 @@ export function getFirebaseAdmin() {
     auth: getAuth(app),
     appCheck: getAppCheck(app),
     db: getFirestore(app),
-    bucket: getStorage(app).bucket(process.env.FIREBASE_STORAGE_BUCKET),
+    bucket: process.env.FIREBASE_STORAGE_BUCKET
+      ? getStorage(app).bucket(process.env.FIREBASE_STORAGE_BUCKET)
+      : null,
   }
 }

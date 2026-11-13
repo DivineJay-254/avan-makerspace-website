@@ -4,7 +4,7 @@ import { FieldValue, Timestamp, type DocumentData } from 'firebase-admin/firesto
 import { getFirebaseAdmin } from './admin'
 import { validateManagedResource, registrationStatusSchema, messageStatusSchema } from './schema'
 import { ApiError } from './security'
-import { isContentResource, isManagedResource, type CmsRecord, type CmsResource, type ContentResource, type ManagedResource } from './types'
+import { defaultSocialLinks, isContentResource, isManagedResource, type CmsRecord, type CmsResource, type ContentResource, type ManagedResource } from './types'
 
 function serialize(value: unknown): unknown {
   if (value instanceof Timestamp) return value.toDate().toISOString()
@@ -27,6 +27,7 @@ function mediaPaths(data: Record<string, unknown>) {
 async function deleteUnreferencedMedia(paths: string[]) {
   if (!paths.length) return
   const { db, bucket } = getFirebaseAdmin()
+  if (!bucket) return
   const resources: ContentResource[] = ['events', 'programs', 'projects', 'posts', 'gallery']
 
   for (const path of paths) {
@@ -59,7 +60,9 @@ export async function listAdminResource(
 
   if (resource === 'settings') {
     const snapshot = await db.collection('settings').doc('public').get()
-    const settings = snapshot.exists ? record(snapshot.id, snapshot.data() ?? {}) : { id: 'public', cmsEnabled: false }
+    const settings = snapshot.exists
+      ? { ...defaultSocialLinks, ...record(snapshot.id, snapshot.data() ?? {}) }
+      : { id: 'public', cmsEnabled: false, ...defaultSocialLinks }
     return !normalizedQuery || containsSearch(settings, normalizedQuery) ? [settings] : []
   }
 
