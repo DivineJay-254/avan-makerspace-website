@@ -11,12 +11,15 @@ import {
 
 const config = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || 'avanmakerspace-52efe.firebaseapp.com',
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || 'avanmakerspace-52efe',
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || 'avanmakerspace-52efe.firebasestorage.app',
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || '916562877729',
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || '1:916562877729:web:c2696fe3cce1d05ced7260',
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || 'G-4E7H1HKXVX',
 }
 
-const requiredClientConfig = Object.values(config)
+const requiredClientConfig = [config.apiKey, config.authDomain, config.projectId, config.appId]
 
 export function isFirebaseClientConfigured() {
   return requiredClientConfig.every((value) => Boolean(value))

@@ -7,20 +7,17 @@ The website is wired to Firebase, but it will not read or write live data until 
 1. Create a Firebase project for Avan Makerspace and register a Web app. Choose the Firestore location carefully; it cannot be changed after creation.
 2. Enable **Authentication → Email/Password**. Do not enable public account creation. Create the single administrator account in the Firebase Console and mark its email as verified.
 3. Create a **Cloud Firestore** database in production mode. Apply `firebase/firestore.rules` and `firebase/firestore.indexes.json` (or paste the rules in the Firebase Console). Firestore does not require a Storage bucket. The app uses authenticated Next.js server routes, and direct client Firestore access is denied by the rules.
-4. **Optional — image uploads:** Enable **Cloud Storage** and create a bucket only when you are ready to upload CMS images. Without a bucket, CMS, Firestore, and admin login still work; use paths to existing images under `public/` in the image fields. Billing may be required for Storage on new Firebase projects; confirm the current requirement in Firebase Console before enabling uploads.
+4. **Optional — image uploads:** The web config includes a Storage bucket name, but that does not create or activate a bucket. Enable **Cloud Storage**, confirm the bucket exists, and set `FIREBASE_STORAGE_BUCKET` only when ready to upload CMS images. Without it, Firestore, CMS text content, and admin login do not require Storage; use paths to existing images under `public/`. Billing may be required for Storage on new Firebase projects; confirm the current requirement in Firebase Console before enabling uploads.
 5. Configure **App Check** for the Web app with a reCAPTCHA v3 site key. Add the production domain and any preview domains to Firebase Authentication’s authorized domains. `localhost` can be used for local development.
 6. In Firestore, enable TTL for the `_rate_limits.expiresAt` field. The app stores keyed hashes rather than raw IP addresses and uses these documents to expire request-throttle counters.
 
 ## 2. Configure Vercel environment variables
 
-Add these in the connected Vercel project’s **Settings → Vars** for every environment that needs to run the CMS, then redeploy. `NEXT_PUBLIC_*` values are embedded in the client bundle at build time, so changing them requires a new deployment.
+The supplied Avan Makerspace web-app configuration is already used as the public defaults. The existing project variable `apiKey` is mapped to `NEXT_PUBLIC_FIREBASE_API_KEY` at build time; Firebase web API keys are public identifiers, not server credentials. Add the App Check site key and the server-only values below in **Settings → Vars** for each environment, then redeploy. Public overrides are optional and require a new deployment after changes.
 
 | Variable | Value |
 | --- | --- |
-| `NEXT_PUBLIC_FIREBASE_API_KEY` | Web app API key from Firebase project settings |
-| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` | Web app auth domain |
-| `NEXT_PUBLIC_FIREBASE_PROJECT_ID` | Firebase project ID |
-| `NEXT_PUBLIC_FIREBASE_APP_ID` | Web app ID |
+| `apiKey` (already configured) | Mapped into the Firebase client bundle as its public web API key |
 | `NEXT_PUBLIC_FIREBASE_APP_CHECK_SITE_KEY` | reCAPTCHA v3 site key registered with App Check |
 | `FIREBASE_CLIENT_EMAIL` | Service-account client email |
 | `FIREBASE_PRIVATE_KEY` | Service-account private key; keep server-only and preserve newlines (the app also accepts escaped `\\n`) |

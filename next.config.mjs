@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
+const firebaseApiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.apiKey
+
 const nextConfig = {
+  ...(firebaseApiKey ? { env: { NEXT_PUBLIC_FIREBASE_API_KEY: firebaseApiKey } } : {}),
   images: {
     unoptimized: true,
   },
