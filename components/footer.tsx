@@ -4,7 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import PartnershipModal from '@/components/partnership-modal';
 import { useSiteSettings } from '@/components/site-settings-provider';
-import { defaultSocialLinks } from '@/lib/firebase/types';
+import { defaultSocialLinks } from '@/lib/firebase/types'
+import { NewsletterForm } from '@/components/public/newsletter-form'
+;
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -27,8 +29,9 @@ export default function Footer() {
             <p className="text-footer-foreground/80 mb-6">
               Subscribe to receive monthly impact updates, program innovations, partnership opportunities, and stories of transformation from Kakuma youth.
             </p>
-            <div className="flex flex-col justify-center gap-3 sm:flex-row">
-              <Link href="/news" className="rounded-lg bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:bg-primary/90">Read our news</Link>
+            <NewsletterForm />
+            <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
+              <Link href="/news" className="rounded-lg border border-footer-foreground/40 px-6 py-3 font-semibold transition hover:bg-footer-foreground/10">Read our news</Link>
               <Link href="/events" className="rounded-lg border border-footer-foreground/40 px-6 py-3 font-semibold transition hover:bg-footer-foreground/10">Explore events</Link>
             </div>
           </div>

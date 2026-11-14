@@ -43,7 +43,7 @@ The admin dashboard is at `/admin`. It manages events, programs, projects, news 
 
 The `settings/public.cmsEnabled` setting switches legacy program, project, and impact sections to Firestore-only content. Keep it off until those existing entries have been recreated and published in the CMS; while it is off, existing static content is retained and published CMS additions are shown alongside it. Events, news, and gallery pages always use published Firestore records and show a truthful empty/setup state when there is no content.
 
-Contact and event-registration submissions are validated and stored in Firestore. They require App Check in production, honeypot checks, rate limits, normalized emails, and duplicate registration prevention. Contact messages and registrations are private to the administrator. The site displays an on-page success confirmation; no email delivery provider is configured in this project.
+Contact, event-registration, and newsletter submissions are validated and stored in Firestore. Public forms require App Check in production, honeypot checks, and rate limits; newsletter subscriptions require explicit consent and are deduplicated by normalized email. Contact messages, registrations, and newsletter subscribers are private to the administrator. The site displays an on-page success confirmation; no email delivery provider is configured, so newsletter signups are collected but campaign emails are not sent automatically.
 
 ## 5. Deploy rules and the website
 

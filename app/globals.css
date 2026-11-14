@@ -252,4 +252,64 @@
   .animate-pulse-scale {
     animation: pulse-scale 2s ease-in-out infinite;
   }
+
+  @keyframes page-enter {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes loading-sweep {
+    from {
+      transform: translateX(-110%);
+    }
+    to {
+      transform: translateX(260%);
+    }
+  }
+
+  .page-transition {
+    animation: page-enter 320ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  }
+
+  .loading-progress {
+    position: relative;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--secondary) 18%, transparent);
+  }
+
+  .loading-progress::after {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 38%;
+    border-radius: inherit;
+    background: var(--secondary);
+    content: '';
+    animation: loading-sweep 950ms ease-in-out infinite;
+  }
+
+  .loading-block {
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--muted) 88%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

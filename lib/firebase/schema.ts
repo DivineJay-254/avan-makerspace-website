@@ -119,12 +119,19 @@ export const registrationSubmissionSchema = z.object({
   eventId: requiredText(140),
   fullName: requiredText(120),
   email: z.string().trim().email().max(254),
-  phone: z.string().trim().min(7).max(32).regex(/^[+()0-9.\s-]+$/, 'Enter a valid phone number.'),
+  phone: z.string().trim().min(7).max(32).regex(/^[+()0-9.\\s-]+$/, 'Enter a valid phone number.'),
   participantCategory: z.enum(['student', 'educator', 'community-member', 'organization', 'other']),
   organisation: optionalText(160),
   additionalInformation: optionalText(1000),
   company: z.string().max(200).optional().default(''),
 })
+
+export const newsletterSubmissionSchema = z.object({
+  email: z.string().trim().toLowerCase().email().max(254),
+  consent: z.boolean().refine((value) => value, 'Please confirm your email subscription.'),
+  company: z.string().max(200).optional().default(''),
+})
+
 
 export const registrationStatusSchema = z.enum(['pending', 'confirmed', 'waitlisted', 'cancelled'])
 export const messageStatusSchema = z.enum(['unread', 'read', 'archived'])
