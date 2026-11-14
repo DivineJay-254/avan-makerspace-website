@@ -13,11 +13,11 @@ The website is wired to Firebase, but it will not read or write live data until 
 
 ## 2. Configure Vercel environment variables
 
-The supplied Avan Makerspace web-app configuration is already used as the public defaults. The existing project variable `apiKey` is mapped to `NEXT_PUBLIC_FIREBASE_API_KEY` at build time; Firebase web API keys are public identifiers, not server credentials. Add the App Check site key and the server-only values below in **Settings → Vars** for each environment, then redeploy. Public overrides are optional and require a new deployment after changes.
+The supplied Avan Makerspace web-app configuration is already used as the public defaults. The existing project variable `apiKey_2` (or `apiKey`) is mapped to `NEXT_PUBLIC_FIREBASE_API_KEY` at build time; Firebase web API keys are public identifiers, not server credentials. Add the App Check site key and the server-only values below in **Settings → Vars** for each environment, then redeploy. Public overrides are optional and require a new deployment after changes.
 
 | Variable | Value |
 | --- | --- |
-| `apiKey` (already configured) | Mapped into the Firebase client bundle as its public web API key |
+| `apiKey_2` (already configured) | Mapped into the Firebase client bundle as its public web API key |
 | `NEXT_PUBLIC_FIREBASE_APP_CHECK_SITE_KEY` | reCAPTCHA v3 site key registered with App Check |
 | `FIREBASE_CLIENT_EMAIL` | Service-account client email |
 | `FIREBASE_PRIVATE_KEY` | Service-account private key; keep server-only and preserve newlines (the app also accepts escaped `\\n`) |
