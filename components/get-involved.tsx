@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 export default function GetInvolved() {
@@ -179,7 +178,7 @@ export default function GetInvolved() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-6">Who We Hope to Work With</h2>
             <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-              We're seeking partners who share our commitment to refugee empowerment, youth development, and community-led social change.
+              We&apos;re seeking partners who share our commitment to refugee empowerment, youth development, and community-led social change.
             </p>
           </div>
 
@@ -241,7 +240,7 @@ export default function GetInvolved() {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-foreground mb-4">Get in Touch</h2>
             <p className="text-lg text-foreground/70">
-              Ready to get involved? Have questions? We'd love to hear from you and explore how we can work together.
+              Ready to get involved? Have questions? We&apos;d love to hear from you and explore how we can work together.
             </p>
           </div>
 

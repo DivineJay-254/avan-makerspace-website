@@ -5,30 +5,8 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { getRandomizedHeroImages, type HeroImage } from '@/lib/heroImageConfig';
 
-// Animated counter component for stats
 function AnimatedCounter({ end, suffix = '' }: { end: number; suffix?: string }) {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const duration = 2000;
-    const steps = 60;
-    const stepValue = end / steps;
-    let current = 0;
-
-    const interval = setInterval(() => {
-      current += stepValue;
-      if (current >= end) {
-        setCount(end);
-        clearInterval(interval);
-      } else {
-        setCount(Math.floor(current));
-      }
-    }, duration / steps);
-
-    return () => clearInterval(interval);
-  }, [end]);
-
-  return <span>{count}{suffix}</span>;
+  return <span>{end}{suffix}</span>;
 }
 
 export default function Hero() {
@@ -37,7 +15,6 @@ export default function Hero() {
   const [prideGalaImageIndex, setPrideGalaImageIndex] = useState(0);
   const [artImageIndex, setArtImageIndex] = useState(0);
   const [heroImages, setHeroImages] = useState<HeroImage[]>([]);
-  const [isClient, setIsClient] = useState(false);
 
   // Art images for the hero section background
   const artImages = [
@@ -62,10 +39,12 @@ export default function Hero() {
     '/pride-gala-moment.jpg',
   ];
 
-  // Initialize randomized hero images on client side only
   useEffect(() => {
-    setIsClient(true);
-    setHeroImages(getRandomizedHeroImages());
+    const frameId = window.requestAnimationFrame(() => {
+      setHeroImages(getRandomizedHeroImages());
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
   }, []);
 
   useEffect(() => {
@@ -81,21 +60,21 @@ export default function Hero() {
       setAvanTechImageIndex((prev) => (prev + 1) % avanTechImages.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [avanTechImages.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setPrideGalaImageIndex((prev) => (prev + 1) % prideGalaImages.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [prideGalaImages.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setArtImageIndex((prev) => (prev + 1) % artImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [artImages.length]);
 
   return (
     <section className="w-full">
@@ -103,7 +82,7 @@ export default function Hero() {
       <div className="relative w-full min-h-screen lg:min-h-[600px] flex items-center overflow-hidden">
         {/* Background Images - Rotating with Randomization and Art */}
         <div className="absolute inset-0 z-0">
-          {isClient && heroImages.length > 0 && heroImages.map((img, idx) => (
+          {heroImages.length > 0 && heroImages.map((img, idx) => (
             <Image
               key={`${img.src}-${idx}`}
               src={img.src}
@@ -140,7 +119,7 @@ export default function Hero() {
           <div className="max-w-2xl">
             {/* Tagline */}
             <p className="text-white/90 uppercase tracking-wider font-bold text-xs mb-4">
-              Avan Makerspace
+              Create. Express. Belong.
             </p>
 
             {/* Main Heading */}
@@ -150,14 +129,14 @@ export default function Hero() {
 
             {/* Description */}
             <p className="text-lg text-white/85 mb-8 leading-relaxed">
-              Avan is a queer-led, refugee-led nonprofit in Kakuma Refugee Camp that creates safe, inclusive spaces where displaced youth discover talents, develop digital and creative skills, and build sustainable futures through innovation, entrepreneurship, and community.
+              Avan Makerspace is a refugee-led, inclusive innovation and creativity hub based in Kakuma Refugee Camp, Kenya. We empower young people from refugee and host communities through technology, robotics, entrepreneurship, arts, and creative learning, creating opportunities to develop skills, explore ideas, and build solutions for their communities.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Link
                 href="/programs"
-                className="inline-flex items-center justify-center px-8 py-3 bg-secondary text-white font-semibold rounded-full hover:bg-secondary/90 transition"
+                className="inline-flex items-center justify-center px-8 py-3 bg-secondary text-secondary-foreground font-semibold rounded-full hover:bg-secondary/90 transition"
               >
                 Explore Programs
               </Link>
@@ -173,7 +152,7 @@ export default function Hero() {
       </div>
 
       {/* Featured Programs Section - Robotics/AvanTech */}
-      <div className="bg-white py-16 lg:py-24 border-t border-gray-200">
+      <div className="bg-card py-16 lg:py-24 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
@@ -182,10 +161,10 @@ export default function Hero() {
                 Our Programs
               </p>
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-                AvanTech: Digital Innovation & Robotics
+                Technology Is Better When We Build It.
               </h2>
               <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-                Comprehensive STEM education empowering youth to become digital innovators. From robotics and coding to AI and cybersecurity, AvanTech builds foundational and advanced technical skills with real-world applications.
+                AvanTech is the technology and innovation division of Avan Makerspace, a refugee-led, inclusive innovation and creativity hub in Kakuma Refugee Camp, Kenya. Through robotics, electronics, automation, and hands-on engineering, young innovators explore technology and turn ideas into practical solutions—from smart homes and automated doors to voice-command cars and robotic rovers.
               </p>
               <Link href="/programs/avantech" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
                 Explore AvanTech
@@ -215,7 +194,7 @@ export default function Hero() {
       </div>
 
       {/* Pride Gala Event Showcase */}
-      <div className="bg-gradient-to-br from-primary/5 to-secondary/5 py-16 lg:py-24 border-t border-gray-200">
+      <div className="bg-gradient-to-br from-primary/5 to-secondary/5 py-16 lg:py-24 border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Text Content */}
@@ -227,7 +206,7 @@ export default function Hero() {
                 Pride Gala Dinner Recap
               </h2>
               <p className="text-lg text-foreground/70 mb-8 max-w-2xl">
-                A celebration of LGBTQ+ youth leadership, cultural pride, and community belonging. Our June 29, 2026 event showcased runway performances, cultural expression, and the vibrant spirit of Kakuma&apos;s queer community.
+                A celebration of youth leadership, cultural expression, and community belonging. The June 29, 2026 event brought the Kakuma community together for runway performances, creative expression, and shared celebration.
               </p>
               <Link href="/impact" className="inline-flex items-center text-secondary font-semibold hover:gap-2 transition-all gap-1">
                 Learn About Our Impact
@@ -243,7 +222,7 @@ export default function Hero() {
                 <Image
                   key={idx}
                   src={img}
-                  alt="Pride Gala celebration and runway moments"
+                  alt="Pride Gala community celebration and runway performances"
                   fill
                   className={`object-cover transition-opacity duration-700 ${
                     idx === prideGalaImageIndex ? 'opacity-100' : 'opacity-0'
@@ -257,7 +236,7 @@ export default function Hero() {
       </div>
 
       {/* Explore Section */}
-      <div className="bg-gray-50 py-16 lg:py-24">
+      <div className="bg-muted/50 py-16 lg:py-24">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Section Header */}
           <div className="mb-12">
@@ -276,7 +255,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* About Card */}
             <Link href="/about" className="group">
-              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+              <div className="bg-card border border-border rounded-xl p-8 hover:shadow-md transition h-full">
                 <h3 className="text-xl font-bold text-secondary mb-3">About Us</h3>
                 <p className="text-foreground/70 mb-6">Meet the Avan team and vision rooted in Kakuma.</p>
                 <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
@@ -290,7 +269,7 @@ export default function Hero() {
 
             {/* Programs Card */}
             <Link href="/programs" className="group">
-              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+              <div className="bg-card border border-border rounded-xl p-8 hover:shadow-md transition h-full">
                 <h3 className="text-xl font-bold text-secondary mb-3">Programs</h3>
                 <p className="text-foreground/70 mb-6">Explore AvanTech, Pekee, Miradede, and more creative initiatives.</p>
                 <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
@@ -304,7 +283,7 @@ export default function Hero() {
 
             {/* Impact Card */}
             <Link href="/impact" className="group">
-              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+              <div className="bg-card border border-border rounded-xl p-8 hover:shadow-md transition h-full">
                 <h3 className="text-xl font-bold text-secondary mb-3">Impact</h3>
                 <p className="text-foreground/70 mb-6">Review our achievements and community-led milestones.</p>
                 <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
@@ -318,7 +297,7 @@ export default function Hero() {
 
             {/* Approach Card */}
             <Link href="/approach" className="group">
-              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+              <div className="bg-card border border-border rounded-xl p-8 hover:shadow-md transition h-full">
                 <h3 className="text-xl font-bold text-secondary mb-3">Our Approach</h3>
                 <p className="text-foreground/70 mb-6">Learn the principles guiding our work in the community.</p>
                 <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
@@ -332,7 +311,7 @@ export default function Hero() {
 
             {/* Context Card */}
             <Link href="/context" className="group">
-              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+              <div className="bg-card border border-border rounded-xl p-8 hover:shadow-md transition h-full">
                 <h3 className="text-xl font-bold text-secondary mb-3">Context</h3>
                 <p className="text-foreground/70 mb-6">Understand the broader context of Kakuma and our communities.</p>
                 <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
@@ -346,7 +325,7 @@ export default function Hero() {
 
             {/* Support Card */}
             <Link href="/get-involved" className="group">
-              <div className="bg-white border border-gray-200 rounded-xl p-8 hover:shadow-md transition h-full">
+              <div className="bg-card border border-border rounded-xl p-8 hover:shadow-md transition h-full">
                 <h3 className="text-xl font-bold text-secondary mb-3">Get Involved</h3>
                 <p className="text-foreground/70 mb-6">Discover ways to support, partner, or volunteer with Avan.</p>
                 <span className="inline-flex items-center text-secondary font-semibold group-hover:gap-2 transition-all gap-1">
@@ -375,29 +354,25 @@ export default function Hero() {
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="bg-gray-50 rounded-xl p-6">
+          <div className="bg-muted/50 rounded-xl p-6">
             <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">
               <AnimatedCounter end={200} suffix="+" />
             </p>
-            <p className="text-sm text-foreground/60">Youth trained across programs</p>
+            <p className="text-sm text-foreground/75">Young people reached</p>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6">
+          <div className="bg-muted/50 rounded-xl p-6">
             <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">
               <AnimatedCounter end={7} suffix="" />
             </p>
-            <p className="text-sm text-foreground/60">Signature programs</p>
+            <p className="text-sm text-muted-foreground">Signature programs</p>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6">
-            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">
-              <AnimatedCounter end={60} suffix="%" />
-            </p>
-            <p className="text-sm text-foreground/60">Women and girls</p>
+          <div className="bg-muted/50 rounded-xl p-6">
+            <p className="text-xl lg:text-2xl font-bold text-secondary mb-2">Inclusive</p>
+            <p className="text-sm text-foreground/75">Welcoming opportunities for women and girls</p>
           </div>
-          <div className="bg-gray-50 rounded-xl p-6">
-            <p className="text-3xl lg:text-4xl font-bold text-secondary mb-2">
-              <AnimatedCounter end={100} suffix="%" />
-            </p>
-            <p className="text-sm text-foreground/60">Community-led</p>
+          <div className="bg-muted/50 rounded-xl p-6">
+            <p className="text-xl lg:text-2xl font-bold text-secondary mb-2">Community-led</p>
+            <p className="text-sm text-foreground/75">Refugee and host communities learning together</p>
           </div>
         </div>
       </div>

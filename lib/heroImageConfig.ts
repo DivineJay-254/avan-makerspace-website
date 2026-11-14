@@ -63,7 +63,7 @@ export const HERO_IMAGES: HeroImage[] = [
   // Pride Gala Dinner - Community & Celebration
   {
     src: '/pride-gala-runway.png',
-    alt: 'Pride Gala Dinner runway performance celebrating LGBTQ+ youth',
+    alt: 'Pride Gala Dinner runway performance celebrating youth leadership and creative expression',
     program: 'Pride Gala Dinner',
   },
   {

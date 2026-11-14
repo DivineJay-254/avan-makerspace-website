@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { getAppCheckToken } from '@/lib/firebase/client';
 
 interface PartnershipModalProps {
   isOpen: boolean;
@@ -17,42 +18,42 @@ export default function PartnershipModal({ isOpen, onClose }: PartnershipModalPr
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const nativeEvent = e.nativeEvent as KeyboardEvent;
+    if (nativeEvent.isComposing || nativeEvent.keyCode === 229) return;
     setIsSubmitting(true);
+    setSubmitError('');
 
     try {
-      // Construct email
-      const subject = `Partnership Inquiry: ${formData.interestType}`;
-      const body = `
-Name: ${formData.name}
-Email: ${formData.email}
-Organization: ${formData.organization}
-Interest Type: ${formData.interestType}
-
-Message:
-${formData.message}
-      `.trim();
-
-      // Open default email client
-      window.location.href = `mailto:avanmakeraspace@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
+      const token = await getAppCheckToken();
+      const headers = new Headers({ 'Content-Type': 'application/json' });
+      if (token) headers.set('X-Firebase-AppCheck', token);
+      const response = await fetch('/api/public/contact', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          fullName: formData.name,
+          email: formData.email,
+          subject: `Partnership Inquiry: ${formData.interestType}`,
+          message: `Organization: ${formData.organization || 'Not provided'}\nInterest type: ${formData.interestType}\n\n${formData.message}`,
+          company: '',
+        }),
+      });
+      const result = await response.json() as { error?: string };
+      if (!response.ok) throw new Error(result.error ?? 'Your message could not be saved.');
       setSubmitStatus('success');
-      setTimeout(() => {
-        setFormData({ name: '', email: '', organization: '', interestType: '', message: '' });
-        setSubmitStatus('idle');
-        onClose();
-      }, 2000);
+      setFormData({ name: '', email: '', organization: '', interestType: '', message: '' });
     } catch (error) {
-      console.error('Error submitting form:', error);
+      setSubmitError(error instanceof Error ? error.message : 'Your message could not be saved.');
       setSubmitStatus('error');
-      setTimeout(() => setSubmitStatus('idle'), 3000);
     } finally {
       setIsSubmitting(false);
     }
@@ -62,10 +63,10 @@ ${formData.message}
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-      <div className="bg-background rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+      <div role="dialog" aria-modal="true" aria-labelledby="partnership-dialog-title" className="bg-background rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="sticky top-0 bg-primary text-primary-foreground px-6 py-4 flex items-center justify-between border-b">
-          <h2 className="text-xl font-bold">Partner With Us</h2>
+          <h2 id="partnership-dialog-title" className="text-xl font-bold">Partner With Us</h2>
           <button
             onClick={onClose}
             className="text-primary-foreground/70 hover:text-primary-foreground transition"
@@ -81,8 +82,7 @@ ${formData.message}
         <div className="p-6">
           {submitStatus === 'success' ? (
             <div className="text-center py-8">
-              <div className="mb-4 text-4xl">✓</div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">Message Sent!</h3>
+              <h3 className="text-lg font-semibold text-foreground mb-2" role="status">Message Sent</h3>
               <p className="text-foreground/70">
                 Thank you for reaching out. We&apos;ll be in touch soon to discuss partnership opportunities.
               </p>
@@ -177,16 +177,17 @@ ${formData.message}
 
               {/* Error Message */}
               {submitStatus === 'error' && (
-                <div className="bg-red-50 border border-red-200 text-red-800 px-3 py-2 rounded-lg text-sm">
-                  There was an error. Please try again or contact us directly.
+                <div role="alert" className="bg-destructive/10 border border-destructive/30 text-destructive px-3 py-2 rounded-lg text-sm">
+                  {submitError || 'Your message could not be saved. Please try again later.'}
                 </div>
               )}
+              <input type="text" name="company" autoComplete="off" tabIndex={-1} aria-hidden="true" className="sr-only" />
 
               {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-accent hover:bg-accent/90 disabled:bg-accent/50 text-white font-semibold py-2 rounded-lg transition"
+                className="w-full bg-accent hover:bg-accent/90 disabled:bg-accent/50 text-accent-foreground font-semibold py-2 rounded-lg transition"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
