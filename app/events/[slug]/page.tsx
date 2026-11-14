@@ -36,7 +36,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ s
             <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_0.75fr]">
               <div className="whitespace-pre-wrap leading-relaxed text-muted-foreground">{String(event.description || '')}</div>
               <aside className="rounded-2xl border border-border bg-card p-6">
-                {event.registrationEnabled === true ? <EventRegistrationForm eventId={event.id} eventTitle={String(event.title || '')} /> : <p className="text-sm text-muted-foreground">Registration is not open for this event.</p>}
+                {event.registrationEnabled === true ? <EventRegistrationForm eventId={event.id} /> : <p className="text-sm text-muted-foreground">Registration is not open for this event.</p>}
               </aside>
             </div>
           </article>

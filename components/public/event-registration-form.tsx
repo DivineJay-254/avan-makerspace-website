@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { getAppCheckToken } from '@/lib/firebase/client'
 
-export function EventRegistrationForm({ eventId, eventTitle }: Readonly<{ eventId: string; eventTitle?: string }>) {
+export function EventRegistrationForm({ eventId }: Readonly<{ eventId: string }>) {
   const [pending, setPending] = useState(false)
   const [notice, setNotice] = useState('')
   const [values, setValues] = useState({ fullName: '', email: '', phone: '', participantCategory: 'student', organisation: '', additionalInformation: '', company: '' })

@@ -17,7 +17,7 @@ export default function About() {
       setImageIndex((prev) => (prev + 1) % aboutImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [aboutImages.length]);
 
   return (
     <>
@@ -198,7 +198,7 @@ export default function About() {
               </div>
               <h4 className="font-bold text-foreground mb-2">Resilience</h4>
               <p className="text-sm text-foreground/70">
-                We've reached 200+ youth without external funding. We maximize every resource entrusted to us.
+                We&apos;ve reached 200+ youth without external funding. We maximize every resource entrusted to us.
               </p>
             </div>
           </div>
@@ -230,7 +230,7 @@ export default function About() {
               <h4 className="text-2xl font-bold text-foreground mb-2">Fardose Daud</h4>
               <p className="text-secondary font-semibold mb-3">Founder & CEO</p>
               <p className="text-foreground/70">
-                Refugee-led community innovator bringing lived experience and deep relationships to shape Avan's strategic direction and community partnerships.
+                Refugee-led community innovator bringing lived experience and deep relationships to shape Avan&apos;s strategic direction and community partnerships.
               </p>
             </div>
 

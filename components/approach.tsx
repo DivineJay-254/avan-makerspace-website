@@ -31,7 +31,7 @@ export default function Approach() {
               </div>
               <h2 className="text-4xl font-bold text-foreground mb-6">Peer & Mentor-Led Delivery</h2>
               <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-                Much of our training is delivered by community members and mentors who share participants' backgrounds and experiences. This isn't coincidental—it&apos;s by design.
+                Much of our training is delivered by community members and mentors who share participants&apos; backgrounds and experiences. This isn&apos;t coincidental—it&apos;s by design.
               </p>
               <ul className="space-y-4 text-foreground/75">
                 <li className="flex items-start gap-3">
@@ -98,7 +98,7 @@ export default function Approach() {
                 </ul>
               </div>
               <p className="text-foreground/75">
-                These aren't extras—they&apos;re central to the program. A showcase gives participants something concrete to work toward, builds portfolio pieces, and lets them experience themselves as creators worthy of an audience.
+                These aren&apos;t extras—they&apos;re central to the program. A showcase gives participants something concrete to work toward, builds portfolio pieces, and lets them experience themselves as creators worthy of an audience.
               </p>
             </div>
           </div>
@@ -258,7 +258,7 @@ export default function Approach() {
           <div className="bg-background rounded-xl p-12 border-2 border-accent/30">
             <h2 className="text-3xl font-bold text-foreground mb-6 text-center">These Principles Together</h2>
             <p className="text-lg text-foreground/75 leading-relaxed text-center">
-              These five principles—peer mentorship, showcasing, collaboration, community-bridging, and resourcefulness—work together to create a learning environment where displaced youth aren't treated as beneficiaries waiting for help, but as capable innovators and creators with something valuable to contribute. That shift in perspective changes everything.
+              These five principles—peer mentorship, showcasing, collaboration, community-bridging, and resourcefulness—work together to create a learning environment where displaced youth aren&apos;t treated as beneficiaries waiting for help, but as capable innovators and creators with something valuable to contribute. That shift in perspective changes everything.
             </p>
           </div>
         </div>

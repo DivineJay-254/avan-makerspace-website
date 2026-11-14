@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowDown, ArrowRight, Cpu, Lightbulb, Radio, Settings2, ShieldCheck, Sparkles, Waves, Wifi, Zap } from 'lucide-react'
+import { ArrowDown, ArrowRight, Cpu, Lightbulb, Radio, Settings2, ShieldCheck, Sparkles, Wifi, Zap } from 'lucide-react'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { aquaSmart, avantechProjects } from '@/lib/avantech-projects'

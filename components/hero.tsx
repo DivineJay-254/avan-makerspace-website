@@ -15,7 +15,6 @@ export default function Hero() {
   const [prideGalaImageIndex, setPrideGalaImageIndex] = useState(0);
   const [artImageIndex, setArtImageIndex] = useState(0);
   const [heroImages, setHeroImages] = useState<HeroImage[]>([]);
-  const [isClient, setIsClient] = useState(false);
 
   // Art images for the hero section background
   const artImages = [
@@ -40,10 +39,12 @@ export default function Hero() {
     '/pride-gala-moment.jpg',
   ];
 
-  // Initialize randomized hero images on client side only
   useEffect(() => {
-    setIsClient(true);
-    setHeroImages(getRandomizedHeroImages());
+    const frameId = window.requestAnimationFrame(() => {
+      setHeroImages(getRandomizedHeroImages());
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
   }, []);
 
   useEffect(() => {
@@ -59,21 +60,21 @@ export default function Hero() {
       setAvanTechImageIndex((prev) => (prev + 1) % avanTechImages.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [avanTechImages.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setPrideGalaImageIndex((prev) => (prev + 1) % prideGalaImages.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [prideGalaImages.length]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setArtImageIndex((prev) => (prev + 1) % artImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [artImages.length]);
 
   return (
     <section className="w-full">
@@ -81,7 +82,7 @@ export default function Hero() {
       <div className="relative w-full min-h-screen lg:min-h-[600px] flex items-center overflow-hidden">
         {/* Background Images - Rotating with Randomization and Art */}
         <div className="absolute inset-0 z-0">
-          {isClient && heroImages.length > 0 && heroImages.map((img, idx) => (
+          {heroImages.length > 0 && heroImages.map((img, idx) => (
             <Image
               key={`${img.src}-${idx}`}
               src={img.src}

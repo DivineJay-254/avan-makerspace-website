@@ -1,9 +1,10 @@
 'use client'
 
+import Image from 'next/image'
 import { useMemo, useState } from 'react'
 import { getAppCheckToken } from '@/lib/firebase/client'
 import { adminResourceConfig, type AdminField } from '@/lib/firebase/resource-config'
-import type { CmsRecord, CmsResource, ManagedResource } from '@/lib/firebase/types'
+import type { CmsRecord, ManagedResource } from '@/lib/firebase/types'
 
 type ContentManagerProps = {
   resource: ManagedResource
@@ -196,7 +197,7 @@ export function ContentManager({ resource, initialRecords }: ContentManagerProps
           <input id={`${fieldId}-upload`} type="file" accept="image/jpeg,image/png,image/webp,image/avif" multiple={field.type === 'images'} disabled={busy} onChange={(event) => { void uploadImages(field, event.currentTarget.files); event.currentTarget.value = '' }} className={`${className} file:mr-3 file:rounded-md file:border-0 file:bg-muted file:px-3 file:py-1.5 file:text-xs file:font-semibold`} />
           {paths.length > 0 && <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">{paths.map((path, index) => {
             const url = previews[index] ?? imageUrl(resource, selected, path)
-            return <div key={`${path}-${index}`} className="relative overflow-hidden rounded-lg border border-border bg-muted">{url ? <img src={url} alt={`${field.label} preview ${index + 1}`} className="aspect-[4/3] w-full object-cover" /> : <p className="p-3 text-xs text-muted-foreground">Image available after this record is saved.</p>}<button type="button" onClick={() => setField(field.name, field.type === 'images' ? paths.filter((_, pathIndex) => pathIndex !== index) : '')} className="absolute right-2 top-2 rounded-md bg-background/90 px-2 py-1 text-xs font-semibold text-destructive">Remove</button></div>
+            return <div key={`${path}-${index}`} className="relative overflow-hidden rounded-lg border border-border bg-muted">{url ? <Image src={url} alt={`${field.label} preview ${index + 1}`} width={480} height={360} unoptimized className="aspect-[4/3] w-full object-cover" /> : <p className="p-3 text-xs text-muted-foreground">Image available after this record is saved.</p>}<button type="button" onClick={() => setField(field.name, field.type === 'images' ? paths.filter((_, pathIndex) => pathIndex !== index) : '')} className="absolute right-2 top-2 rounded-md bg-background/90 px-2 py-1 text-xs font-semibold text-destructive">Remove</button></div>
           })}</div>}
         </div>
       )
