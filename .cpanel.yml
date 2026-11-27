@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - /bin/mkdir -p "$HOME/public_html"
+    - /bin/cp -R static/. "$HOME/public_html/"
