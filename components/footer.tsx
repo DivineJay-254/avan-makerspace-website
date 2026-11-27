@@ -150,8 +150,8 @@ export default function Footer() {
               <Link href="/terms-of-service" className="hover:text-footer-foreground transition">
                 Terms of Service
               </Link>
-              <Link href="/impact-report" className="hover:text-footer-foreground transition">
-                Impact Report
+              <Link href="/impact" className="hover:text-footer-foreground transition">
+                Impact
               </Link>
             </div>
           </div>

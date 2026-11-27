@@ -205,7 +205,7 @@ export default function ProgramsPage({ cmsPrograms = [], cmsEnabled = false }: {
                         <p className="mb-6 text-lg leading-relaxed text-foreground/70">{program.description}</p>
                         <div className="mb-6"><h3 className="mb-3 font-semibold">What&apos;s Included:</h3><ul className="flex flex-col gap-2">{program.details.map((detail, idx) => <li key={idx} className="flex items-start"><span className={`${program.color} mr-3 font-bold`} aria-hidden="true">✓</span><span className="text-foreground/75">{detail}</span></li>)}</ul></div>
                         <div className="mb-6 rounded-lg border border-border bg-muted/50 p-6"><h3 className="mb-2 font-semibold">Impact</h3><p className="leading-relaxed text-foreground/75">{program.impact}</p></div>
-                        <Link href={`/programs/${program.slug}`} className={`${program.color} inline-flex rounded-lg border-2 border-current px-6 py-3 font-semibold transition hover:bg-muted/30`}>Learn More</Link>
+                        {typeof program.slug === 'string' && program.slug.trim() && program.slug.trim() !== 'undefined' ? <Link href={`/programs/${program.slug.trim()}`} className={`${program.color} inline-flex rounded-lg border-2 border-current px-6 py-3 font-semibold transition hover:bg-muted/30`}>Learn More</Link> : null}
                       </div>
                     </div>
                   ))}
