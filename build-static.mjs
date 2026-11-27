@@ -31,7 +31,11 @@ try {
     buildProcess.once('exit', (code, signal) => resolve(code ?? (signal ? 1 : 0)))
   })
 
-  if (exitCode !== 0) process.exitCode = exitCode
+  if (exitCode !== 0) {
+    process.exitCode = exitCode
+  } else {
+    await copy(join(projectRoot, 'public', '.htaccess'), join(projectRoot, 'out', '.htaccess'))
+  }
 } finally {
   for (const { sourcePath, backupPath } of movedPaths.reverse()) {
     if (!existsSync(sourcePath)) await copy(backupPath, sourcePath, { recursive: true })
