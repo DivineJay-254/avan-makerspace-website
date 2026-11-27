@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
+import { connection } from 'next/server'
 import WhatsAppWidget from '@/components/whatsapp-widget'
 import { SiteSettingsProvider } from '@/components/site-settings-provider'
 import { getPublicSettings } from '@/lib/firebase/content'
@@ -30,13 +31,12 @@ export const viewport: Viewport = {
   ],
 }
 
-export const dynamic = 'force-dynamic'
-
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  if (process.env.STATIC_EXPORT !== '1') await connection()
   const settings = await getPublicSettings().catch(() => null)
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
@@ -45,7 +45,7 @@ export default async function RootLayout({
           {children}
           <WhatsAppWidget />
         </SiteSettingsProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === 'production' && process.env.STATIC_EXPORT !== '1' && <Analytics />}
       </body>
     </html>
   )

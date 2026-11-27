@@ -7,10 +7,16 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { ContentError } from '@/components/public/content-card'
 import { CmsNotice } from '@/components/public/cms-notice'
-import { getMediaUrl, getPublishedBySlug } from '@/lib/firebase/content'
+import { getMediaUrl, getPublishedBySlug, getPublishedContent } from '@/lib/firebase/content'
 import { isFirebaseServerConfigured } from '@/lib/firebase/admin'
 
 export const metadata: Metadata = { title: 'Story | Avan Makerspace', description: 'Read the latest story from Avan Makerspace.' }
+
+export async function generateStaticParams() {
+  const posts = await getPublishedContent('posts').catch(() => [])
+  const params = (posts ?? []).flatMap((post) => typeof post.slug === 'string' && post.slug ? [{ slug: post.slug }] : [])
+  return params.length ? params : [{ slug: 'no-published-stories' }]
+}
 
 export default async function NewsArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -20,7 +26,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
   if (configured) {
     try { post = await getPublishedBySlug('posts', slug) } catch { failed = true }
   }
-  if (configured && !failed && !post) notFound()
+  if (configured && !failed && !post && process.env.STATIC_EXPORT !== '1') notFound()
   return (
     <>
       <Header />
@@ -35,7 +41,7 @@ export default async function NewsArticlePage({ params }: { params: Promise<{ sl
             {typeof post.excerpt === 'string' && post.excerpt ? <p className="mt-8 text-xl leading-relaxed text-foreground">{post.excerpt}</p> : null}
             <MarkdownContent markdown={String(post.content || '')} />
           </article>
-        ) : null}
+        ) : <p className="text-muted-foreground">No stories have been published yet.</p>}
       </main>
       <Footer />
     </>

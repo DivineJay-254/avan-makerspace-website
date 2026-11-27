@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { getAppCheckToken } from '@/lib/firebase/client'
+import { getAppCheckToken, getPublicApiUrl } from '@/lib/firebase/client'
 
 export function EventRegistrationForm({ eventId }: Readonly<{ eventId: string }>) {
   const [pending, setPending] = useState(false)
@@ -16,7 +16,7 @@ export function EventRegistrationForm({ eventId }: Readonly<{ eventId: string }>
     setNotice('')
     try {
       const appCheckToken = await getAppCheckToken()
-      const response = await fetch('/api/public/registrations', {
+      const response = await fetch(getPublicApiUrl('/api/public/registrations'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...(appCheckToken ? { 'X-Firebase-AppCheck': appCheckToken } : {}) },
         body: JSON.stringify({ ...values, eventId }),

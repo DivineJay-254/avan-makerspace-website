@@ -1,25 +1,14 @@
 /** @type {import('next').NextConfig} */
 const firebaseApiKey = process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.apiKey_2 || process.env.apiKey
 
+const staticExport = process.env.STATIC_EXPORT === '1'
+
 const nextConfig = {
+  ...(staticExport ? { output: 'export', trailingSlash: true } : {}),
   ...(firebaseApiKey ? { env: { NEXT_PUBLIC_FIREBASE_API_KEY: firebaseApiKey } } : {}),
-  images: {
-    unoptimized: true,
-  },
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'Strict-Transport-Security', value: 'max-age=63072000' },
-          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-        ],
-      },
-    ]
-  },
+  images: staticExport
+    ? { unoptimized: true, loader: 'custom', loaderFile: './lib/static-image-loader.js' }
+    : { unoptimized: true },
 }
 
 export default nextConfig

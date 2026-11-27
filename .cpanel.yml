@@ -1,4 +1,6 @@
 deployment:
   tasks:
+    - corepack pnpm install --frozen-lockfile
+    - NEXT_PUBLIC_API_BASE_URL=https://avan-makerspace-website.vercel.app corepack pnpm run build:static
     - /bin/mkdir -p "$HOME/public_html"
-    - /bin/cp -R static/. "$HOME/public_html/"
+    - /bin/cp -R out/. "$HOME/public_html/"

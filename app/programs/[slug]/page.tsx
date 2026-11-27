@@ -5,16 +5,24 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ProgramDetailLegacy from '@/components/program-detail-legacy'
 import AvanTechPage from '@/components/avantech-page'
-import { cmsUsesFirestore, getPublishedBySlug, getPublicSettings } from '@/lib/firebase/content'
+import { cmsUsesFirestore, getMediaUrl, getPublishedBySlug, getPublishedContent, getPublicSettings } from '@/lib/firebase/content'
 import type { CmsRecord } from '@/lib/firebase/types'
 
 type PageProps = { params: Promise<{ slug: string }> }
+
+const fallbackProgramSlugs = ['avantech', 'pekee', 'miradede', 'i-am-art', 'dance', 'music-studio', 'storytelling-podcast']
+
+export async function generateStaticParams() {
+  const programs = await getPublishedContent('programs').catch(() => [])
+  const cmsSlugs = (programs ?? []).flatMap((program) => typeof program.slug === 'string' && program.slug ? [program.slug] : [])
+  return [...new Set([...fallbackProgramSlugs, ...cmsSlugs])].map((slug) => ({ slug }))
+}
 
 function CmsProgramDetail({ program }: Readonly<{ program: CmsRecord }>) {
   const details = Array.isArray(program.details) ? program.details.map(String) : []
   const featuredImage = typeof program.featuredImage === 'string' ? program.featuredImage : ''
   const image = featuredImage.startsWith('content/')
-    ? `/api/media/programs/${program.id}?path=${encodeURIComponent(featuredImage)}`
+    ? getMediaUrl('programs', program.id, featuredImage)
     : featuredImage
 
   return (

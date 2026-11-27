@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { getAppCheckToken, isFirebaseClientConfigured } from '@/lib/firebase/client'
+import { getAppCheckToken, getPublicApiUrl, isFirebaseClientConfigured } from '@/lib/firebase/client'
 
 export function ContactForm() {
   const [pending, setPending] = useState(false)
@@ -20,7 +20,7 @@ export function ContactForm() {
     const form = new FormData(event.currentTarget)
     try {
       const appCheckToken = await getAppCheckToken()
-      const response = await fetch('/api/public/contact', {
+      const response = await fetch(getPublicApiUrl('/api/public/contact'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...(appCheckToken ? { 'X-Firebase-AppCheck': appCheckToken } : {}) },
         body: JSON.stringify({ fullName: form.get('fullName'), email: form.get('email'), subject: form.get('subject'), message: form.get('message'), company: form.get('company') }),
