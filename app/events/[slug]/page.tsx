@@ -7,10 +7,16 @@ import Footer from '@/components/footer'
 import { ContentError } from '@/components/public/content-card'
 import { CmsNotice } from '@/components/public/cms-notice'
 import { EventRegistrationForm } from '@/components/public/event-registration-form'
-import { getMediaUrl, getPublishedBySlug } from '@/lib/firebase/content'
+import { getMediaUrl, getPublishedBySlug, getPublishedContent } from '@/lib/firebase/content'
 import { isFirebaseServerConfigured } from '@/lib/firebase/admin'
 
 export const metadata: Metadata = { title: 'Event | Avan Makerspace', description: 'Event details and registration at Avan Makerspace.' }
+
+export async function generateStaticParams() {
+  const events = await getPublishedContent('events').catch(() => [])
+  const params = (events ?? []).flatMap((event) => typeof event.slug === 'string' && event.slug ? [{ slug: event.slug }] : [])
+  return params.length ? params : [{ slug: 'no-published-events' }]
+}
 
 export default async function EventDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -20,7 +26,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ s
   if (configured) {
     try { event = await getPublishedBySlug('events', slug) } catch { failed = true }
   }
-  if (configured && !failed && !event) notFound()
+  if (configured && !failed && !event && process.env.STATIC_EXPORT !== '1') notFound()
 
   return (
     <>
@@ -40,7 +46,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ s
               </aside>
             </div>
           </article>
-        ) : null}
+        ) : <p className="text-muted-foreground">No events have been published yet.</p>}
       </main>
       <Footer />
     </>

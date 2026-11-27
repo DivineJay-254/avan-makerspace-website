@@ -5,10 +5,17 @@ import { ArrowLeft, ArrowRight, CheckCircle2, Circle } from 'lucide-react'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import { aquaSmart, avantechProjects } from '@/lib/avantech-projects'
-import { cmsUsesFirestore, getMediaUrl, getPublishedBySlug, getPublicSettings } from '@/lib/firebase/content'
+import { cmsUsesFirestore, getMediaUrl, getPublishedBySlug, getPublishedContent, getPublicSettings } from '@/lib/firebase/content'
 import type { CmsRecord } from '@/lib/firebase/types'
 
 type PageProps = { params: Promise<{ slug: string; project: string }> }
+
+export async function generateStaticParams() {
+  const projects = await getPublishedContent('projects').catch(() => [])
+  const cmsSlugs = (projects ?? []).flatMap((project) => typeof project.slug === 'string' && project.slug ? [project.slug] : [])
+  const slugs = [...new Set(['aquasmart', ...avantechProjects.map((project) => project.slug), ...cmsSlugs])]
+  return slugs.map((project) => ({ slug: 'avantech', project }))
+}
 
 function CmsProjectDetail({ project }: Readonly<{ project: CmsRecord }>) {
   const imagePath = String(project.featuredImage || '')

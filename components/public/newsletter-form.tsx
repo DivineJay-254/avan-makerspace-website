@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
-import { getAppCheckToken } from '@/lib/firebase/client'
+import { getAppCheckToken, getPublicApiUrl } from '@/lib/firebase/client'
 
 type SignupNotice = { type: 'success' | 'error'; message: string } | null
 
@@ -20,7 +20,7 @@ export function NewsletterForm() {
 
     try {
       const appCheckToken = await getAppCheckToken()
-      const response = await fetch('/api/public/newsletter', {
+      const response = await fetch(getPublicApiUrl('/api/public/newsletter'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

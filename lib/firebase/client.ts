@@ -21,6 +21,11 @@ const config = {
 
 const requiredClientConfig = [config.apiKey, config.authDomain, config.projectId, config.appId]
 
+export function getPublicApiUrl(path: string) {
+  const apiBase = process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, '') ?? ''
+  return `${apiBase}${path}`
+}
+
 export function isFirebaseClientConfigured() {
   return requiredClientConfig.every((value) => Boolean(value))
 }
